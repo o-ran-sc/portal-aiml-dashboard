@@ -23,7 +23,6 @@ WORKDIR /home/gui/
 COPY . .
 
 RUN npm install
-RUN . ./set_env_and_npm_run_build.sh
 RUN npm install -g serve
 
 EXPOSE 32005
