@@ -9,3 +9,5 @@ ref: 0137534d9c9832c74dcf1faa37d52c6ca01e0a81
 containers:
     - name: portal-aiml-dashboard-docker
       version: 1.0.0
+    - name: portal-aiml-notebook-docker
+      version: 1.0.0
