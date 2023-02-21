@@ -24,7 +24,10 @@ import CreateOrEditTrainingJobForm from '../form/CreateOrEditTrainingJobForm'
 
 
 class CreateTrainingJob extends React.Component {
-  
+  constructor(props){
+    super(props);
+    this.logger=this.props.logger;
+  }
    popover = () =>(
     <Popover id="popover-basic">
       <Popover.Title as="h3">Field descriptions</Popover.Title>
@@ -79,7 +82,7 @@ class CreateTrainingJob extends React.Component {
           <Button className="from-tooltip" placement="right" variant="secondary">?</Button>
         </OverlayTrigger>
 
-        <CreateOrEditTrainingJobForm isCreateTrainingJobForm={true}></CreateOrEditTrainingJobForm>
+        <CreateOrEditTrainingJobForm isCreateTrainingJobForm={true} logger={this.logger}></CreateOrEditTrainingJobForm>
       </>
     );
   }
