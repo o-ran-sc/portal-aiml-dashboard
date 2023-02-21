@@ -22,7 +22,7 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios';
 import * as CONSTANTS from '../common/Constants' 
 import './CreateOrEditTrainingJobForm.css'
-import {convertDatalakeDBName} from '../common/CommonMethods'
+import {getDatalakeNameWithoutConversion, convertDatalakeDBName, convertToCommaSeparatedString} from '../common/CommonMethods'
 
 class CreateTrainingJob extends React.Component {
   constructor(props) {
@@ -49,28 +49,25 @@ class CreateTrainingJob extends React.Component {
         bucket: ''
     };
     
-    
+    this.logger=this.props.logger;
 	 
-    console.log('Initial UCM URL, ' , this.state.UCMgr_baseUrl)
-    console.log('All env', process.env)
-    console.log('ucm host port',process.env.REACT_APP_UCM_HOST ,process.env.REACT_APP_UCM_PORT);
+    this.logger('Initial UCM URL, ' , this.state.UCMgr_baseUrl)
+    this.logger('All env', process.env)
+    this.logger('ucm host port',process.env.REACT_APP_UCM_HOST ,process.env.REACT_APP_UCM_PORT);
     
   }
   
   componentDidMount() {
-    console.log("componentDidMount...");
-
+    this.logger("componentDidMount...");
+    // this.logger(this.props.isCreateTrainingJobForm) this is true
     const task = () => {
+      this.logger("called the task");
       this.fetchPipelines();
       this.fetchExperiments();
 
       if(this.state.plName !== ""){
         this.fetchPipelineVersions(this.state.plName, false);
       }
-
-
-
-     
 
       let shouldChangeDatalakeSourceName = true;
       for(const data of this.state.datalakeSourceList){
@@ -80,18 +77,45 @@ class CreateTrainingJob extends React.Component {
         }
       }
       if(shouldChangeDatalakeSourceName){
-        this.setState({datalakeSourceName : ''},()=>console.log("current selected datalakeSourceName: ",this.state.datalakeSourceName));
+        this.setState({datalakeSourceName : ''},()=>this.logger("current selected datalakeSourceName: ",this.state.datalakeSourceName));
       }
       else{
-        console.log("current selected datalakeSourceName: ",this.state.datalakeSourceName);
+        this.logger("current selected datalakeSourceName: ",this.state.datalakeSourceName);
       }
 
     };
 
-    task();
-
-
-
+    if(!this.props.isCreateTrainingJobForm){
+      axios.get(`${CONSTANTS.UCMgr_baseUrl}/trainingjobs/${this.props.trainingjob_name}/${this.props.version}`)
+      .then(result =>{
+        this.setState({
+          ucName: result.data.trainingjob.trainingjob_name,
+          plName: result.data.trainingjob.pipeline_name,
+          expName: result.data.trainingjob.experiment_name,
+          // featureNames: result.data.trainingjob.feature_list,
+          featureFilters: result.data.trainingjob.query_filter,
+          hyparams: convertToCommaSeparatedString(result.data.trainingjob.arguments),    
+          versioning: result.data.trainingjob.enable_versioning,
+          ucDescription: result.data.trainingjob.description,
+          plList: [],
+          expList: [],
+          UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
+          plVerList: [],
+          plVerName: result.data.trainingjob.pipeline_version,
+          plVerDescription: '',
+          datalakeSourceList: ["Influx DB"],
+          datalakeSourceName: getDatalakeNameWithoutConversion(result.data.trainingjob.datalake_source),
+          _measurement: result.data.trainingjob._measurement,
+          bucket: result.data.trainingjob.bucket
+        }, ()=> task());
+      })
+      .catch(error =>{
+        this.logger(error);
+      }); 
+    }
+    else{
+      task();
+    }
   }
 
   
@@ -99,7 +123,7 @@ class CreateTrainingJob extends React.Component {
     
     axios.get( this.state.UCMgr_baseUrl + '/pipelines')
       .then(res => {
-        console.log('Server reponded pl', res.data.pipeline_names)
+        this.logger('Server reponded pl', res.data.pipeline_names)
         //setState because this is async response from axios, so re-render
         this.setState(
           {
@@ -114,17 +138,17 @@ class CreateTrainingJob extends React.Component {
               }
             }
             if(shouldChangePlName){
-              this.setState({plName : ''},()=>console.log("current selected plName: ",this.state.plName));
+              this.setState({plName : ''},()=>this.logger("current selected plName: ",this.state.plName));
             }
             else{
-              console.log("current selected plName: ",this.state.plName);
+              this.logger("current selected plName: ",this.state.plName);
             }
           }
         );
                
       })
       .catch(function (error) {
-        console.log('Got some error' + error);
+        this.logger('Got some error' + error);
       })
       .then(function () {
       })
@@ -177,10 +201,10 @@ class CreateTrainingJob extends React.Component {
       }
     }
     if(shouldChangePlVerName){
-      this.setState({plVerName : ''},()=>console.log("current selected plVerName: ",this.state.plVerName));
+      this.setState({plVerName : ''},()=>this.logger("current selected plVerName: ",this.state.plVerName));
     }
     else{
-      console.log("current selected plVerName: ",this.state.plVerName);
+      this.logger("current selected plVerName: ",this.state.plVerName);
     }
   }
 
@@ -189,7 +213,7 @@ class CreateTrainingJob extends React.Component {
     
     axios.get( `${this.state.UCMgr_baseUrl}/pipelines/${pipeline_name}/versions`)
       .then(res => {
-        console.log('Server reponded pipeline versions list', res.data.versions_list)
+        this.logger('Server reponded pipeline versions list', res.data.versions_list)
         //setState because this is async response from axios, so re-render
         this.setState(
           {
@@ -211,7 +235,7 @@ class CreateTrainingJob extends React.Component {
       })
       .catch(function (error) {
         // handle error
-        console.log('Got some error' + error);
+        this.logger('Got some error' + error);
       })
       .then(function () {
         // always executed
@@ -223,7 +247,7 @@ class CreateTrainingJob extends React.Component {
   fetchExperiments() {
     axios.get(this.state.UCMgr_baseUrl + '/experiments')
       .then(res => {
-        console.log('Server reponded exp', res.data.experiment_names);
+        this.logger('Server reponded exp', res.data.experiment_names);
         //setState because this is async response from axios, so re-render
         this.setState(
           {
@@ -238,17 +262,17 @@ class CreateTrainingJob extends React.Component {
               }
             }
             if(shouldChangeExpName){
-              this.setState({expName : ''},()=>console.log("current selected expName: ",this.state.expName));
+              this.setState({expName : ''},()=>this.logger("current selected expName: ",this.state.expName));
             }
             else{
-              console.log("current selected expName: ",this.state.expName);
+              this.logger("current selected expName: ",this.state.expName);
             }
           }
         );
       })
       .catch(function (error) {
         // handle error
-        console.log('Got some error' + error);
+        this.logger('Got some error' + error);
       })
       .then(function () {
         // always executed
@@ -257,7 +281,7 @@ class CreateTrainingJob extends React.Component {
   }
 
     handleCreateSubmit = event => {
-        console.log('Create TrainingJob clicked: ',
+      this.logger('Create TrainingJob clicked: ',
         this.state.ucName,
         this.state.plName,
         this.state.expName,
@@ -276,10 +300,32 @@ class CreateTrainingJob extends React.Component {
         event.preventDefault();
     }
 
+    handleEditSubmit = event => {
+
+      this.logger('Edit usecase clicked: ',
+        this.state.ucName,
+        this.state.plName,
+        this.state.expName,
+        this.state.featureNames,
+        this.state.featureFilters,
+        this.state.hyparams,
+        this.state.versioning,
+        this.state.targetName,
+        this.state.ucDescription,
+        this.state.plVerName,
+        this.state.datalakeSourceName,
+        this.state._measurement,
+        this.state.bucket
+        );
+
+        this.invokePutTrainingJob(event);
+        event.preventDefault();
+    }
+
 invokeAddTrainingJob(event){
   let hyperParamsDict = this.buildHyperparamsDict(this.state.hyparams);
   let convertedDatalakeDBName = convertDatalakeDBName(this.state.datalakeSourceName)
-  console.log('Add New Request is posted at ' + this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName)
+  this.logger('Add New Request is posted at ' + this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName)
   axios.post(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName,{
     "trainingjob_name" : this.state.ucName,
     "pipeline_name" : this.state.plName,
@@ -294,12 +340,12 @@ invokeAddTrainingJob(event){
     "_measurement": this.state._measurement,
     "bucket": this.state.bucket
   }).then(res => {
-      console.log('UC created ', res.data)
+    this.logger('UC created ', res.data)
       this.invokeStartTrainingForCreate();
     })
     .catch(function (error) {
     
-      console.log('Error creating Training Job', error);
+      this.logger('Error creating Training Job', error);
       alert("Failed: " + error.response.data.Exception)
       event.preventDefault();
     })
@@ -309,28 +355,85 @@ invokeAddTrainingJob(event){
 
 }
 
-  
+invokePutTrainingJob = event =>{
+  let hyperParamsDict = this.buildHyperparamsDict(this.state.hyparams);
+  let convertedDatalakeDBName = convertDatalakeDBName(this.state.datalakeSourceName);
+  axios.put(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName,{
+    "trainingjob_name" : this.state.ucName,
+    "pipeline_name" : this.state.plName,
+    "experiment_name" : this.state.expName,
+    "feature_list": this.state.featureNames,
+    "query_filter": this.state.featureFilters,
+    "arguments" : hyperParamsDict,   
+    "enable_versioning" : this.state.versioning,
+    "description" : this.state.ucDescription,
+    "pipeline_version": this.state.plVerName,
+    "datalake_source": convertedDatalakeDBName,
+    "_measurement": this.state._measurement,
+    "bucket": this.state.bucket
+    //"enable_versioning" : true
+  }).then(res => {
+    this.logger('UC created ', res.data)
+      this.invokeStartTrainingForEdit();
+    })
+    .catch(function (error) {
+      // handle error
+      this.logger('Error creating Use case', error);
+      alert("Failed: " + error.response.data.Exception)
+      event.preventDefault();
+    })
+    .then(function () {
+      // always executed
+    })
+}
 
   invokeStartTrainingForCreate(event){
-    console.log('Training called ')
+    this.logger('Training called ')
     axios.post(this.state.UCMgr_baseUrl 
       + '/trainingjobs/' + this.state.ucName + '/training',
       {
-       "trainingjob_name" : this.state.ucName,
+       "trainingjobs" : this.state.ucName,
       }
       ).then(res => {
-        console.log('Training  responsed ', res)
+        this.logger('Training  responsed ', res)
         if(res.status === 200) {
           alert("Training Job created and training initiated")
           this.resetFrom()
           
         } else {
-          console.log('Training issue: ' , res)
+          this.logger('Training issue: ' , res)
         }
         
       })
       .catch(error => {
-        console.log('Error in training api,response',error.response.data)
+        this.logger('Error in training api,response',error.response.data)
+        alert("Training failed: " + error.response.data.Exception)
+      })
+      .then(function () {
+        // always executed
+      })
+  }
+
+  invokeStartTrainingForEdit(event){
+    this.logger('Training called ')
+    axios.post(this.state.UCMgr_baseUrl 
+      + '/trainingjobs/' + this.state.ucName + '/training',
+      {
+       "trainingjobs" : this.state.ucName,
+      }
+      ).then(res => {
+        this.logger('Training  responsed ', res)
+        if(res.status === 200) {
+          alert("Training Job edited and training initiated");
+          this.props.onHideEditPopup();
+          this.props.fetchTrainingJobs();
+        } else {
+          this.logger('Training issue: ' , res)
+        }
+        
+      })
+      .catch(error => {
+        this.logger('Error in training api,response',error.response.data)
         alert("Training failed: " + error.response.data.Exception)
       })
       .then(function () {
@@ -339,20 +442,17 @@ invokeAddTrainingJob(event){
   }
 
 
-  
-
-
   buildFeatureNameList(f_names) {
 
-    console.log("before changing in buildFeatureNameList: ",f_names);
-    console.log("after changing in buildFeatureNameList: ",String(f_names).split(","))
+    this.logger("before changing in buildFeatureNameList: ",f_names);
+    this.logger("after changing in buildFeatureNameList: ",String(f_names).split(","))
     return String(f_names).split(",");
     //return ["Time", "DL PRB UTILIZATION %"];
   }
 
   buildFeatureFilterDict(filters){
 
-    console.log("before changing in buildFeatureFilterDict: ",filters)
+    this.logger("before changing in buildFeatureFilterDict: ",filters)
 
     if(filters === ""){
       return {};
@@ -368,7 +468,7 @@ invokeAddTrainingJob(event){
       filtDict[key] = value;
     }
         
-    console.log('after changing in buildFeatureFilterDict: ',filtDict);
+    this.logger('after changing in buildFeatureFilterDict: ',filtDict);
     return filtDict;
 
   }
@@ -376,7 +476,7 @@ invokeAddTrainingJob(event){
   //Fix : Code dumplication merge in common function
   buildHyperparamsDict(hyperArgs){
 
-    console.log("before changing in buildHyperparamsDict: ",hyperArgs);
+    this.logger("before changing in buildHyperparamsDict: ",hyperArgs);
 
     if(hyperArgs === ""){
       return {
@@ -396,7 +496,7 @@ invokeAddTrainingJob(event){
     paramDict["trainingjob_name"] = this.state.ucName;
 
 
-    console.log("after changing in buildHyperparamsDict: ",paramDict);
+    this.logger("after changing in buildHyperparamsDict: ",paramDict);
     return paramDict;
     
   }
@@ -404,12 +504,12 @@ invokeAddTrainingJob(event){
   getIntOrStringValue(inputValue) {
     //BUG: value 12.5 coverted to 12
 
-    console.log('Before changing in getIntOrStringValue: ',inputValue)
+    this.logger('Before changing in getIntOrStringValue: ',inputValue)
     var value = parseInt(inputValue)
     if(isNaN(value)) {
       value = inputValue
     } 
-    console.log('After changing in getIntOrStringValue: ',value)
+    this.logger('After changing in getIntOrStringValue: ',value)
     return value;
   }
 
@@ -417,7 +517,7 @@ invokeAddTrainingJob(event){
     this.setState({
       ucName: event.target.value
     },() => {
-      console.log("after set state, ucName: ", this.state.ucName);
+      this.logger("after set state, ucName: ", this.state.ucName);
     })
   }
 
@@ -426,7 +526,7 @@ invokeAddTrainingJob(event){
     this.setState({
       plName: event.target.value
     },() => {
-      console.log("after set state, plName: ", this.state.plName);
+      this.logger("after set state, plName: ", this.state.plName);
       this.fetchPipelineVersions(this.state.plName, true);
     })
   }
@@ -436,16 +536,16 @@ invokeAddTrainingJob(event){
     this.setState({
       expName: event.target.value
     },() => {
-      console.log("after set state, expName: ", this.state.expName);
+      this.logger("after set state, expName: ", this.state.expName);
     })
   }
 
   handleFeatureNamesChange = (event) => {
-    console.log('handleFeatureNamesChange', event.target.value)
+    this.logger('handleFeatureNamesChange', event.target.value)
     this.setState({
       featureNames: event.target.value
     },() => {
-      console.log("after set state, featureNames: ", this.state.featureNames);
+      this.logger("after set state, featureNames: ", this.state.featureNames);
     })
   }
 
@@ -453,7 +553,7 @@ invokeAddTrainingJob(event){
     this.setState({
       featureFilters: event.target.value
     },() => {
-      console.log("after set state, featureFilters: ", this.state.featureFilters);
+      this.logger("after set state, featureFilters: ", this.state.featureFilters);
     })
   }
 
@@ -461,7 +561,7 @@ invokeAddTrainingJob(event){
     this.setState({
       hyparams: event.target.value
     },() => {
-      console.log("after set state, hyparams: ", this.state.hyparams);
+      this.logger("after set state, hyparams: ", this.state.hyparams);
     })
   }
 
@@ -469,7 +569,7 @@ invokeAddTrainingJob(event){
     this.setState({
       versioning: event.target.checked
     },() => {
-      console.log("after set state, versioning: ", this.state.versioning);
+      this.logger("after set state, versioning: ", this.state.versioning);
     })
   }
   
@@ -477,7 +577,7 @@ invokeAddTrainingJob(event){
     this.setState({
       targetName: event.target.value
     },() => {
-      console.log("after set state, targetName: ", this.state.targetName);
+      this.logger("after set state, targetName: ", this.state.targetName);
     })
   }
 
@@ -485,7 +585,7 @@ invokeAddTrainingJob(event){
     this.setState({
       datalakeSourceName: event.target.value
     },() => {
-      console.log("after set state, datalakeSourceName: ", this.state.datalakeSourceName);
+      this.logger("after set state, datalakeSourceName: ", this.state.datalakeSourceName);
     })
   }
 
@@ -493,7 +593,7 @@ invokeAddTrainingJob(event){
     this.setState({
       ucDescription: event.target.value
     },() => {
-      console.log("after set state, ucDescription: ", this.state.ucDescription);
+      this.logger("after set state, ucDescription: ", this.state.ucDescription);
     })
   }
 
@@ -501,7 +601,7 @@ invokeAddTrainingJob(event){
     this.setState({
       plVerName: event.target.value
     },() => {
-      console.log("after set state, plVerName: ", this.state.plVerName);
+      this.logger("after set state, plVerName: ", this.state.plVerName);
     })
   }
 
@@ -515,7 +615,7 @@ invokeAddTrainingJob(event){
     this.setState({
       _measurement: event.target.value
     },()=>{
-      console.log("after set state, _measurement: ", this.state._measurement);
+      this.logger("after set state, _measurement: ", this.state._measurement);
     });
   }
 
@@ -523,7 +623,7 @@ invokeAddTrainingJob(event){
     this.setState({
       bucket : event.target.value
     },()=>{
-      console.log("after set state, bucket: ", this.state.bucket);
+      this.logger("after set state, bucket: ", this.state.bucket);
     });
   }
 
@@ -562,7 +662,7 @@ invokeAddTrainingJob(event){
 
       <Form 
       className={this.props.isCreateTrainingJobForm?"create-form":"edit-form"}
-      onSubmit={this.handleCreateSubmit}>
+      onSubmit={this.props.isCreateTrainingJobForm?this.handleCreateSubmit:this.handleEditSubmit}>
 
       
         <Form.Group controlId="ucName">

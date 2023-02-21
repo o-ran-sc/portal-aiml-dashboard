@@ -25,22 +25,26 @@ import axios from 'axios';
 import { Checkbox } from './Checkbox';
 import Popup from './Popup';
 import TrainingJobInfo from './TrainingJobInfo';
+import {invokeStartTraining} from './API_STATUS';
 import StepsState from './StepsState';
+import CreateOrEditTrainingJobForm from '../form/CreateOrEditTrainingJobForm';
 
-const StatusPageRows = () => {
-
+const StatusPageRows = (props) => {
+  const logger=props.logger
   const [trainingJobs, setTrainingJobs] = useState([])
-
+  const [editPopup , setEditPopup] = useState(false);
+  const [versionForEditPopup, setVersionForEditPopup] = useState(null);
+  const [traingingjobNameForEditPopup, setTraingingjobNameForEditPopup] = useState(null);
+  const closeEditPopup = () => setEditPopup(false);
   const [stepsStatePopup, setStepsStatePopup] = useState(false);
   const [stepsStateTrainingJobAndVersion, setStepsStateTrainingJobNameAndVersion] = useState(null);
   const closeStepsStatePopup = () => setStepsStatePopup(false);
-
   const [infoPopup, setInfoPopup] = useState(false);
   const [infoTrainingJobAndVersion, setInfoTrainingJobNameAndVersion] = useState(null);
   const closeInfoPopup = () => setInfoPopup(false);
 
   useEffect(() => {
-    console.log('useEffect');
+    logger('useEffect');
     fetchTrainingJobs();
     const timer = setInterval(async ()=>{
       fetchTrainingJobs();
@@ -48,21 +52,59 @@ const StatusPageRows = () => {
     return ()=>clearInterval(timer);
   }, []);
 
-
+  useEffect(()=> {
+    toggleAllRowsSelected(false);
+  },[traingingjobNameForEditPopup]);
 
   const fetchTrainingJobs = async () => {
-    console.log('fetchTrainingJobs UCMgr_baseUrl', UCMgr_baseUrl)
+    logger('fetchTrainingJobs UCMgr_baseUrl', UCMgr_baseUrl)
     try {    
       const result = await axios.get(`${UCMgr_baseUrl}/trainingjobs/latest`);
-      console.log('fetchTrainingJobs Result', result);
-      console.log('Training Jobs  are --> ', result.data.trainingjobs)
+      logger('fetchTrainingJobs Result', result);
+      logger('Training Jobs  are --> ', result.data.trainingjobs)
       setTrainingJobs(result.data.trainingjobs);
       
     } catch (e) {
       console.error(e)
     }
   }
-   
+  
+  const handleRetrain  = async (event) => {
+    console.log('handleRetrain starts..');
+    
+    if(selectedFlatRows.length > 0) {
+      let trainingjobNames =  [];
+      for (const row of selectedFlatRows) {
+        trainingjobNames.push({
+            trainingjob_name: row.original.trainingjob_name
+        })
+      }
+      console.log('selected trainingjobs: ',trainingjobNames);
+      try{
+        await invokeStartTraining(trainingjobNames);
+        await fetchTrainingJobs();
+      }
+      catch(error) {
+        console.log(error);
+      }
+      toggleAllRowsSelected(false);
+    } else {
+      alert('Please select atleast one trainingjob')
+    }
+  }
+
+  const handleEdit  = (event) => {
+    if(selectedFlatRows.length === 1){
+      logger(selectedFlatRows[0].original.trainingjob_name)
+      setTraingingjobNameForEditPopup(selectedFlatRows[0].original.trainingjob_name);
+      setVersionForEditPopup(selectedFlatRows[0].original.version);
+      setEditPopup(true);
+      toggleAllRowsSelected(false);
+    }
+    else{
+      alert("please select exactly one trainingjob");
+    }
+  }
 
   const handleStepStateClick = (trainingjob_name, version) => {
     setStepsStateTrainingJobNameAndVersion({
@@ -148,8 +190,12 @@ const StatusPageRows = () => {
  
   return (  
     <>
-
-
+      <Button variant="success" size="sm" onClick={e => handleEdit(e)} >
+        Edit
+      </Button>{' '}
+      <Button variant="success" size="sm" onClick={e => handleRetrain(e)} >
+        Train
+      </Button>{' '}
       <BTable className="Status_table" responsive striped bordered hover size="sm"  {...getTableProps()}>
 
         <thead>
@@ -181,6 +227,15 @@ const StatusPageRows = () => {
           })}
         </tbody>
       </BTable>
+      <Popup show={editPopup} onHide={closeEditPopup} title="Edit usecase">
+        <CreateOrEditTrainingJobForm 
+          trainingjob_name={traingingjobNameForEditPopup} 
+          version={versionForEditPopup} 
+          isCreateTrainingJobForm={false} 
+          onHideEditPopup={closeEditPopup} 
+          fetchTrainingJobs={fetchTrainingJobs}
+          logger={logger}></CreateOrEditTrainingJobForm>
+      </Popup>
       <Popup size="sm" show={stepsStatePopup} onHide={closeStepsStatePopup} title="Detailed Status">
           <StepsState trainingjob_name_and_version={stepsStateTrainingJobAndVersion}></StepsState>
       </Popup>

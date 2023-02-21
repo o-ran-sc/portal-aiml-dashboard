@@ -22,6 +22,15 @@ import StatusPageRows from './status/StatusPageRows';
 import UploadPipelineForm from './pipelines/UploadPipeline'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavbarComponent from './navbar/NavbarComponent';
+import * as CONSTANTS from './common/Constants';
+
+
+var DEBUG=CONSTANTS.debug_var==='true'
+var logger = function(){
+    if(DEBUG){
+        console.log.apply(console, arguments);
+    }
+}
 
 class HomePage extends React.Component {
 
@@ -32,9 +41,9 @@ class HomePage extends React.Component {
             <NavbarComponent />
             <Switch>
               <Route path='/' exact component={Home} />
-              <Route path='/TrainingJob/CreateTrainingJob' exact component={CreateTrainingJob} />
-              <Route path='/TrainingJob/TrainingJobsStatus' exact component={StatusPageRows} />
-              <Route path='/TrainingJob/Pipeline' exact component={UploadPipelineForm} />
+              <Route path='/TrainingJob/CreateTrainingJob' render={() => <CreateTrainingJob logger={logger} />} />
+              <Route path='/TrainingJob/TrainingJobsStatus' render={() => <StatusPageRows logger={logger} />} />
+              <Route path='/TrainingJob/Pipeline' render={() => <UploadPipelineForm logger={logger} />} />
             </Switch>
           </Router>
         </>

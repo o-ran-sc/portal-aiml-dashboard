@@ -21,6 +21,8 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios';
 import * as CONSTANTS from '../common/Constants' 
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
 
 class UploadPipelineForm extends React.Component {
   constructor(props) {
@@ -33,7 +35,18 @@ class UploadPipelineForm extends React.Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-
+  popover = () =>(
+    <Popover id="popover-basic">
+      <Popover.Title as="h3">Field descriptions</Popover.Title>
+      <Popover.Content>
+        <strong>Training Job Name</strong> 
+        <br></br>
+         Name of the Training Job. <br></br>
+         should only contain lower or upper case alphanumerical characters and underscore <br></br>
+         <br></br> 
+      </Popover.Content>
+    </Popover>
+  );
   handleInputChange(event) {
     console.log(event)
     this.setState({
@@ -99,8 +112,11 @@ class UploadPipelineForm extends React.Component {
   render() {
     return (
     <>
+    <div className="upload-pipeline">
+    <OverlayTrigger trigger="click" placement="right" overlay={this.popover()}>
+      <Button className="from-tooltip" placement="right" variant="secondary">?</Button>
+    </OverlayTrigger>
     <div className="upload-pl-form" >
-
     <Button variant="success" size="sm"  onClick={e => this.handleCreatePipeline(e)} >
         Create Pipeline
     </Button>{' '}
@@ -121,6 +137,7 @@ class UploadPipelineForm extends React.Component {
       <Button type="submit" > Upload </Button>
 
       </Form>
+      </div>
       </div>
     </>
 
