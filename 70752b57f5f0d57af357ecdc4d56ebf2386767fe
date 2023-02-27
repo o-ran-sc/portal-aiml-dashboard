@@ -33,6 +33,23 @@
       "message": "run-sonar",
       "revId": "70752b57f5f0d57af357ecdc4d56ebf2386767fe",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5713ee68_4ca40408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-02-27T11:19:41Z",
+      "side": 1,
+      "message": "run-sonar",
+      "revId": "70752b57f5f0d57af357ecdc4d56ebf2386767fe",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ],
   "submitRequirementResults": []
