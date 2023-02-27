@@ -41,6 +41,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f71e26a_9fd7cc04",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-02-27T11:18:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7bbb165e_b63271db",
+      "range": {
+        "startLine": 106,
+        "startChar": 10,
+        "endLine": 106,
+        "endChar": 60
+      },
+      "revId": "601cbf91d97310410ea14df53846aaa655d90c80",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64f42953_e6d32aaa",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-02-26T18:47:13Z",
       "side": 1,
       "message": "Here, instead of calling \"invokePutTrainingJob\", we should call \"invokeStartTrainingForEdit\" because right now, \"invokeStartTrainingForEdit\" is not called/used anywhere.",
+      "range": {
+        "startLine": 377,
+        "startChar": 6,
+        "endLine": 377,
+        "endChar": 42
+      },
+      "revId": "601cbf91d97310410ea14df53846aaa655d90c80",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec22560_61cb2663",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-02-27T11:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64f42953_e6d32aaa",
       "range": {
         "startLine": 377,
         "startChar": 6,
