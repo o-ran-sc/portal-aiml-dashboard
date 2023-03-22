@@ -38,9 +38,9 @@ class CreateTrainingJob extends React.Component {
          It must be between 3 and 63 characters long <br></br>
         It can only consist of lowercase Letters and numbers
          <br></br> 
-        <strong>Pipeline Name</strong>
+        <strong>Training Function Name</strong>
         <br></br>
-        Select an existing pipeline name corresponding to a ML model
+        Select an existing training function name corresponding to a ML model
         <br></br>
         <strong>Experiment Name</strong>
         <br></br>

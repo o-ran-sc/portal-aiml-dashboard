@@ -685,13 +685,13 @@ invokePutTrainingJob = event =>{
         </Form.Group>
 
         <Form.Group controlId="plName">
-          <Form.Label>Pipeline Name*</Form.Label>
+          <Form.Label>Training Function*</Form.Label>
           <Form.Control as="select"
             required
             value={this.state.plName}
             onChange={this.handlePLNameChange}>
           
-            <option key="" value="" disabled> --- Select Pipeline --- </option>
+            <option key="" value="" disabled> --- Select Training Function --- </option>
             {
                 this.state.plList.map(data => <option key={data} value={data}>{data}</option>)
             }
@@ -703,13 +703,13 @@ invokePutTrainingJob = event =>{
           && 
           <div>
             <Form.Group controlId="plVesName">
-              <Form.Label>Pipeline Version Name*</Form.Label>
+              <Form.Label>Training Function Version Name*</Form.Label>
               <Form.Control as="select"
                 required
                 value={this.state.plVerName}
                 onChange={this.handlePipelineVersionChange}>
             
-                <option key="" value="" disabled> --- Select Pipeline Version--- </option>
+                <option key="" value="" disabled> --- Select Training Function Version--- </option>
                 {
                     this.state.plVerList.map(data => {
                       if(data === this.state.plName){

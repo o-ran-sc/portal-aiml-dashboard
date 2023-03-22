@@ -91,7 +91,7 @@ const TrainingJobInfo = (props) => {
                     <Form.Control type="text" value={featureNames} readOnly />
                 </Form.Group>
                 <Form.Group controlId="pipelineName">
-                    <Form.Label>Pipeline Name</Form.Label>
+                    <Form.Label>Training Function Name</Form.Label>
                     <Form.Control type="text" value={pipeLineName} readOnly />
                 </Form.Group>
                 <Form.Group controlId="experimentName">
@@ -115,7 +115,7 @@ const TrainingJobInfo = (props) => {
                     checked={enableVersioning} readOnly/>
                 </Form.Group>
                 <Form.Group controlId="pipelineVersion">
-                    <Form.Label>Pipeline Version</Form.Label>
+                    <Form.Label>Training Function Version</Form.Label>
                     <Form.Control type="text" value={pipelineVersion} readOnly />
                 </Form.Group>
                 <Form.Group controlId="datalakeSource">

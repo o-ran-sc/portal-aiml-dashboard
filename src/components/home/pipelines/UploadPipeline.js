@@ -39,9 +39,9 @@ class UploadPipelineForm extends React.Component {
     <Popover id="popover-basic">
       <Popover.Title as="h3">Field descriptions</Popover.Title>
       <Popover.Content>
-        <strong>Training Job Name</strong> 
+        <strong> Training Function Name</strong> 
         <br></br>
-         Name of the Training Job. <br></br>
+         Name of the Training Function. <br></br>
          should only contain lower or upper case alphanumerical characters and underscore <br></br>
          <br></br> 
       </Popover.Content>
@@ -118,12 +118,12 @@ class UploadPipelineForm extends React.Component {
     </OverlayTrigger>
     <div className="upload-pl-form" >
     <Button variant="success" size="sm"  onClick={e => this.handleCreatePipeline(e)} >
-        Create Pipeline
+        Create Training Function
     </Button>{' '}
 
       <Form  onSubmit={this.handleSubmit}>
         <Form.Group controlId="plName">
-          <Form.Label>Pipeline Name*</Form.Label>
+          <Form.Label>Training Function Name*</Form.Label>
           <Form.Control type="input"
             value={this.state.plName}
             onChange={this.handlePlNameChange}
