@@ -44,6 +44,11 @@ committers:
       company: 'Samsung Electronics'
       id: 'ashishj1729'
       timezone: 'Asia/Seoul'
+    - name: 'Taewan Kim'
+      email: 't25.kim@samsung.com'
+      company: 'Samsung Electronics'
+      id: 't25kim'
+      timezone: 'Asia/Seoul'
 tsc:
     # yamllint disable rule:line-length
     approval: 'https://wiki.o-ran-sc.org/display/TOC\#ORANSCTechnicalOversightCommittee\(TOC\)-20220811'
