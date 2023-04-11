@@ -34,15 +34,20 @@ repositories:
     - portal/aiml-dashboard
 committers:
     - <<: *oran_aiml_fw_ptl
-    - name: 'Ganesh Kumar Thangavel'
-      email: 'ganesh.kumar@samsung.com'
+    - name: 'Varadarajan Seenivasan'
+      email: 'varada.s@samsung.com'
       company: 'Samsung Electronics'
-      id: 'tganesh2k'
+      id: 'srivarada'
       timezone: 'Asia/Seoul'
     - name: 'Ashish Jain'
       email: 'jain.ashish@samsung.com'
       company: 'Samsung Electronics'
       id: 'ashishj1729'
+      timezone: 'Asia/Seoul'
+    - name: 'Taewan Kim'
+      email: 't25.kim@samsung.com'
+      company: 'Samsung Electronics'
+      id: 't25kim'
       timezone: 'Asia/Seoul'
 tsc:
     # yamllint disable rule:line-length
