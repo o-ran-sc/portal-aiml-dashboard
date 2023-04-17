@@ -1,0 +1,10 @@
+Code-Review+1: Taewan Kim <t25.kim@samsung.com>
+Verified+1: ORAN Jobbuilder <releng+oran-jobbuilder@linuxfoundation.org>
+Code-Review+2: Ashish Jain <jain.ashish@samsung.com>
+Verified+1: Ashish Jain <jain.ashish@samsung.com>
+Code-Review+1: Ganesh Kumar Thangavel <ganesh.kumar@samsung.com>
+Submitted-by: Ashish Jain <jain.ashish@samsung.com>
+Submitted-at: Mon, 17 Apr 2023 06:43:28 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/portal/aiml-dashboard/+/10888
+Project: portal/aiml-dashboard
+Branch: refs/heads/master
