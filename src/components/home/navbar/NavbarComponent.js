@@ -32,6 +32,7 @@ function NavbarComponent() {
                     <NavDropdown.Item href="/TrainingJob/CreateTrainingJob">Create Training Job</NavDropdown.Item>
                     <NavDropdown.Item href="/TrainingJob/TrainingJobsStatus">Training Job Status</NavDropdown.Item>
                     <NavDropdown.Item href="/TrainingJob/Pipeline">Pipelines</NavDropdown.Item>
+                    <NavDropdown.Item href="/TrainingJob/CreateFeatureGroup">Create Feature Group</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
         </Container>
