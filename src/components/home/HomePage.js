@@ -20,6 +20,7 @@ import React from 'react';
 import CreateTrainingJob from './create/CreateTrainingJob';
 import StatusPageRows from './status/StatusPageRows';
 import UploadPipelineForm from './pipelines/UploadPipeline'
+import CreateFeatureGroup from './create/CreateFeatureGroup'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavbarComponent from './navbar/NavbarComponent';
 import * as CONSTANTS from './common/Constants';
@@ -44,6 +45,7 @@ class HomePage extends React.Component {
               <Route path='/TrainingJob/CreateTrainingJob' render={() => <CreateTrainingJob logger={logger} />} />
               <Route path='/TrainingJob/TrainingJobsStatus' render={() => <StatusPageRows logger={logger} />} />
               <Route path='/TrainingJob/Pipeline' render={() => <UploadPipelineForm logger={logger} />} />
+              <Route path='/TrainingJob/CreateFeatureGroup' render={()=><CreateFeatureGroup logger={logger}/>} />
             </Switch>
           </Router>
         </>
