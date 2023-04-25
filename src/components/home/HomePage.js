@@ -24,6 +24,7 @@ import CreateFeatureGroup from './create/CreateFeatureGroup'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavbarComponent from './navbar/NavbarComponent';
 import * as CONSTANTS from './common/Constants';
+import ListFeatureGroup from './status/ListFeatureGroup';
 
 
 var DEBUG=CONSTANTS.debug_var==='true'
@@ -46,7 +47,8 @@ class HomePage extends React.Component {
               <Route path='/TrainingJob/TrainingJobsStatus' render={() => <StatusPageRows logger={logger} />} />
               <Route path='/TrainingJob/Pipeline' render={() => <UploadPipelineForm logger={logger} />} />
               <Route path='/TrainingJob/CreateFeatureGroup' render={()=><CreateFeatureGroup logger={logger}/>} />
-            </Switch>
+              <Route path='/TrainingJob/ListFeatureGroups' render={()=><ListFeatureGroup logger={logger}/>} />
+              </Switch>
           </Router>
         </>
       );
