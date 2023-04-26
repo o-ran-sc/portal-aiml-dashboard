@@ -46,7 +46,7 @@ const ListFeatureGroup = (props) => {
     const fetchFeatureGroups = async () => {
         logger('fetchFeatureGroup UCMgr_baseUrl', UCMgr_baseUrl)
         try {
-            const result = await axios.get(`${UCMgr_baseUrl}/trainingjobs/featureGroup`);
+            const result = await axios.get(`${UCMgr_baseUrl}/featureGroup`);
             logger('fetchFeatureGroup Result', result);
             logger('feature groups are --> ', result.data.featuregroups)
             setFeatureGroups(result.data.featuregroups);

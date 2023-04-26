@@ -35,7 +35,7 @@ const FeatureGroupInfo = (props) => {
 
     useEffect(()=>{
         try{
-            axios.get(`${UCMgr_baseUrl}/trainingjobs/featureGroup/${props.featureGroupName.featureGroupName}`)
+            axios.get(`${UCMgr_baseUrl}/featureGroup/${props.featureGroupName.featureGroupName}`)
             .then(response => {
                 console.log(`response for ${UCMgr_baseUrl}/trainingjobs/featureGroup/${props.featureGroupName.featureGroupName}`, response)
                 setFeatureGroupName(response.data.featuregroup[0].featuregroup_name)
