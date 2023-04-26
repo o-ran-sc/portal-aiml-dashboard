@@ -25,6 +25,7 @@ import axios from 'axios';
 import { Checkbox } from './Checkbox';
 import Popup from './Popup';
 import FeatureGroupInfo from './FeatureGroupInfo';
+import {deleteFeatureGroups} from './API_STATUS';
 
 
 const ListFeatureGroup = (props) => {
@@ -57,13 +58,37 @@ const ListFeatureGroup = (props) => {
     const handleInfoClick = (featuregroup_name) => {
         console.log("feature group name is : ", featuregroup_name)
         setFeatureGroupName({
-            featureGroupName : featuregroup_name
+            featureGroupName: featuregroup_name
         });
         setInfoPopup(true);
-      };
+    };
 
-    const handleDme =(dme)=>{
-        if(dme===true)return <p>Enabled</p>;
+    const handleDelete = async (event) => {
+        console.log('handle delete starts..');
+
+        if (selectedFlatRows.length > 0) {
+            let featureGroup_names = [];
+            for (const row of selectedFlatRows) {
+                featureGroup_names.push({
+                    featureGroup_name: row.original.featuregroup_name
+                })
+            }
+            console.log('selected featureGroups are :', featureGroup_names)
+            try {
+                await deleteFeatureGroups(featureGroup_names);
+                await fetchFeatureGroups();
+            } catch (error) {
+                console.log(error)
+            }
+            toggleAllRowsSelected(false);
+        } else {
+            alert('Please select more than one row')
+        }
+
+    }
+
+    const handleDme = (dme) => {
+        if (dme === true) return <p>Enabled</p>;
         else return <p>Disabled</p>
     };
 
@@ -96,30 +121,30 @@ const ListFeatureGroup = (props) => {
             Header: 'DataLake',
             accessor: 'datalake'
         },
-        {   
+        {
             id: 'dme',
             Header: 'DME',
             accessor: 'dme',
-            Cell: ({row}) => {
+            Cell: ({ row }) => {
                 return (
                     <div >
                         {handleDme(row.original.dme)}
                     </div>
-                );   
-              }
+                );
+            }
 
         },
         {
             id: 'info',
             Header: 'Info',
-            Cell : ({row}) => {
+            Cell: ({ row }) => {
                 return (
                     <div>
-                <Button variant="info" onClick={() => handleInfoClick(row.original.featuregroup_name)}>Info</Button>
+                        <Button variant="info" onClick={() => handleInfoClick(row.original.featuregroup_name)}>Info</Button>
                     </div>
-                );   
-              }
-    }
+                );
+            }
+        }
     ], []);
     const data = useMemo(() => featureGroups, [featureGroups]);
     const {
@@ -139,34 +164,35 @@ const ListFeatureGroup = (props) => {
     )
     return (
         <>
-        <BTable className="Status_table" responsive striped bordered hover size="sm"  {...getTableProps()}>
-            <thead>
-                {headerGroups.map(headerGroup => (
-                    <tr {...headerGroup.getHeaderGroupProps()}>
-                        {headerGroup.headers.map(column => (
-                            <th {...column.getHeaderProps()}>
-                                {column.render('Header')}
-                            </th>
-                        ))}
-                    </tr>
-                ))}
-            </thead>
-            <tbody>
-                {rows.map((row, i) => {
-                    prepareRow(row)
-                    return (
-                        <tr {...row.getRowProps()}>
-                            {row.cells.map(cell => {
-                                return (
-                                    <th {...cell.getCellProps()}>
-                                        {cell.render('Cell')}
-                                    </th>
-                                )
-                            })}
+            <Button variant="success" size="sm" onClick={e => handleDelete(e)}>Delete</Button>{' '}
+            <BTable className="Status_table" responsive striped bordered hover size="sm"  {...getTableProps()}>
+                <thead>
+                    {headerGroups.map(headerGroup => (
+                        <tr {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map(column => (
+                                <th {...column.getHeaderProps()}>
+                                    {column.render('Header')}
+                                </th>
+                            ))}
                         </tr>
-                    )
-                })}
-            </tbody>
+                    ))}
+                </thead>
+                <tbody>
+                    {rows.map((row, i) => {
+                        prepareRow(row)
+                        return (
+                            <tr {...row.getRowProps()}>
+                                {row.cells.map(cell => {
+                                    return (
+                                        <th {...cell.getCellProps()}>
+                                            {cell.render('Cell')}
+                                        </th>
+                                    )
+                                })}
+                            </tr>
+                        )
+                    })}
+                </tbody>
             </BTable>
             <Popup show={infoPopup} onHide={closeInfoPopup} title="Feature Group Info">
                 <FeatureGroupInfo featureGroupName={featureGroupName} />

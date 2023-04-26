@@ -18,3 +18,24 @@ export const invokeStartTraining = async (trainingjobNames) => {
     console.log(error);
   }    
 };
+
+export const deleteFeatureGroups = async (featureGroup_names) => {
+  console.log('deleting feature groups', featureGroup_names);
+  try {
+    let res = await axios.delete(`${CONSTANTS.UCMgr_baseUrl}/featureGroup`,
+      {
+        data: {
+          "featuregroups_list": featureGroup_names
+        }
+
+      }
+    );
+    console.log('Deletion response', res);
+    let result = 'FeatureGroup deletion initiated for selected featureGroups ,Result'
+      + '\n' + JSON.stringify(res.data);
+    alert(result);
+
+  } catch (error) {
+    console.log("error is : ", error);
+  }
+};
