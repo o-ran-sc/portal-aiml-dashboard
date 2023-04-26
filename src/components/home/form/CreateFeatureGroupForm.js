@@ -129,9 +129,9 @@ class CreateFeatureGroup extends React.Component {
     }
 
     invokeAddFeatureGroup(event) {
-        this.logger('Add New Request is posted at ' + this.state.UCMgr_baseUrl + '/trainingjobs/' + "featureGroup")
+        this.logger('Add New Request is posted at ' + this.state.UCMgr_baseUrl + "/featureGroup")
         let convertedDatalakeDBName = convertDatalakeDBName(this.state.dataLake);
-        axios.post(this.state.UCMgr_baseUrl + '/trainingjobs/' + "featureGroup", {
+        axios.post(this.state.UCMgr_baseUrl + "/featureGroup", {
             "featureGroupName": this.state.featureGroupName,
             "feature_list": this.state.featureNames,
             "datalake_source": convertedDatalakeDBName,
