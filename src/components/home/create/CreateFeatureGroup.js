@@ -40,8 +40,8 @@ class CreateFeatureGroup extends React.Component {
                 <br></br>
                 <strong>Features</strong>
                 <br></br>
-                The Feature have to be added as comma with a space seperate string<br></br>
-                eg: a, b<br></br>
+                The Feature have to be added as comma seperated string<br></br>
+                eg: a,b<br></br>
                 <strong>DataLake</strong>
                 <br></br>
                 Right now it is fixed to InfluxDB but in the future, we will add support<br></br>
