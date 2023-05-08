@@ -19,6 +19,26 @@ export const invokeStartTraining = async (trainingjobNames) => {
   }    
 };
 
+export const deleteTrainingjobs = async (deleteTJList) =>{
+  console.log('Delete API called ', deleteTJList);
+  try{
+    let res = await axios.delete(CONSTANTS.UCMgr_baseUrl + '/trainingjobs',
+    {
+      data : {
+        "list" : deleteTJList      
+      }      
+    }
+    );
+    console.log('Delete API response', res)
+    let result = 'trainingjob deletion initiated for selected trainingjob(s),Result'
+        + '\n' + JSON.stringify(res.data);
+    alert(result);
+  }
+  catch(error){
+    console.log(error);
+  }
+};
+
 export const deleteFeatureGroups = async (featureGroup_names) => {
   console.log('deleting feature groups', featureGroup_names);
   try {

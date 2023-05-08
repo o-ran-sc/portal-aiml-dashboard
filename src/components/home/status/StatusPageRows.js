@@ -25,7 +25,7 @@ import axios from 'axios';
 import { Checkbox } from './Checkbox';
 import Popup from './Popup';
 import TrainingJobInfo from './TrainingJobInfo';
-import {invokeStartTraining} from './API_STATUS';
+import {invokeStartTraining, deleteTrainingjobs} from './API_STATUS';
 import StepsState from './StepsState';
 import CreateOrEditTrainingJobForm from '../form/CreateOrEditTrainingJobForm';
 
@@ -104,6 +104,32 @@ const StatusPageRows = (props) => {
     else{
       alert("please select exactly one trainingjob");
     }
+  }
+
+  const handleDelete  = async (event) => {
+    
+    console.log('handleDelete starts..');
+    if(selectedFlatRows.length > 0) {
+      let deleteTJList =  [] 
+      for (const row of selectedFlatRows) {
+          let trainingjobDict = {};
+          trainingjobDict['trainingjob_name'] = row.original.trainingjob_name
+          trainingjobDict['version'] = row.original.version
+          deleteTJList.push(trainingjobDict)
+      } 
+      console.log('Selected trainingjobs for deletion : ',deleteTJList);
+      try{
+        await deleteTrainingjobs(deleteTJList);
+        await fetchTrainingJobs();
+      }
+      catch(error) {
+        console.log(error)
+      } 
+      toggleAllRowsSelected(false);
+    }
+    else{
+      alert('Please select atleast one trainingjob')
+    } 
   }
 
   const handleStepStateClick = (trainingjob_name, version) => {
@@ -195,6 +221,9 @@ const StatusPageRows = (props) => {
       </Button>{' '}
       <Button variant="success" size="sm" onClick={e => handleRetrain(e)} >
         Train
+      </Button>{' '}
+      <Button variant="success" size="sm" onClick={e => handleDelete(e)} >
+        Delete
       </Button>{' '}
       <BTable className="Status_table" responsive striped bordered hover size="sm"  {...getTableProps()}>
 
