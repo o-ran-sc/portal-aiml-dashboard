@@ -1,0 +1,7 @@
+Code-Review+2: Taewan Kim <t25.kim@samsung.com>
+Verified+1: ORAN Jobbuilder <releng+oran-jobbuilder@linuxfoundation.org>
+Submitted-by: Taewan Kim <t25.kim@samsung.com>
+Submitted-at: Mon, 22 May 2023 22:47:19 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/portal/aiml-dashboard/+/11141
+Project: portal/aiml-dashboard
+Branch: refs/heads/master
