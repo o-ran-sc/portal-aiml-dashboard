@@ -36,7 +36,7 @@ class CreateFeatureGroup extends React.Component {
                 <br></br>
                 Name of the Feature Group<br></br>
                 It must be between 3 and 63 characters long <br></br>
-                It can only consist of lowercase Letters and numbers
+                It can only consist of Letters and numbers and underscore
                 <br></br>
                 <strong>Features</strong>
                 <br></br>
