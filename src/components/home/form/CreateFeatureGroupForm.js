@@ -44,10 +44,9 @@ class CreateFeatureGroup extends React.Component {
             UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
         };
 
+        this.regName = new RegExp('\\W+')
         this.logger = this.props.logger;
         this.logger('Initial UCM URL, ', this.state.UCMgr_baseUrl)
-
-
     }
 
     handleCreateSubmit = event => {
@@ -68,12 +67,18 @@ class CreateFeatureGroup extends React.Component {
     }
 
     handleFGNameChange = (event) => {
-        this.setState({
-            featureGroupName: event.target.value
-        }, () => {
-            this.logger("after set state, FeatureGroup Name: ", this.state.featureGroupName);
-        })
+        if (this.regName.test(event.target.value)) {
+            event.preventDefault();
+            alert("Please use alphabet, number, and underscore to Feature Group Name.");
+        } else {
+            this.setState({
+                featureGroupName: event.target.value
+            }, () => {
+                this.logger("after set state, FeatureGroup Name: ", this.state.featureGroupName);
+            })
+        }
     }
+
     handleDmeHostChange = (event) => {
         this.setState({
             dmeHost: event.target.value
@@ -81,6 +86,7 @@ class CreateFeatureGroup extends React.Component {
             this.logger("after set state, Hostname: ", this.state.dmeHost);
         })
     }
+
     handleDmePortChange = (event) => {
         this.setState({
             dmePort: event.target.value

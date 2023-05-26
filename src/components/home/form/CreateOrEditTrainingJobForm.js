@@ -48,7 +48,8 @@ class CreateTrainingJob extends React.Component {
         _measurement: '',
         bucket: ''
     };
-    
+
+    this.regName = new RegExp('\\W+')
     this.logger=this.props.logger;
 	 
     this.logger('Initial UCM URL, ' , this.state.UCMgr_baseUrl)
@@ -280,112 +281,111 @@ class CreateTrainingJob extends React.Component {
 
   }
 
-    handleCreateSubmit = event => {
-      this.logger('Create TrainingJob clicked: ',
-        this.state.ucName,
-        this.state.plName,
-        this.state.expName,
-        this.state.featureNames,
-        this.state.featureFilters,
-        this.state.hyparams,
-        this.state.targetName,
-        this.state.ucDescription,
-        this.state.plVerName,
-        this.state.datalakeSourceName,
-        this.state._measurement,
-        this.state.bucket
-        );
-        
-        this.invokeAddTrainingJob(event)
-        event.preventDefault();
-    }
+  handleCreateSubmit = event => {
+    this.logger('Create TrainingJob clicked: ',
+      this.state.ucName,
+      this.state.plName,
+      this.state.expName,
+      this.state.featureNames,
+      this.state.featureFilters,
+      this.state.hyparams,
+      this.state.targetName,
+      this.state.ucDescription,
+      this.state.plVerName,
+      this.state.datalakeSourceName,
+      this.state._measurement,
+      this.state.bucket
+      );
 
-    handleEditSubmit = event => {
-
-      this.logger('Edit usecase clicked: ',
-        this.state.ucName,
-        this.state.plName,
-        this.state.expName,
-        this.state.featureNames,
-        this.state.featureFilters,
-        this.state.hyparams,
-        this.state.versioning,
-        this.state.targetName,
-        this.state.ucDescription,
-        this.state.plVerName,
-        this.state.datalakeSourceName,
-        this.state._measurement,
-        this.state.bucket
-        );
-
-        this.invokePutTrainingJob(event);
-        event.preventDefault();
-    }
-
-invokeAddTrainingJob(event){
-  let hyperParamsDict = this.buildHyperparamsDict(this.state.hyparams);
-  let convertedDatalakeDBName = convertDatalakeDBName(this.state.datalakeSourceName)
-  this.logger('Add New Request is posted at ' + this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName)
-  axios.post(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName,{
-    "trainingjob_name" : this.state.ucName,
-    "pipeline_name" : this.state.plName,
-    "experiment_name" : this.state.expName,
-    "feature_list": this.state.featureNames,
-    "query_filter": this.state.featureFilters,
-    "arguments" : hyperParamsDict,   
-    "enable_versioning" : this.state.versioning,
-    "description" : this.state.ucDescription,
-    "pipeline_version": this.state.plVerName,
-    "datalake_source": convertedDatalakeDBName,
-    "_measurement": this.state._measurement,
-    "bucket": this.state.bucket
-  }).then(res => {
-    this.logger('UC created ', res.data)
-      this.invokeStartTrainingForCreate();
-    })
-    .catch(function (error) {
-    
-      this.logger('Error creating Training Job', error);
-      alert("Failed: " + error.response.data.Exception)
+      this.invokeAddTrainingJob(event)
       event.preventDefault();
-    })
-    .then(function () {
-      
-    })
+  }
 
-}
+  handleEditSubmit = event => {
 
-invokePutTrainingJob = event =>{
-  let hyperParamsDict = this.buildHyperparamsDict(this.state.hyparams);
-  let convertedDatalakeDBName = convertDatalakeDBName(this.state.datalakeSourceName);
-  axios.put(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName,{
-    "trainingjob_name" : this.state.ucName,
-    "pipeline_name" : this.state.plName,
-    "experiment_name" : this.state.expName,
-    "feature_list": this.state.featureNames,
-    "query_filter": this.state.featureFilters,
-    "arguments" : hyperParamsDict,   
-    "enable_versioning" : this.state.versioning,
-    "description" : this.state.ucDescription,
-    "pipeline_version": this.state.plVerName,
-    "datalake_source": convertedDatalakeDBName,
-    "_measurement": this.state._measurement,
-    "bucket": this.state.bucket
-    //"enable_versioning" : true
-  }).then(res => {
-    this.logger('UC created ', res.data)
-      this.invokeStartTrainingForEdit();
-    })
-    .catch(function (error) {
-      // handle error
-      this.logger('Error creating Use case', error);
-      alert("Failed: " + error.response.data.Exception)
+    this.logger('Edit usecase clicked: ',
+      this.state.ucName,
+      this.state.plName,
+      this.state.expName,
+      this.state.featureNames,
+      this.state.featureFilters,
+      this.state.hyparams,
+      this.state.versioning,
+      this.state.targetName,
+      this.state.ucDescription,
+      this.state.plVerName,
+      this.state.datalakeSourceName,
+      this.state._measurement,
+      this.state.bucket
+      );
+
+      this.invokePutTrainingJob(event);
       event.preventDefault();
-    })
-    .then(function () {
-      // always executed
-    })
-}
+  }
+
+  invokeAddTrainingJob(event){
+    let hyperParamsDict = this.buildHyperparamsDict(this.state.hyparams);
+    let convertedDatalakeDBName = convertDatalakeDBName(this.state.datalakeSourceName)
+    this.logger('Add New Request is posted at ' + this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName)
+    axios.post(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName,{
+      "trainingjob_name" : this.state.ucName,
+      "pipeline_name" : this.state.plName,
+      "experiment_name" : this.state.expName,
+      "feature_list": this.state.featureNames,
+      "query_filter": this.state.featureFilters,
+      "arguments" : hyperParamsDict,
+      "enable_versioning" : this.state.versioning,
+      "description" : this.state.ucDescription,
+      "pipeline_version": this.state.plVerName,
+      "datalake_source": convertedDatalakeDBName,
+      "_measurement": this.state._measurement,
+      "bucket": this.state.bucket
+    }).then(res => {
+      this.logger('UC created ', res.data)
+        this.invokeStartTrainingForCreate();
+      })
+      .catch(function (error) {
+        this.logger('Error creating Training Job', error);
+        alert("Failed: " + error.response.data.Exception)
+        event.preventDefault();
+      })
+      .then(function () {
+
+      })
+
+  }
+
+  invokePutTrainingJob = event =>{
+    let hyperParamsDict = this.buildHyperparamsDict(this.state.hyparams);
+    let convertedDatalakeDBName = convertDatalakeDBName(this.state.datalakeSourceName);
+    axios.put(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName,{
+      "trainingjob_name" : this.state.ucName,
+      "pipeline_name" : this.state.plName,
+      "experiment_name" : this.state.expName,
+      "feature_list": this.state.featureNames,
+      "query_filter": this.state.featureFilters,
+      "arguments" : hyperParamsDict,
+      "enable_versioning" : this.state.versioning,
+      "description" : this.state.ucDescription,
+      "pipeline_version": this.state.plVerName,
+      "datalake_source": convertedDatalakeDBName,
+      "_measurement": this.state._measurement,
+      "bucket": this.state.bucket
+      //"enable_versioning" : true
+    }).then(res => {
+      this.logger('UC created ', res.data)
+        this.invokeStartTrainingForEdit();
+      })
+      .catch(function (error) {
+        // handle error
+        this.logger('Error creating Use case', error);
+        alert("Failed: " + error.response.data.Exception)
+        event.preventDefault();
+      })
+      .then(function () {
+        // always executed
+      })
+  }
 
   invokeStartTrainingForCreate(event){
     this.logger('Training called ')
@@ -514,11 +514,16 @@ invokePutTrainingJob = event =>{
   }
 
   handleUCNameChange = (event) => {
-    this.setState({
-      ucName: event.target.value
-    },() => {
-      this.logger("after set state, ucName: ", this.state.ucName);
-    })
+    if (this.regName.test(event.target.value)) {
+      event.preventDefault();
+      alert("Please use alphabet, number, and underscore to Training Job Name.");
+    } else {
+      this.setState({
+        ucName: event.target.value
+      },() => {
+        this.logger("after set state, ucName: ", this.state.ucName);
+      })
+    }
   }
 
   handlePLNameChange = (event) => {

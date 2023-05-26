@@ -34,10 +34,10 @@ class CreateTrainingJob extends React.Component {
       <Popover.Content>
         <strong>Training Job Name</strong> 
         <br></br>
-         Name of the Training Job. <br></br>
-         It must be between 3 and 63 characters long <br></br>
-        It can only consist of lowercase Letters and numbers
-         <br></br> 
+        Name of the Training Job. <br></br>
+        It must be between 3 and 63 characters long. <br></br>
+        It can only consist of Letters and numbers and underscore.
+        <br></br>
         <strong>Training Function Name</strong>
         <br></br>
         Select an existing training function name corresponding to a ML model
