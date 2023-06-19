@@ -1,0 +1,120 @@
+diff --git a/docs/release-notes.rst b/docs/release-notes.rst
+index da13d7b..d0aebd9 100644
+--- a/docs/release-notes.rst
++++ b/docs/release-notes.rst
+@@ -4,17 +4,18 @@
+ .. Copyright (c) 2022 Samsung Electronics Co., Ltd. All Rights Reserved.
+ 
+ 
++=============
+ Release-Notes
+--------------
++=============
+ 
+-This document provides the release notes for the G release of AIMLFW dashboard module
++This document provides the release notes for the release of AIMLFW dashboard module
+ 
+ .. contents::
+    :depth: 3
+    :local:
+ 
+ Version history
+----------------
++===============
+ 
+ +--------------------+--------------------+--------------------+--------------------+
+ | **Date**           | **Ver.**           | **Author**         | **Comment**        |
+@@ -23,16 +24,50 @@ Version history
+ | 2022-12-08         | 1.0.0              | Joseph Thaliath    | G release          |
+ |                    |                    |                    |                    |
+ +--------------------+--------------------+--------------------+--------------------+
++| 2023-06-29         | 1.1.0              | Joseph Thaliath    | H release          |
++|                    |                    |                    |                    |
+++--------------------+--------------------+--------------------+--------------------+
+ 
+ 
+ Summary
+--------
++=======
++
++The AIMLFW dashboard provides a user interface to create AI/ML training pipelines and creation of AI/ML training jobs.
++The H release of AIMLFW dashboard supports new functionalities like
++
++#. Feature group creation,
++#. Support for obtaining training data from DME,
++#. Editing training jobs and Retraining support
+ 
+-The G release of AIMLFW dashboard provides a user interface to create AI/ML training pipelines and creation of AI/ML training jobs.
+ 
+ 
+ Release Data
+-------------
++============
++
++H Release
++---------
++
+++--------------------------------------+------------------------------------------------+
++| **Project**                          | AIMLFW dashboard                               |
++|                                      |                                                |
+++--------------------------------------+------------------------------------------------+
++| **Repo/commit-ID**                   | portal/aiml-dashboard                          |
++|                                      | /c82d8f5734c049b51333555bef431051e86e1f94      |
+++--------------------------------------+------------------------------------------------+
++| **Release designation**              | H release                                      |
++|                                      |                                                |
+++--------------------------------------+------------------------------------------------+
++| **Release date**                     | 2023-06-29                                     |
++|                                      |                                                |
+++--------------------------------------+------------------------------------------------+
++| **Purpose of the delivery**          | | Feature group creation                       |
++|                                      | | Support for obtaining training data from DME |
++|                                      | | Editing training jobs and Retraining support |
+++--------------------------------------+------------------------------------------------+
++
++
++G Release
++---------
+ 
+ +--------------------------------------+--------------------------------------+
+ | **Project**                          | AIMLFW dashboard                     |
+diff --git a/releases/container-release-aiml-fw-awmf-aiml-dashboard.yaml b/releases/container-release-aiml-fw-awmf-aiml-dashboard.yaml
+index f599069..a53d702 100644
+--- a/releases/container-release-aiml-fw-awmf-aiml-dashboard.yaml
++++ b/releases/container-release-aiml-fw-awmf-aiml-dashboard.yaml
+@@ -1,13 +1,13 @@
+ ---
+ #Release tag for dashboard portal
+ distribution_type: container
+-container_release_tag: 1.0.1
++container_release_tag: 1.1.0
+ container_pull_registry: nexus3.o-ran-sc.org:10004
+ container_push_registry: nexus3.o-ran-sc.org:10002
+ project: portal/aiml-dashboard
+-ref: 0137534d9c9832c74dcf1faa37d52c6ca01e0a81
++ref: c82d8f5734c049b51333555bef431051e86e1f94 
+ containers:
+     - name: portal-aiml-dashboard-docker
+       version: 1.0.0
+     - name: portal-aiml-notebook-docker
+-      version: 1.0.0
+\ No newline at end of file
++      version: 1.0.0
+diff --git a/tox.ini b/tox.ini
+index 1b0d4a5..1246bb7 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -14,6 +14,7 @@ deps =
+     sphinxcontrib-httpdomain
+     recommonmark
+     lfdocs-conf
++    urllib3~=1.26.15
+ 
+ commands =
+     sphinx-build -W -b html -n -d {envtmpdir}/doctrees ./docs/ {toxinidir}/docs/_build/html
+@@ -27,4 +28,5 @@ deps = sphinx
+        sphinxcontrib-httpdomain
+        recommonmark
+        lfdocs-conf
++       urllib3~=1.26.15
+ commands = sphinx-build -W -b linkcheck -d {envtmpdir}/doctrees ./docs/ {toxinidir}/docs/_build/linkcheck
