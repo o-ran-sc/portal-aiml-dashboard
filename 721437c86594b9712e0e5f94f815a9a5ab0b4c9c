@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01eedfbe_54680715",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001948
+      },
+      "writtenOn": "2023-08-04T06:26:58Z",
+      "side": 1,
+      "message": "Measured_Obj_Class Input Addition in the form looks good!!",
+      "revId": "721437c86594b9712e0e5f94f815a9a5ab0b4c9c",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
