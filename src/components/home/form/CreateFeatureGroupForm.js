@@ -41,6 +41,7 @@ class CreateFeatureGroup extends React.Component {
             token: '',
             sourceName: '',
             dbOrg: '',
+            measuredObjClass:'',
             UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
         };
 
@@ -134,6 +135,13 @@ class CreateFeatureGroup extends React.Component {
         })
     }
 
+    handleMeasuredObjClass = (event)=>{
+        this.setState({
+            measuredObjClass:event.target.value
+        },()=>{
+            this.logger("after set state, measuredObjClass: ", this.state.measuredObjClass) 
+        })
+    }
     invokeAddFeatureGroup(event) {
         this.logger('Add New Request is posted at ' + this.state.UCMgr_baseUrl + "/featureGroup")
         let convertedDatalakeDBName = convertDatalakeDBName(this.state.dataLake);
@@ -147,6 +155,7 @@ class CreateFeatureGroup extends React.Component {
             "bucket": this.state.bucketName,
             "token": this.state.token,
             "source_name": this.state.sourceName,
+            "measured_obj_class": this.state.measuredObjClass,
             "dbOrg": this.state.dbOrg
         }).then(res => {
             this.logger('featureGroup Created', res.data)
@@ -177,6 +186,7 @@ class CreateFeatureGroup extends React.Component {
             bucketName: '',
             token: '',
             sourceName: '',
+            measuredObjClass:'',
             dbOrg: ''
         })
     }
@@ -278,6 +288,18 @@ class CreateFeatureGroup extends React.Component {
                                     <Form.Control type="text"
                                         value={this.state.dbOrg}
                                         onChange={this.handledbOrg}
+                                        placeholder=""
+                                        required />
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md>
+                            <Form.Group controlId="measuredObjClass">
+                                    <Form.Label>Measured Obj Class</Form.Label>
+                                    <Form.Control type="text"
+                                        value={this.state.measuredObjClass}
+                                        onChange={this.handleMeasuredObjClass}
                                         placeholder=""
                                         required />
                                 </Form.Group>
