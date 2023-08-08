@@ -32,6 +32,7 @@ const FeatureGroupInfo = (props) => {
     const [dbOrg, setDbOrg]=useState("")
     const [bucketName, setBucketName]=useState("")
     const [dbToken, setDbToken]=useState("")
+    const [measuredObjClass, setMeasureObjectClass] = useState("")
 
     useEffect(()=>{
         try{
@@ -48,6 +49,7 @@ const FeatureGroupInfo = (props) => {
                 setDbOrg(response.data.featuregroup[0].db_org)
                 setBucketName(response.data.featuregroup[0].bucket)
                 setDbToken(response.data.featuregroup[0].token)
+                setMeasureObjectClass(response.data.featuregroup[0].measured_obj_class)
 
             })
             .catch(error => {
@@ -108,6 +110,10 @@ const FeatureGroupInfo = (props) => {
                                 <Form.Group controlId="db_org">
                                     <Form.Label>Db Org</Form.Label>
                                     <Form.Control type="text" value={dbOrg} readOnly />
+                                </Form.Group>
+                                <Form.Group controlId="measured_obj_class">
+                                    <Form.Label>Measured Object Class</Form.Label>
+                                    <Form.Control type="text" value={measuredObjClass} readOnly />
                                 </Form.Group>
                     </div>
                 }
