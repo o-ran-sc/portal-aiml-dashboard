@@ -789,7 +789,7 @@ class CreateTrainingJob extends React.Component {
         }
 
         <Form.Group controlId="ftName">
-          <Form.Label>Feature Name*</Form.Label>
+          <Form.Label>FeatureGroup Name*</Form.Label>
           <Form.Control type="text"
             value={this.state.featureNames}
             onChange={this.handleFeatureNamesChange}

@@ -35,13 +35,14 @@ class CreateFeatureGroup extends React.Component {
             featureNames: '',
             dataLake: "Influx DB",
             dme: false,
-            dmeHost: '',
+            host: '',
+            port: '',
             dmePort: '',
             bucketName: '',
             token: '',
             sourceName: '',
             dbOrg: '',
-            measuredObjClass:'',
+            measuredObjClass: '',
             UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
         };
 
@@ -80,11 +81,19 @@ class CreateFeatureGroup extends React.Component {
         }
     }
 
-    handleDmeHostChange = (event) => {
+    handleHostChange = (event) => {
         this.setState({
-            dmeHost: event.target.value
+            host: event.target.value
         }, () => {
-            this.logger("after set state, Hostname: ", this.state.dmeHost);
+            this.logger("after set state, Hostname: ", this.state.host);
+        })
+    }
+
+    handlePortChange = (event) => {
+        this.setState({
+            port: event.target.value
+        }, () => {
+            this.logger("after set state, Port: ", this.state.port);
         })
     }
 
@@ -135,11 +144,11 @@ class CreateFeatureGroup extends React.Component {
         })
     }
 
-    handleMeasuredObjClass = (event)=>{
+    handleMeasuredObjClass = (event) => {
         this.setState({
-            measuredObjClass:event.target.value
-        },()=>{
-            this.logger("after set state, measuredObjClass: ", this.state.measuredObjClass) 
+            measuredObjClass: event.target.value
+        }, () => {
+            this.logger("after set state, measuredObjClass: ", this.state.measuredObjClass)
         })
     }
     invokeAddFeatureGroup(event) {
@@ -150,8 +159,9 @@ class CreateFeatureGroup extends React.Component {
             "feature_list": this.state.featureNames,
             "datalake_source": convertedDatalakeDBName,
             "enable_Dme": this.state.dme,
-            "DmeHost": this.state.dmeHost,
-            "DmePort": this.state.dmePort,
+            "Host": this.state.host,
+            "Port": this.state.port,
+            "dmePort": this.state.dmePort,
             "bucket": this.state.bucketName,
             "token": this.state.token,
             "source_name": this.state.sourceName,
@@ -164,7 +174,7 @@ class CreateFeatureGroup extends React.Component {
                 this.resetForm()
             } else {
                 this.logger("Error Occured", res)
-            }   
+            }
         })
             .catch(function (error) {
                 this.logger('Error creating featureGroup', error);
@@ -181,12 +191,13 @@ class CreateFeatureGroup extends React.Component {
             featureNames: '',
             dataLake: "Influx DB",
             dme: false,
-            dmeHost: '',
-            dmePort: '',
+            host: '',
+            port: '',
+            dmePort:'',
             bucketName: '',
             token: '',
             sourceName: '',
-            measuredObjClass:'',
+            measuredObjClass: '',
             dbOrg: ''
         })
     }
@@ -217,60 +228,77 @@ class CreateFeatureGroup extends React.Component {
                         </Form.Group>
                     </Col>
                 </Row>
-                <Form.Group controlId="DataLake">
-                    <Form.Label>Datalake </Form.Label>
-                    <Form.Control type="text" placeholder={this.state.dataLake} readOnly />
-                </Form.Group>
+                <Row>
+                    <Col md>
+                        <Form.Group controlId="DataLake">
+                            <Form.Label>Datalake </Form.Label>
+                            <Form.Control type="text" placeholder={this.state.dataLake} readOnly />
+                        </Form.Group>
+                    </Col>
+                    <Col md>
+                        <Form.Group controlId="db_org">
+                            <Form.Label>Db Org</Form.Label>
+                            <Form.Control type="text"
+                                value={this.state.dbOrg}
+                                onChange={this.handledbOrg}
+                                placeholder=""
+                                required />
+                        </Form.Group>
+                    </Col>
+
+
+                </Row>
+
+                <Row>
+                    <Col md>
+                        <Form.Group controlId="host">
+                            <Form.Label>Host </Form.Label>
+                            <Form.Control type="text"
+                                value={this.state.host}
+                                onChange={this.handleHostChange}
+                                placeholder=""
+                                required />
+                        </Form.Group>
+                    </Col>
+                    <Col md>
+                        <Form.Group controlId="port">
+                            <Form.Label>Port </Form.Label>
+                            <Form.Control type="text"
+                                value={this.state.port}
+                                onChange={this.handlePortChange}
+                                placeholder=""
+                                required />
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md>
+                        <Form.Group controlId="bucketname">
+                            <Form.Label>Bucket Name </Form.Label>
+                            <Form.Control type="text"
+                                value={this.state.bucketName}
+                                onChange={this.handleBucketNameChange}
+                                placeholder=""
+                                required />
+                        </Form.Group>
+                    </Col>
+                    <Col md>
+                        <Form.Group controlId="buckettoken">
+                            <Form.Label>DB Token </Form.Label>
+                            <Form.Control type="text"
+                                value={this.state.token}
+                                onChange={this.handledbTokenChange}
+                                placeholder=""
+                                required />
+                        </Form.Group>
+                    </Col>
+                </Row>
                 <Form.Group controlId="DME">
                     <Form.Check type="checkbox" label="DME"
                         checked={this.state.dme} onChange={this.handleDmeChange} />
                 </Form.Group>
-                {   this.state.dme === true &&
+                {this.state.dme === true &&
                     <div>
-                        <Row>
-                            <Col md>
-                                <Form.Group controlId="DMEhost">
-                                    <Form.Label>DME Host </Form.Label>
-                                    <Form.Control type="text"
-                                        value={this.state.dmeHost}
-                                        onChange={this.handleDmeHostChange}
-                                        placeholder=""
-                                        required />
-                                </Form.Group>
-                            </Col>
-                            <Col md>
-                                <Form.Group controlId="DMEport">
-                                    <Form.Label>DME Port </Form.Label>
-                                    <Form.Control type="text"
-                                        value={this.state.dmePort}
-                                        onChange={this.handleDmePortChange}
-                                        placeholder=""
-                                        required />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col md>
-                                <Form.Group controlId="bucketname">
-                                    <Form.Label>Bucket Name </Form.Label>
-                                    <Form.Control type="text"
-                                        value={this.state.bucketName}
-                                        onChange={this.handleBucketNameChange}
-                                        placeholder=""
-                                        required />
-                                </Form.Group>
-                            </Col>
-                            <Col md>
-                                <Form.Group controlId="buckettoken">
-                                    <Form.Label>DB Token </Form.Label>
-                                    <Form.Control type="text"
-                                        value={this.state.token}
-                                        onChange={this.handledbTokenChange}
-                                        placeholder=""
-                                        required />
-                                </Form.Group>
-                            </Col>
-                        </Row>
                         <Row>
                             <Col md>
                                 <Form.Group controlId="SourceName">
@@ -282,24 +310,25 @@ class CreateFeatureGroup extends React.Component {
                                         required />
                                 </Form.Group>
                             </Col>
-                            <Col md>
-                                <Form.Group controlId="db_org">
-                                    <Form.Label>Db Org</Form.Label>
-                                    <Form.Control type="text"
-                                        value={this.state.dbOrg}
-                                        onChange={this.handledbOrg}
-                                        placeholder=""
-                                        required />
-                                </Form.Group>
-                            </Col>
+
                         </Row>
                         <Row>
                             <Col md>
-                            <Form.Group controlId="measuredObjClass">
+                                <Form.Group controlId="measuredObjClass">
                                     <Form.Label>Measured Obj Class</Form.Label>
                                     <Form.Control type="text"
                                         value={this.state.measuredObjClass}
                                         onChange={this.handleMeasuredObjClass}
+                                        placeholder=""
+                                        required />
+                                </Form.Group>
+                            </Col>
+                            <Col md>
+                                <Form.Group controlId="dmeport">
+                                    <Form.Label>Dme port</Form.Label>
+                                    <Form.Control type="text"
+                                        value={this.state.dmePort}
+                                        onChange={this.handleDmePortChange}
                                         placeholder=""
                                         required />
                                 </Form.Group>
