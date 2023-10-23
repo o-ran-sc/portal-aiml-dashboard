@@ -46,10 +46,12 @@ class CreateFeatureGroup extends React.Component {
                 <br></br>
                 Right now it is fixed to InfluxDB but in the future, we will add support<br></br>
                 other datalakes too. <br></br>
+                <strong>Influx db Info</strong>
+                <br></br>
+                Provide the InfluxDB Org, Host, Port, Bucket Name and token.<br></br>
                 <strong>DME</strong>
                 <br></br>
-                Select DME to add the dme job info like dmehost, <br></br>
-                dmePort, SourceName, token, dbOrg and BucketName
+                Select DME to add the dme job info like SourceName, Measured Obj Class and dmePort.
                 <br></br>
             </Popover.Content>
         </Popover>

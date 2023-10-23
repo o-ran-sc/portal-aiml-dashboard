@@ -48,11 +48,7 @@ class CreateTrainingJob extends React.Component {
         <br></br>
         <strong>Feature Names</strong>
         <br></br>
-        Select the Comma Separated KPI's from the training dataset
-        <br></br>
-        Example --&gt;  *
-        <br></br>
-        Example --&gt; enb, cellNum, measTimeStampRf, pdcpBytesDl 
+        Provide the feature group name here.
         <br></br>
         <strong>Feature Filter</strong>
         <br></br>
