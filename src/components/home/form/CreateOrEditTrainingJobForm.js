@@ -39,6 +39,7 @@ class CreateTrainingJob extends React.Component {
         ucDescription: '',
         plList: [],
         expList: [],
+        featureGroupList:[],
         UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
         plVerList: [],
         plVerName: '',
@@ -65,6 +66,7 @@ class CreateTrainingJob extends React.Component {
       this.logger("called the task");
       this.fetchPipelines();
       this.fetchExperiments();
+      this.fetchFeatureGroups();
 
       if(this.state.plName !== ""){
         this.fetchPipelineVersions(this.state.plName, false);
@@ -93,13 +95,14 @@ class CreateTrainingJob extends React.Component {
           ucName: result.data.trainingjob.trainingjob_name,
           plName: result.data.trainingjob.pipeline_name,
           expName: result.data.trainingjob.experiment_name,
-          // featureNames: result.data.trainingjob.feature_list,
+          featureNames: result.data.trainingjob.feature_list,
           featureFilters: result.data.trainingjob.query_filter,
           hyparams: convertToCommaSeparatedString(result.data.trainingjob.arguments),    
           versioning: result.data.trainingjob.enable_versioning,
           ucDescription: result.data.trainingjob.description,
           plList: [],
           expList: [],
+          featureGroupList: [],
           UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
           plVerList: [],
           plVerName: result.data.trainingjob.pipeline_version,
@@ -280,6 +283,43 @@ class CreateTrainingJob extends React.Component {
       })
 
   }
+
+  fetchFeatureGroups() {
+    axios.get(this.state.UCMgr_baseUrl + '/featureGroup')
+      .then(res => {
+        this.logger('Server reponded FG', res.data.featuregroups);
+        //setState because this is async response from axios, so re-render
+        this.setState(
+          {
+            featureGroupList: res.data.featuregroups
+          },
+          () => {
+            let shouldChangeFGname = true;
+            for(const data of this.state.featureGroupList){
+              if(data === this.state.featureNames){
+                shouldChangeFGname = false;
+                break;
+              }
+            }
+            if(shouldChangeFGname){
+              this.setState({expName : ''},()=>this.logger("current selected fGName: ",this.state.featureNames));
+            }
+            else{
+              this.logger("current selected fGName: ",this.state.featureNames);
+            }
+          }
+        );
+      })
+      .catch(function (error) {
+        // handle error
+        this.logger('Got some error' + error);
+      })
+      .then(function () {
+        // always executed
+      })
+
+  }
+
 
   handleCreateSubmit = event => {
     this.logger('Create TrainingJob clicked: ',
@@ -546,11 +586,10 @@ class CreateTrainingJob extends React.Component {
   }
 
   handleFeatureNamesChange = (event) => {
-    this.logger('handleFeatureNamesChange', event.target.value)
     this.setState({
       featureNames: event.target.value
     },() => {
-      this.logger("after set state, featureNames: ", this.state.featureNames);
+      this.logger("after set state, FeatureGroup Name: ", this.state.featureNames);
     })
   }
 
@@ -788,13 +827,19 @@ class CreateTrainingJob extends React.Component {
           
         }
 
-        <Form.Group controlId="ftName">
+        <Form.Group controlId="fGName">
           <Form.Label>FeatureGroup Name*</Form.Label>
-          <Form.Control type="text"
+          <Form.Control as="select"
+            required
             value={this.state.featureNames}
-            onChange={this.handleFeatureNamesChange}
-            placeholder="" 
-            required/>
+            onChange={this.handleFeatureNamesChange}>
+
+            <option key="" value="" disabled> --- Select FeatureGroup Name --- </option>
+            {
+              this.state.featureGroupList.map(data => <option key={data.featuregroup_name} value={data.featuregroup_name}>{data.featuregroup_name}</option>)
+            }
+          
+          </Form.Control>
         </Form.Group>
 
         <Form.Group controlId="ftFilter">
