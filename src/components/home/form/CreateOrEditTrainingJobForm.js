@@ -32,7 +32,7 @@ class CreateTrainingJob extends React.Component {
         ucName: '',
         plName: '',
         expName: '',
-        featureNames: '',
+        featureGroupName: '',
         featureFilters: '',
         hyparams: '',    
         versioning: false,
@@ -95,7 +95,7 @@ class CreateTrainingJob extends React.Component {
           ucName: result.data.trainingjob.trainingjob_name,
           plName: result.data.trainingjob.pipeline_name,
           expName: result.data.trainingjob.experiment_name,
-          featureNames: result.data.trainingjob.feature_list,
+          featureGroupName: result.data.trainingjob.feature_list,
           featureFilters: result.data.trainingjob.query_filter,
           hyparams: convertToCommaSeparatedString(result.data.trainingjob.arguments),    
           versioning: result.data.trainingjob.enable_versioning,
@@ -296,16 +296,16 @@ class CreateTrainingJob extends React.Component {
           () => {
             let shouldChangeFGname = true;
             for(const data of this.state.featureGroupList){
-              if(data === this.state.featureNames){
+              if(data === this.state.featureGroupName){
                 shouldChangeFGname = false;
                 break;
               }
             }
             if(shouldChangeFGname){
-              this.setState({expName : ''},()=>this.logger("current selected fGName: ",this.state.featureNames));
+              this.setState({expName : ''},()=>this.logger("current selected fGName: ",this.state.featureGroupName));
             }
             else{
-              this.logger("current selected fGName: ",this.state.featureNames);
+              this.logger("current selected fGName: ",this.state.featureGroupName);
             }
           }
         );
@@ -326,7 +326,7 @@ class CreateTrainingJob extends React.Component {
       this.state.ucName,
       this.state.plName,
       this.state.expName,
-      this.state.featureNames,
+      this.state.featureGroupName,
       this.state.featureFilters,
       this.state.hyparams,
       this.state.targetName,
@@ -347,7 +347,7 @@ class CreateTrainingJob extends React.Component {
       this.state.ucName,
       this.state.plName,
       this.state.expName,
-      this.state.featureNames,
+      this.state.featureGroupName,
       this.state.featureFilters,
       this.state.hyparams,
       this.state.versioning,
@@ -371,7 +371,7 @@ class CreateTrainingJob extends React.Component {
       "trainingjob_name" : this.state.ucName,
       "pipeline_name" : this.state.plName,
       "experiment_name" : this.state.expName,
-      "feature_list": this.state.featureNames,
+      "featureGroup_name": this.state.featureGroupName,
       "query_filter": this.state.featureFilters,
       "arguments" : hyperParamsDict,
       "enable_versioning" : this.state.versioning,
@@ -402,7 +402,7 @@ class CreateTrainingJob extends React.Component {
       "trainingjob_name" : this.state.ucName,
       "pipeline_name" : this.state.plName,
       "experiment_name" : this.state.expName,
-      "feature_list": this.state.featureNames,
+      "featureGroup_name": this.state.featureGroupName,
       "query_filter": this.state.featureFilters,
       "arguments" : hyperParamsDict,
       "enable_versioning" : this.state.versioning,
@@ -585,11 +585,11 @@ class CreateTrainingJob extends React.Component {
     })
   }
 
-  handleFeatureNamesChange = (event) => {
+  handleFeatureGroupNamesChange = (event) => {
     this.setState({
-      featureNames: event.target.value
+      featureGroupName: event.target.value
     },() => {
-      this.logger("after set state, FeatureGroup Name: ", this.state.featureNames);
+      this.logger("after set state, FeatureGroup Name: ", this.state.featureGroupName);
     })
   }
 
@@ -678,7 +678,7 @@ class CreateTrainingJob extends React.Component {
       ucName: '',
       plName: '',
       expName: '',
-      featureNames: '',
+      featureGroupName: '',
       featureFilters: '',
       hyparams: '',
       versioning: false,
@@ -831,8 +831,8 @@ class CreateTrainingJob extends React.Component {
           <Form.Label>FeatureGroup Name*</Form.Label>
           <Form.Control as="select"
             required
-            value={this.state.featureNames}
-            onChange={this.handleFeatureNamesChange}>
+            value={this.state.featureGroupName}
+            onChange={this.handleFeatureGroupNamesChange}>
 
             <option key="" value="" disabled> --- Select FeatureGroup Name --- </option>
             {
