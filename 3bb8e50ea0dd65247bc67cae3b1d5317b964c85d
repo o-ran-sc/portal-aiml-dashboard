@@ -1,0 +1,8 @@
+Code-Review+2: Ashish Jain <jain.ashish@samsung.com>
+Verified+1: Ashish Jain <jain.ashish@samsung.com>
+Verified+1: ORAN Required GHA <releng+oran.required.gha@linuxfoundation.org>
+Submitted-by: Ashish Jain <jain.ashish@samsung.com>
+Submitted-at: Wed, 25 Oct 2023 07:24:33 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/portal/aiml-dashboard/+/11966
+Project: portal/aiml-dashboard
+Branch: refs/heads/master
