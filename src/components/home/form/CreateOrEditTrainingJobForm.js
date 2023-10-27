@@ -65,7 +65,7 @@ class CreateTrainingJob extends React.Component {
     const task = () => {
       this.logger("called the task");
       this.fetchPipelines();
-      this.fetchExperiments();
+      // this.fetchExperiments();
       this.fetchFeatureGroups();
 
       if(this.state.plName !== ""){
@@ -370,7 +370,8 @@ class CreateTrainingJob extends React.Component {
     axios.post(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName,{
       "trainingjob_name" : this.state.ucName,
       "pipeline_name" : this.state.plName,
-      "experiment_name" : this.state.expName,
+      // "experiment_name" : this.state.expName,
+      "experiment_name" : "Default",
       "featureGroup_name": this.state.featureGroupName,
       "query_filter": this.state.featureFilters,
       "arguments" : hyperParamsDict,
@@ -401,7 +402,8 @@ class CreateTrainingJob extends React.Component {
     axios.put(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName,{
       "trainingjob_name" : this.state.ucName,
       "pipeline_name" : this.state.plName,
-      "experiment_name" : this.state.expName,
+      // "experiment_name" : this.state.expName,
+      "experiment_name" : "Default",
       "featureGroup_name": this.state.featureGroupName,
       "query_filter": this.state.featureFilters,
       "arguments" : hyperParamsDict,
@@ -774,7 +776,7 @@ class CreateTrainingJob extends React.Component {
           
         }
 
-        <Form.Group controlId="expName">
+        {/* <Form.Group controlId="expName">
           <Form.Label>Experiment Name*</Form.Label>
           <Form.Control as="select"
             required
@@ -786,7 +788,7 @@ class CreateTrainingJob extends React.Component {
               this.state.expList.map(data => <option key={data} value={data}>{data}</option>)
             }
           </Form.Control>
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group controlId="datalakeSource">
           <Form.Label>Datalake Source*</Form.Label>
