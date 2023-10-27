@@ -42,10 +42,6 @@ class CreateTrainingJob extends React.Component {
         <br></br>
         Select an existing training function name corresponding to a ML model
         <br></br>
-        <strong>Experiment Name</strong>
-        <br></br>
-        Select an existing experiment name
-        <br></br>
         <strong>Feature Names</strong>
         <br></br>
         Provide the feature group name here.
