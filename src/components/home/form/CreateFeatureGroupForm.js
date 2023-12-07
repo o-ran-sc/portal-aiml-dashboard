@@ -172,11 +172,9 @@ class CreateFeatureGroup extends React.Component {
             if (res.status === 200) {
                 alert("FeatureGroup Created")
                 this.resetForm()
-            } else {
-                this.logger("Error Occured", res)
-            }
+            } 
         })
-            .catch(function (error) {
+            .catch( (error)=> {
                 this.logger('Error creating featureGroup', error);
                 alert("Failed: " + error.response.data.Exception)
                 event.preventDefault();
