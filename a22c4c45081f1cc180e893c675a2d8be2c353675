@@ -1,0 +1,289 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8672a18e_b337906a",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "here isMme and model_name is added",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d808423_423ae7fa",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "here isMme and model_name is added",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81a35c4d_3a552a09",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "here isMme and model_name is added",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6197839e_76a05a39",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "here isMme and model_name is added",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ec132c_1184fdb4",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "here isMme and model_name is added",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3705a4d2_bf8ffd15",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "here when the",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1149d32_fbfbfc8b",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "here when the edit trainingjob is called ismme and modelname value is set to state",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95cdd3d3_53a92571",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "here when the",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a917c740_cef84fd5",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "solved a bug when edit is called the featuregroup name was not set",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf5a378_c68bf60e",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "adding the isMme and modelName",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "239893ed_884c2960",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "adding the isMme and modelName",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86736359_868dac90",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "sending  the isMme and modelName to addTrainingjob",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2788130_a2efb3a3",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "sending the isMme and modelName to PutTrainingjob",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcad1df6_f77ef7a1",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "changing to arrow function",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9cc4959_e755b2b2",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2023-12-07T18:04:14Z",
+      "side": 1,
+      "message": "id else in react based on isMme is true to load the form",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
