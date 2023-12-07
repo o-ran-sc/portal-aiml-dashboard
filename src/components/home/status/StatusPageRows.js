@@ -95,7 +95,7 @@ const StatusPageRows = (props) => {
 
   const handleEdit  = (event) => {
     if(selectedFlatRows.length === 1){
-      logger(selectedFlatRows[0].original.trainingjob_name)
+      logger("selected training job: ",selectedFlatRows[0].original.trainingjob_name)
       setTraingingjobNameForEditPopup(selectedFlatRows[0].original.trainingjob_name);
       setVersionForEditPopup(selectedFlatRows[0].original.version);
       setEditPopup(true);
