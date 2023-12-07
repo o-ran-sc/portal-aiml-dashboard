@@ -24,6 +24,8 @@ import {convertToCommaSeparatedString, getDatalakeNameWithoutConversion} from '.
 
 const TrainingJobInfo = (props) => {
     const [trainingJobName, setTrainingJobName] = useState("");
+    const [isMme, setIsMme] = useState(false);
+    const [modelName, setModelName]= useState("");
     const [version, setVersion] = useState("");
     const [description, setDescription] = useState("");
     const [featureNames, setFeatureNames] = useState("");
@@ -38,6 +40,7 @@ const TrainingJobInfo = (props) => {
     const [modelUrl, setModelUrl] = useState("");
     const [_measurement, set_measurement] = useState("");
     const [bucket, setBucket] = useState("");
+    const [modelInfo, setModelInfo] = useState("");
 
     useEffect(()=>{
         try{
@@ -46,6 +49,8 @@ const TrainingJobInfo = (props) => {
                 console.log(`response for ${UCMgr_baseUrl}/trainingjobs/${props.trainingjob_name_and_version.trainingjob_name}/${props.trainingjob_name_and_version.version}`, response);
                 console.log(response.data);
                 setTrainingJobName(response.data.trainingjob.trainingjob_name);
+                setIsMme(response.data.trainingjob.is_mme);
+                setModelName(response.data.trainingjob.model_name);
                 setVersion(response.data.trainingjob.version);
                 setDescription(response.data.trainingjob.description);
                 setFeatureNames(response.data.trainingjob.feature_list);
@@ -60,6 +65,7 @@ const TrainingJobInfo = (props) => {
                 setModelUrl(response.data.trainingjob.model_url);
                 set_measurement(response.data.trainingjob._measurement);
                 setBucket(response.data.trainingjob.bucket);
+                setModelInfo(response.data.trainingjob.model_info);
             })
             .catch(error => {
                 console.log(error);
@@ -78,6 +84,25 @@ const TrainingJobInfo = (props) => {
                     <Form.Label>Training Job Name</Form.Label>
                     <Form.Control type="text" value={trainingJobName} readOnly/>
                 </Form.Group>
+                <Form.Group controlId="isMme">
+                <Form.Check type="checkbox" label="Enable MME"
+                    checked={isMme} readOnly/>
+                </Form.Group>
+                {   isMme == true
+                    && 
+                    <div>
+                    <Form.Group controlId="modelName">
+                        <Form.Label>model name</Form.Label>
+                        <Form.Control type="text" value={modelName} readOnly />
+                    </Form.Group>
+
+                    <Form.Group controlId="modelInfo">
+                    <Form.Label>Model Info</Form.Label>
+                        <Form.Control type="text" value={modelInfo} readOnly />
+                    </Form.Group>
+                    </div>
+
+                }
                 <Form.Group controlId="version">
                     <Form.Label>Version</Form.Label>
                     <Form.Control type="text" value={version} readOnly />
