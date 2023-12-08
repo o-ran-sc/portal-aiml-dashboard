@@ -319,6 +319,24 @@
       "parentUuid": "16fc9280_2af22120",
       "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b893e4b_c36e0747",
+        "filename": "src/components/home/status/TrainingJobInfo.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2023-12-08T05:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16fc9280_2af22120",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }

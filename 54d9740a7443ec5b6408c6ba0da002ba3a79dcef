@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12cf56f_b6a90afa",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2023-12-08T05:50:00Z",
+      "side": 1,
+      "message": "How about `MME` for the label value?",
+      "revId": "54d9740a7443ec5b6408c6ba0da002ba3a79dcef",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9543a7_6354539a",
+        "filename": "src/components/home/status/TrainingJobInfo.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2023-12-08T05:50:00Z",
+      "side": 1,
+      "message": "What about using capital letters such as `Model Name`?",
+      "revId": "54d9740a7443ec5b6408c6ba0da002ba3a79dcef",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
