@@ -116,6 +116,126 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "223652e7_a32c5254",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a35c4d_3a552a09",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6306a0f_508b9dcf",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6197839e_76a05a39",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f3e5839_d54804d3",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7ec132c_1184fdb4",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05df9b5f_9017657e",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8672a18e_b337906a",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "745a4be6_91280faa",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d808423_423ae7fa",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3705a4d2_bf8ffd15",
@@ -167,6 +287,60 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2abd4df_4b05f065",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3705a4d2_bf8ffd15",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "012184c2_84185f9f",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95cdd3d3_53a92571",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2aed3a_63a9030d",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1149d32_fbfbfc8b",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a917c740_cef84fd5",
@@ -180,6 +354,24 @@
       "writtenOn": "2023-12-07T18:04:14Z",
       "side": 1,
       "message": "solved a bug when edit is called the featuregroup name was not set",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ee258a_72c7cb8b",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a917c740_cef84fd5",
       "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
@@ -201,6 +393,24 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34055075_eb0caae9",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cf5a378_c68bf60e",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "239893ed_884c2960",
@@ -214,6 +424,24 @@
       "writtenOn": "2023-12-07T18:04:14Z",
       "side": 1,
       "message": "adding the isMme and modelName",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f07699_ea65c262",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "239893ed_884c2960",
       "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
@@ -235,6 +463,24 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47683d39_e3196e65",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86736359_868dac90",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2788130_a2efb3a3",
@@ -248,6 +494,24 @@
       "writtenOn": "2023-12-07T18:04:14Z",
       "side": 1,
       "message": "sending the isMme and modelName to PutTrainingjob",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8d0308_855a2aae",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2788130_a2efb3a3",
       "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
@@ -269,6 +533,24 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "011c360c_e617e1fc",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcad1df6_f77ef7a1",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9cc4959_e755b2b2",
@@ -282,6 +564,24 @@
       "writtenOn": "2023-12-07T18:04:14Z",
       "side": 1,
       "message": "id else in react based on isMme is true to load the form",
+      "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae000d2_140ab788",
+        "filename": "src/components/home/form/CreateOrEditTrainingJobForm.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1001949
+      },
+      "writtenOn": "2023-12-08T07:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9cc4959_e755b2b2",
       "revId": "a22c4c45081f1cc180e893c675a2d8be2c353675",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
