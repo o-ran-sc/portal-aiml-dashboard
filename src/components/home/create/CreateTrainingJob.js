@@ -38,13 +38,21 @@ class CreateTrainingJob extends React.Component {
         It must be between 3 and 63 characters long. <br></br>
         It can only consist of Letters and numbers and underscore.
         <br></br>
+        <strong>Model Management Service</strong>
+        <br></br>
+        Enable it when using the model management service
+        <br></br>
+        <strong>Model Name</strong>
+        <br></br>
+        Mention the model name when model management service is enabled
+        <br></br>
         <strong>Training Function Name</strong>
         <br></br>
-        Select an existing training function name corresponding to a ML model
+        Select an existing training function name corresponding to a ML model, when model management service is disabled.
         <br></br>
         <strong>Feature Names</strong>
         <br></br>
-        Provide the feature group name here.
+        Select from existing feature groups, when model management service is disabled. 
         <br></br>
         <strong>Feature Filter</strong>
         <br></br>
