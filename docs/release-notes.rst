@@ -30,6 +30,9 @@ Version history
 | 2023-08-10         | 1.1.2              | Joseph Thaliath    | H Maintenance release |
 |                    |                    |                    |                       |
 +--------------------+--------------------+--------------------+-----------------------+
+| 2023-12-14         | 1.2.0              | Sandeep Jaisawal   | I release             |
+|                    |                    |                    |                       |
++--------------------+--------------------+--------------------+-----------------------+
 
 
 Summary
@@ -38,14 +41,34 @@ Summary
 The AIMLFW dashboard provides a user interface to create AI/ML training pipelines and creation of AI/ML training jobs.
 The H release of AIMLFW dashboard supports new functionalities like
 
-#. Feature group creation,
-#. Support for obtaining training data from DME,
-#. Editing training jobs and Retraining support
+#. GUI changes for integration with Model Management Service
+#. GUI changes for feature group enhancements 
 
 
 
 Release Data
 ============
+
+I Release
+---------------------
+
++--------------------------------------+------------------------------------------------+
+| **Project**                          | AIMLFW dashboard                               |
+|                                      |                                                |
++--------------------------------------+------------------------------------------------+
+| **Repo/commit-ID**                   | portal/aiml-dashboard                          |
+|                                      | /0e96d4a4ff7684995348f89f7650542fcdea7507      |
++--------------------------------------+------------------------------------------------+
+| **Release designation**              | I  release                                     |
+|                                      |                                                |
++--------------------------------------+------------------------------------------------+
+| **Release date**                     | 2023-12-29                                     |
+|                                      |                                                |
++--------------------------------------+------------------------------------------------+
+| **Purpose of the delivery**          | GUI changed for Model Management Service       |
+|                                      | Integation APIs                                |
++--------------------------------------+------------------------------------------------+
+
 
 H Maintenance Release
 ---------------------
