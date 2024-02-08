@@ -43,6 +43,7 @@ class CreateFeatureGroup extends React.Component {
             sourceName: '',
             dbOrg: '',
             measuredObjClass: '',
+            _measurement: '',
             UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
         };
 
@@ -151,6 +152,13 @@ class CreateFeatureGroup extends React.Component {
             this.logger("after set state, measuredObjClass: ", this.state.measuredObjClass)
         })
     }
+    handle_measurementChange =(event)=>{
+        this.setState({
+            _measurement: event.target.value
+        }, () =>{
+            this.logger("after set state, dbOrg: ", this.state.dbOrg)
+        })
+    }
     invokeAddFeatureGroup(event) {
         this.logger('Add New Request is posted at ' + this.state.UCMgr_baseUrl + "/featureGroup")
         let convertedDatalakeDBName = convertDatalakeDBName(this.state.dataLake);
@@ -166,15 +174,16 @@ class CreateFeatureGroup extends React.Component {
             "token": this.state.token,
             "source_name": this.state.sourceName,
             "measured_obj_class": this.state.measuredObjClass,
+            '_measurement': this.state._measurement,
             "dbOrg": this.state.dbOrg
         }).then(res => {
             this.logger('featureGroup Created', res.data)
             if (res.status === 200) {
                 alert("FeatureGroup Created")
                 this.resetForm()
-            } 
+            }
         })
-            .catch( (error)=> {
+            .catch((error) => {
                 this.logger('Error creating featureGroup', error);
                 alert("Failed: " + error.response.data.Exception)
                 event.preventDefault();
@@ -191,11 +200,12 @@ class CreateFeatureGroup extends React.Component {
             dme: false,
             host: '',
             port: '',
-            dmePort:'',
+            dmePort: '',
             bucketName: '',
             token: '',
             sourceName: '',
             measuredObjClass: '',
+            _measurement: '',
             dbOrg: ''
         })
     }
@@ -286,6 +296,18 @@ class CreateFeatureGroup extends React.Component {
                             <Form.Control type="text"
                                 value={this.state.token}
                                 onChange={this.handledbTokenChange}
+                                placeholder=""
+                                required />
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Form.Group controlId="_measurement">
+                            <Form.Label>_measurement*</Form.Label>
+                            <Form.Control type="text"
+                                value={this.state._measurement}
+                                onChange={this.handle_measurementChange}
                                 placeholder=""
                                 required />
                         </Form.Group>
