@@ -33,6 +33,7 @@ const FeatureGroupInfo = (props) => {
     const [dbOrg, setDbOrg] = useState("")
     const [bucketName, setBucketName] = useState("")
     const [dbToken, setDbToken] = useState("")
+    const [measurement, setMeasurement] = useState("")
     const [measuredObjClass, setMeasureObjectClass] = useState("")
 
     useEffect(() => {
@@ -51,6 +52,7 @@ const FeatureGroupInfo = (props) => {
                     setSourceName(response.data.featuregroup[0].source_name)
                     setBucketName(response.data.featuregroup[0].bucket)
                     setDmePort(response.data.featuregroup[0].dme_port)
+                    setMeasurement(response.data.featuregroup[0].measurement)
                     setMeasureObjectClass(response.data.featuregroup[0].measured_obj_class)
 
                 })
@@ -102,7 +104,10 @@ const FeatureGroupInfo = (props) => {
                     <Form.Label>Db Org</Form.Label>
                     <Form.Control type="text" value={dbOrg} readOnly />
                 </Form.Group>
-
+                <Form.Group controlId="measurement">
+                    <Form.Label>Measurement</Form.Label>
+                    <Form.Control type="text" value={measurement} readOnly />
+                </Form.Group>
                 {dme === true &&
                     <div>
                         <Form.Group controlId="SourceName">
