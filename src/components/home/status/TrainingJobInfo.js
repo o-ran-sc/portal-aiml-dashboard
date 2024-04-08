@@ -38,8 +38,6 @@ const TrainingJobInfo = (props) => {
     const [pipelineVersion, setPipelineVersion] = useState("");
     const [datalakeSource, setDatalakeSource] = useState("");
     const [modelUrl, setModelUrl] = useState("");
-    const [_measurement, set_measurement] = useState("");
-    const [bucket, setBucket] = useState("");
     const [modelInfo, setModelInfo] = useState("");
 
     useEffect(()=>{
@@ -63,8 +61,6 @@ const TrainingJobInfo = (props) => {
                 setPipelineVersion(response.data.trainingjob.pipeline_version === response.data.trainingjob.pipeline_name ? "1" : response.data.trainingjob.pipeline_version);
                 setDatalakeSource(getDatalakeNameWithoutConversion(response.data.trainingjob.datalake_source));
                 setModelUrl(response.data.trainingjob.model_url);
-                set_measurement(response.data.trainingjob._measurement);
-                setBucket(response.data.trainingjob.bucket);
                 setModelInfo(response.data.trainingjob.model_info);
             })
             .catch(error => {
@@ -147,19 +143,6 @@ const TrainingJobInfo = (props) => {
                     <Form.Label>Datalake Source</Form.Label>
                     <Form.Control type="text" value={datalakeSource} readOnly />
                 </Form.Group>
-                {
-                    datalakeSource === "Influx DB" &&
-                        <>
-                            <Form.Group controlId="_measurement">
-                                <Form.Label>_measurement</Form.Label>
-                                <Form.Control type="text" value={_measurement} readOnly />
-                            </Form.Group>
-                            <Form.Group controlId="bucket">
-                                <Form.Label>bucket</Form.Label>
-                                <Form.Control type="text" value={bucket} readOnly />
-                            </Form.Group>
-                        </>
-                }
                 <Form.Group controlId="modelUrl">
                     <Form.Label>Model URL</Form.Label>
                     <Form.Control type="text" value={modelUrl} readOnly />

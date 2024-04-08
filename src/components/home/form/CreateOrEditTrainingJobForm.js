@@ -47,9 +47,7 @@ class CreateTrainingJob extends React.Component {
       plVerName: '',
       plVerDescription: '',
       datalakeSourceList: ["Influx DB"],
-      datalakeSourceName: '',
-      _measurement: '',
-      bucket: ''
+      datalakeSourceName: ''
     };
 
     this.regName = new RegExp('\\W+')
@@ -112,9 +110,7 @@ class CreateTrainingJob extends React.Component {
             plVerName: result.data.trainingjob.pipeline_version,
             plVerDescription: '',
             datalakeSourceList: ["Influx DB"],
-            datalakeSourceName: getDatalakeNameWithoutConversion(result.data.trainingjob.datalake_source),
-            _measurement: result.data.trainingjob._measurement,
-            bucket: result.data.trainingjob.bucket
+            datalakeSourceName: getDatalakeNameWithoutConversion(result.data.trainingjob.datalake_source)
           }, () => {
             task()
           });
@@ -340,9 +336,7 @@ class CreateTrainingJob extends React.Component {
       this.state.targetName,
       this.state.ucDescription,
       this.state.plVerName,
-      this.state.datalakeSourceName,
-      this.state._measurement,
-      this.state.bucket
+      this.state.datalakeSourceName
     );
 
     this.invokeAddTrainingJob(event)
@@ -364,9 +358,7 @@ class CreateTrainingJob extends React.Component {
       this.state.targetName,
       this.state.ucDescription,
       this.state.plVerName,
-      this.state.datalakeSourceName,
-      this.state._measurement,
-      this.state.bucket
+      this.state.datalakeSourceName
     );
 
     this.invokePutTrainingJob(event);
@@ -390,9 +382,7 @@ class CreateTrainingJob extends React.Component {
       "enable_versioning": this.state.versioning,
       "description": this.state.ucDescription,
       "pipeline_version": this.state.plVerName,
-      "datalake_source": convertedDatalakeDBName,
-      "_measurement": this.state._measurement,
-      "bucket": this.state.bucket
+      "datalake_source": convertedDatalakeDBName
     }).then(res => {
       this.logger('UC created ', res.data)
       this.invokeStartTrainingForCreate();
@@ -422,9 +412,7 @@ class CreateTrainingJob extends React.Component {
       "enable_versioning": this.state.versioning,
       "description": this.state.ucDescription,
       "pipeline_version": this.state.plVerName,
-      "datalake_source": convertedDatalakeDBName,
-      "_measurement": this.state._measurement,
-      "bucket": this.state.bucket
+      "datalake_source": convertedDatalakeDBName
       //"enable_versioning" : true
     }).then(res => {
       this.logger('UC created ', res.data)
@@ -668,24 +656,6 @@ class CreateTrainingJob extends React.Component {
     })
   }
 
-
-
-
-  handle_measurementChange = (event) => {
-    this.setState({
-      _measurement: event.target.value
-    }, () => {
-      this.logger("after set state, _measurement: ", this.state._measurement);
-    });
-  }
-
-  handleBucketChange = (event) => {
-    this.setState({
-      bucket: event.target.value
-    }, () => {
-      this.logger("after set state, bucket: ", this.state.bucket);
-    });
-  }
   handleModelNameChange = (event) => {
     this.setState({
       modelName: event.target.value
@@ -715,9 +685,7 @@ class CreateTrainingJob extends React.Component {
       datalakeSourceName: '',
       superModel: '',
       superModelVersion: '',
-      superModelVersionsList: [],
-      _measurement: '',
-      bucket: ''
+      superModelVersionsList: []
     })
   }
 
@@ -881,31 +849,6 @@ class CreateTrainingJob extends React.Component {
 
             </Form.Control>
           </Form.Group>
-
-          {
-            this.state.datalakeSourceName === "Influx DB" &&
-            <div>
-              <Form.Group controlId="_measurement">
-                <Form.Label>_measurement*</Form.Label>
-                <Form.Control type="text"
-                  value={this.state._measurement}
-                  onChange={this.handle_measurementChange}
-                  placeholder=""
-                  required />
-              </Form.Group>
-              <Form.Group controlId="bucket">
-                <Form.Label>bucket*</Form.Label>
-                <Form.Control type="text"
-                  value={this.state.bucket}
-                  onChange={this.handleBucketChange}
-                  placeholder=""
-                  required />
-              </Form.Group>
-            </div>
-
-          }
-
-
 
           <Form.Group controlId="ftFilter">
             <Form.Label>Feature Filter</Form.Label>
