@@ -17,7 +17,8 @@
 # ==================================================================================
 FROM jupyter/scipy-notebook:notebook-6.4.3
 RUN python3 -m pip install --upgrade pip
-RUN pip3 install kfp==1.4.0
+RUN pip3 install kfp==2.2.0
+RUN pip3 install kfp-kubernetes
 RUN pip3 install requests_toolbelt==0.10.1
 ENV TA_DIR ./work
 RUN mkdir -p ${TA_DIR}
