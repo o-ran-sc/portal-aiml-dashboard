@@ -1,11 +1,11 @@
 ---
 #Release tag for dashboard portal
 distribution_type: container
-container_release_tag: 2.0.0
+container_release_tag: 2.1.0
 container_pull_registry: nexus3.o-ran-sc.org:10004
 container_push_registry: nexus3.o-ran-sc.org:10002
 project: portal/aiml-dashboard
-ref: 382e6ef56557a3b3fcf980bfd57607760de6739f 
+ref: 14bdf18ee72b4bc9d2757b1bc11265095947e6ee 
 containers:
     - name: portal-aiml-dashboard-docker
       version: 2.0.0
