@@ -33,6 +33,41 @@
       "message": "Hello @Kim Do Young, could you please verify if with this change we are able to bring up the UI.",
       "revId": "897d5aefd2856909673152408aad4bcee7ca0c50",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f5ede3_3ebbae0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002556
+      },
+      "writtenOn": "2024-07-24T14:15:00Z",
+      "side": 1,
+      "message": "Hello @subhash kumar singh,\n\nThank you for checking. I have verified the changes, and I can confirm that the UI is now loading successfully.",
+      "revId": "897d5aefd2856909673152408aad4bcee7ca0c50",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69bcf582_c85b09ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002556
+      },
+      "writtenOn": "2024-07-24T14:15:00Z",
+      "side": 1,
+      "message": "\"Hello subhash kumar singh,\n\nThank you for checking. I have verified the changes, and I can confirm that the UI is now loading successfully.",
+      "parentUuid": "22480461_b158fdfb",
+      "revId": "897d5aefd2856909673152408aad4bcee7ca0c50",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
