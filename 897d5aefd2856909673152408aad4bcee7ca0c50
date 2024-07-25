@@ -68,6 +68,23 @@
       "parentUuid": "22480461_b158fdfb",
       "revId": "897d5aefd2856909673152408aad4bcee7ca0c50",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c2cf2d7_c8e61049",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2024-07-25T07:14:05Z",
+      "side": 1,
+      "message": "Hey Kim Do Young, I believe we don\u0027t have to commit package-lock.json as it is automatically created by the npm when we run npm install command. This command is mentioned in the docker file.",
+      "revId": "897d5aefd2856909673152408aad4bcee7ca0c50",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
