@@ -16,22 +16,22 @@
 
 // ==================================================================================
 
-
 import React from 'react';
-import {Modal} from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
-function Popup(props){
+function Popup(props) {
   return (
     <>
-      <Modal show={props.show} onHide={props.onHide} size={props.hasOwnProperty('size') ? props.size : 'medium'} centered>
-          <Modal.Header closeButton>
-              <Modal.Title>
-                  {props.title}
-              </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-              {props.children}
-          </Modal.Body>
+      <Modal
+        show={props.show}
+        onHide={props.onHide}
+        size={props.hasOwnProperty('size') ? props.size : 'medium'}
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>{props.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{props.children}</Modal.Body>
       </Modal>
     </>
   );

@@ -1,4 +1,4 @@
- /* ==================================================================================
+/* ==================================================================================
 
         Copyright (c) 2022 Samsung Electronics Co., Ltd. All Rights Reserved.
 
@@ -16,14 +16,14 @@
 
  ================================================================================== */
 .create-form {
-    font-weight: bold;
-    width: 50%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-  }
+  font-weight: bold;
+  width: 50%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
-.edit-form{
-    font-weight: bold;
+.edit-form {
+  font-weight: bold;
 }

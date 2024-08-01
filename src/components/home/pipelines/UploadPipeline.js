@@ -16,13 +16,13 @@
 
 // ==================================================================================
 
-import React from 'react'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import React from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import * as CONSTANTS from '../common/Constants' 
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import Popover from 'react-bootstrap/Popover'
+import * as CONSTANTS from '../common/Constants';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 class UploadPipelineForm extends React.Component {
   constructor(props) {
@@ -31,116 +31,114 @@ class UploadPipelineForm extends React.Component {
     this.state = {
       fileName: '',
       plName: '',
-      UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl
-    }
+      UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
+    };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-  popover = () =>(
-    <Popover id="popover-basic">
-      <Popover.Title as="h3">Field descriptions</Popover.Title>
+  popover = () => (
+    <Popover id='popover-basic'>
+      <Popover.Title as='h3'>Field descriptions</Popover.Title>
       <Popover.Content>
-        <strong> Training Function Name</strong> 
+        <strong> Training Function Name</strong>
         <br></br>
-         Name of the Training Function. <br></br>
-         should only contain lower or upper case alphanumerical characters and underscore <br></br>
-         <br></br> 
+        Name of the Training Function. <br></br>
+        should only contain lower or upper case alphanumerical characters and underscore <br></br>
+        <br></br>
       </Popover.Content>
     </Popover>
   );
   handleInputChange(event) {
-    console.log(event)
+    console.log(event);
     this.setState({
-      fileName: event.target.files[0]
-    })
-    console.log('handleInputChange',this.fileName)
+      fileName: event.target.files[0],
+    });
+    console.log('handleInputChange', this.fileName);
   }
 
-  handlePlNameChange = (event) => {
+  handlePlNameChange = event => {
     this.setState({
-      plName: event.target.value
-    })
-  }
+      plName: event.target.value,
+    });
+  };
 
-
-
-  resetFrom = (event)=> {
-    this.setState({   
+  resetFrom = event => {
+    this.setState({
       fileName: '',
-      plName: '',     
-    })
-    console.log(this.state)
+      plName: '',
+    });
+    console.log(this.state);
     event.target.value = null;
-  }
+  };
 
   handleSubmit = event => {
-    const data = new FormData()
-    data.append('file', this.state.fileName)
-    
-    let url =  this.state.UCMgr_baseUrl + "/pipelines/" + this.state.plName + "/upload";
+    const data = new FormData();
+    data.append('file', this.state.fileName);
+
+    let url = this.state.UCMgr_baseUrl + '/pipelines/' + this.state.plName + '/upload';
 
     //Option-3
-    axios.post(url,data
-      ).then(res => {
-        console.log('Pipeline  responsed ', res)
-        console.log('Status  responsed ', res.status)
-        if(res.status === 200) {
-          console.log('Pipeline uploaded ', res.status)
-          alert(res.data.result)
-          this.resetFrom(event)
-          
+    axios
+      .post(url, data)
+      .then(res => {
+        console.log('Pipeline  responsed ', res);
+        console.log('Status  responsed ', res.status);
+        if (res.status === 200) {
+          console.log('Pipeline uploaded ', res.status);
+          alert(res.data.result);
+          this.resetFrom(event);
         } else {
-          console.log('Upload pipeline error:' , res)
+          console.log('Upload pipeline error:', res);
         }
       })
       .catch(error => {
-        console.log('Error in uploading pipeline',error.response)
-        alert("Pipeline upload failed: " + error.response.data.result)
+        console.log('Error in uploading pipeline', error.response);
+        alert('Pipeline upload failed: ' + error.response.data.result);
       })
       .then(function () {
         // always executed
-      })
+      });
 
-      console.log('something')
-      event.preventDefault();
-  }
+    console.log('something');
+    event.preventDefault();
+  };
 
-  handleCreatePipeline  = event => {
-    console.log('handleCreatePipeline clicked..', event)
-    window.open(CONSTANTS.notebook_url + '/tree', "_blank")
-  }
+  handleCreatePipeline = event => {
+    console.log('handleCreatePipeline clicked..', event);
+    window.open(CONSTANTS.notebook_url + '/tree', '_blank');
+  };
 
   render() {
     return (
-    <>
-    <div className="upload-pipeline">
-    <OverlayTrigger trigger="click" placement="right" overlay={this.popover()}>
-      <Button className="from-tooltip" placement="right" variant="secondary">?</Button>
-    </OverlayTrigger>
-    <div className="upload-pl-form" >
-    <Button variant="success" size="sm"  onClick={e => this.handleCreatePipeline(e)} >
-        Create Training Function
-    </Button>{' '}
+      <>
+        <div className='upload-pipeline'>
+          <OverlayTrigger trigger='click' placement='right' overlay={this.popover()}>
+            <Button className='from-tooltip' placement='right' variant='secondary'>
+              ?
+            </Button>
+          </OverlayTrigger>
+          <div className='upload-pl-form'>
+            <Button variant='success' size='sm' onClick={e => this.handleCreatePipeline(e)}>
+              Create Training Function
+            </Button>{' '}
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Group controlId='plName'>
+                <Form.Label>Training Function Name*</Form.Label>
+                <Form.Control
+                  type='input'
+                  value={this.state.plName}
+                  onChange={this.handlePlNameChange}
+                  placeholder=''
+                  required
+                />
+              </Form.Group>
 
-      <Form  onSubmit={this.handleSubmit}>
-        <Form.Group controlId="plName">
-          <Form.Label>Training Function Name*</Form.Label>
-          <Form.Control type="input"
-            value={this.state.plName}
-            onChange={this.handlePlNameChange}
-            placeholder="" 
-            required/>
-        </Form.Group>
+              <input type='file' className='form-control' name='upload_file' onChange={this.handleInputChange} />
 
-      <input type="file" className="form-control"
-            name="upload_file" onChange={this.handleInputChange} />
-
-      <Button type="submit" > Upload </Button>
-
-      </Form>
-      </div>
-      </div>
-    </>
-
+              <Button type='submit'> Upload </Button>
+            </Form>
+          </div>
+        </div>
+      </>
     );
   }
 }
