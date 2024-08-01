@@ -25,181 +25,166 @@ import axios from 'axios';
 import { Checkbox } from './Checkbox';
 import Popup from './Popup';
 import FeatureGroupInfo from './FeatureGroupInfo';
-import {deleteFeatureGroups} from './API_STATUS';
+import { deleteFeatureGroups } from './API_STATUS';
 
+const ListFeatureGroup = props => {
+  const logger = props.logger;
+  const [featureGroups, setFeatureGroups] = useState([]);
+  const [infoPopup, setInfoPopup] = useState(false);
+  const closeInfoPopup = () => setInfoPopup(false);
+  const [featureGroupName, setFeatureGroupName] = useState(null);
+  useEffect(() => {
+    logger('useEffect');
+    fetchFeatureGroups();
+    const timer = setInterval(async () => {
+      fetchFeatureGroups();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
-const ListFeatureGroup = (props) => {
-    const logger = props.logger
-    const [featureGroups, setFeatureGroups] = useState([])
-    const [infoPopup, setInfoPopup] = useState(false);
-    const closeInfoPopup = () => setInfoPopup(false);
-    const [featureGroupName, setFeatureGroupName] = useState(null);
-    useEffect(() => {
-        logger('useEffect');
-        fetchFeatureGroups();
-        const timer = setInterval(async () => {
-            fetchFeatureGroups();
-        }, 5000);
-        return () => clearInterval(timer);
-    }, []);
-
-
-    const fetchFeatureGroups = async () => {
-        logger('fetchFeatureGroup UCMgr_baseUrl', UCMgr_baseUrl)
-        try {
-            const result = await axios.get(`${UCMgr_baseUrl}/featureGroup`);
-            logger('fetchFeatureGroup Result', result);
-            logger('feature groups are --> ', result.data.featuregroups)
-            setFeatureGroups(result.data.featuregroups);
-        } catch (e) {
-            console.error(e)
-        }
+  const fetchFeatureGroups = async () => {
+    logger('fetchFeatureGroup UCMgr_baseUrl', UCMgr_baseUrl);
+    try {
+      const result = await axios.get(`${UCMgr_baseUrl}/featureGroup`);
+      logger('fetchFeatureGroup Result', result);
+      logger('feature groups are --> ', result.data.featuregroups);
+      setFeatureGroups(result.data.featuregroups);
+    } catch (e) {
+      console.error(e);
     }
-    const handleInfoClick = (featuregroup_name) => {
-        console.log("feature group name is : ", featuregroup_name)
-        setFeatureGroupName({
-            featureGroupName: featuregroup_name
+  };
+  const handleInfoClick = featuregroup_name => {
+    console.log('feature group name is : ', featuregroup_name);
+    setFeatureGroupName({
+      featureGroupName: featuregroup_name,
+    });
+    setInfoPopup(true);
+  };
+
+  const handleDelete = async event => {
+    console.log('handle delete starts..');
+
+    if (selectedFlatRows.length > 0) {
+      let featureGroup_names = [];
+      for (const row of selectedFlatRows) {
+        featureGroup_names.push({
+          featureGroup_name: row.original.featuregroup_name,
         });
-        setInfoPopup(true);
-    };
-
-    const handleDelete = async (event) => {
-        console.log('handle delete starts..');
-
-        if (selectedFlatRows.length > 0) {
-            let featureGroup_names = [];
-            for (const row of selectedFlatRows) {
-                featureGroup_names.push({
-                    featureGroup_name: row.original.featuregroup_name
-                })
-            }
-            console.log('selected featureGroups are :', featureGroup_names)
-            try {
-                await deleteFeatureGroups(featureGroup_names);
-                await fetchFeatureGroups();
-            } catch (error) {
-                console.log(error)
-            }
-            toggleAllRowsSelected(false);
-        } else {
-            alert('Please select more than one row')
-        }
-
+      }
+      console.log('selected featureGroups are :', featureGroup_names);
+      try {
+        await deleteFeatureGroups(featureGroup_names);
+        await fetchFeatureGroups();
+      } catch (error) {
+        console.log(error);
+      }
+      toggleAllRowsSelected(false);
+    } else {
+      alert('Please select more than one row');
     }
+  };
 
-    const handleDme = (dme) => {
-        if (dme === true) return <p>Enabled</p>;
-        else return <p>Disabled</p>
-    };
+  const handleDme = dme => {
+    if (dme === true) return <p>Enabled</p>;
+    else return <p>Disabled</p>;
+  };
 
-    const columns = useMemo(() => [
-        {
-            id: 'selection',
-            Header: ({ getToggleAllRowsSelectedProps }) => (
-                <div>
-                    <Checkbox {...getToggleAllRowsSelectedProps()} />
-                </div>
-            ),
-            Cell: ({ row }) => (
-                <div>
-                    <Checkbox {...row.getToggleRowSelectedProps()} />
-                </div>
-            ),
+  const columns = useMemo(
+    () => [
+      {
+        id: 'selection',
+        Header: ({ getToggleAllRowsSelectedProps }) => (
+          <div>
+            <Checkbox {...getToggleAllRowsSelectedProps()} />
+          </div>
+        ),
+        Cell: ({ row }) => (
+          <div>
+            <Checkbox {...row.getToggleRowSelectedProps()} />
+          </div>
+        ),
+      },
+      {
+        id: 'featuregroup_name',
+        Header: 'Feature Group Name',
+        accessor: 'featuregroup_name',
+      },
+      {
+        id: 'features',
+        Header: 'Features',
+        accessor: 'features',
+      },
+      {
+        id: 'datalake',
+        Header: 'DataLake',
+        accessor: 'datalake',
+      },
+      {
+        id: 'dme',
+        Header: 'DME',
+        accessor: 'dme',
+        Cell: ({ row }) => {
+          return <div>{handleDme(row.original.dme)}</div>;
         },
-        {
-            id: 'featuregroup_name',
-            Header: 'Feature Group Name',
-            accessor: 'featuregroup_name'
+      },
+      {
+        id: 'info',
+        Header: 'Info',
+        Cell: ({ row }) => {
+          return (
+            <div>
+              <Button variant='info' onClick={() => handleInfoClick(row.original.featuregroup_name)}>
+                Info
+              </Button>
+            </div>
+          );
         },
-        {
-            id: 'features',
-            Header: 'Features',
-            accessor: 'features'
-        },
-        {
-            id: 'datalake',
-            Header: 'DataLake',
-            accessor: 'datalake'
-        },
-        {
-            id: 'dme',
-            Header: 'DME',
-            accessor: 'dme',
-            Cell: ({ row }) => {
-                return (
-                    <div >
-                        {handleDme(row.original.dme)}
-                    </div>
-                );
-            }
-
-        },
-        {
-            id: 'info',
-            Header: 'Info',
-            Cell: ({ row }) => {
-                return (
-                    <div>
-                        <Button variant="info" onClick={() => handleInfoClick(row.original.featuregroup_name)}>Info</Button>
-                    </div>
-                );
-            }
-        }
-    ], []);
-    const data = useMemo(() => featureGroups, [featureGroups]);
-    const {
-        getTableProps,
-        headerGroups,
-        rows,
-        prepareRow,
-        selectedFlatRows,
-        toggleAllRowsSelected
-    } = useTable(
-        {
-            columns,
-            data,
-            autoResetSelectedRows: false
-        },
-        useRowSelect
-    )
-    return (
-        <>
-            <Button variant="success" size="sm" onClick={e => handleDelete(e)}>Delete</Button>{' '}
-            <BTable className="Status_table" responsive striped bordered hover size="sm"  {...getTableProps()}>
-                <thead>
-                    {headerGroups.map(headerGroup => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map(column => (
-                                <th {...column.getHeaderProps()}>
-                                    {column.render('Header')}
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody>
-                    {rows.map((row, i) => {
-                        prepareRow(row)
-                        return (
-                            <tr {...row.getRowProps()}>
-                                {row.cells.map(cell => {
-                                    return (
-                                        <td {...cell.getCellProps()}>
-                                            {cell.render('Cell')}
-                                        </td>
-                                    )
-                                })}
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </BTable>
-            <Popup show={infoPopup} onHide={closeInfoPopup} title="Feature Group Info">
-                <FeatureGroupInfo featureGroupName={featureGroupName} />
-            </Popup>
-        </>
-
-    );
-}
+      },
+    ],
+    [],
+  );
+  const data = useMemo(() => featureGroups, [featureGroups]);
+  const { getTableProps, headerGroups, rows, prepareRow, selectedFlatRows, toggleAllRowsSelected } = useTable(
+    {
+      columns,
+      data,
+      autoResetSelectedRows: false,
+    },
+    useRowSelect,
+  );
+  return (
+    <>
+      <Button variant='success' size='sm' onClick={e => handleDelete(e)}>
+        Delete
+      </Button>{' '}
+      <BTable className='Status_table' responsive striped bordered hover size='sm' {...getTableProps()}>
+        <thead>
+          {headerGroups.map(headerGroup => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map(column => (
+                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody>
+          {rows.map((row, i) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map(cell => {
+                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </BTable>
+      <Popup show={infoPopup} onHide={closeInfoPopup} title='Feature Group Info'>
+        <FeatureGroupInfo featureGroupName={featureGroupName} />
+      </Popup>
+    </>
+  );
+};
 
 export default ListFeatureGroup;

@@ -16,40 +16,38 @@
 
 // ==================================================================================
 
-export function getDatalakeNameWithoutConversion(datalakeNameWhichIsConverted){
-  if(datalakeNameWhichIsConverted === 'InfluxSource'){
-    return  'Influx DB';
-  }
-  else if(datalakeNameWhichIsConverted === 'CassandraSource'){
-    return  'Cassandra DB';
+export function getDatalakeNameWithoutConversion(datalakeNameWhichIsConverted) {
+  if (datalakeNameWhichIsConverted === 'InfluxSource') {
+    return 'Influx DB';
+  } else if (datalakeNameWhichIsConverted === 'CassandraSource') {
+    return 'Cassandra DB';
   }
   return null;
 }
 
-export function convertDatalakeDBName(datalakeNameWithoutConversion){
-  if(datalakeNameWithoutConversion === 'Influx DB'){
+export function convertDatalakeDBName(datalakeNameWithoutConversion) {
+  if (datalakeNameWithoutConversion === 'Influx DB') {
     return 'InfluxSource';
-  }
-  else if(datalakeNameWithoutConversion === 'Cassandra DB'){
+  } else if (datalakeNameWithoutConversion === 'Cassandra DB') {
     return 'CassandraSource';
   }
   return null;
 }
 
-export function convertToCommaSeparatedString(obj){
-  console.log("before changing in convertToCommaSeparatedString: ", obj);
-  let cs_string = "";
+export function convertToCommaSeparatedString(obj) {
+  console.log('before changing in convertToCommaSeparatedString: ', obj);
+  let cs_string = '';
   let counter = 0;
   // Object.entries(obj).map(([key, value]) => {
-  for(const [key,value] of Object.entries(obj)){
-      if(key !== "usecase"){
-        if (counter > 0){
-          cs_string += ","
+  for (const [key, value] of Object.entries(obj)) {
+    if (key !== 'usecase') {
+      if (counter > 0) {
+        cs_string += ',';
       }
-      cs_string += key.toString() + ":" + value.toString();
+      cs_string += key.toString() + ':' + value.toString();
       counter += 1;
-      }  
-  };
-  console.log("after changing in convertToCommaSeparatedString: ", cs_string);
+    }
+  }
+  console.log('after changing in convertToCommaSeparatedString: ', cs_string);
   return cs_string;
 }

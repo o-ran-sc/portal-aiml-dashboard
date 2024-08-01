@@ -1,4 +1,4 @@
- /* ==================================================================================
+/* ==================================================================================
 
         Copyright (c) 2022 Samsung Electronics Co., Ltd. All Rights Reserved.
 
@@ -15,51 +15,46 @@
     limitations under the License.
 
  ================================================================================== */
- 
-.step-progressbar-wrapper{
-   
+
+.step-progressbar-wrapper {
 }
 
-.state{
-    background-color: white;
-    border: 2px solid black;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.state {
+  background-color: white;
+  border: 2px solid black;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.step{
-    max-width: 400px;
+.step {
+  max-width: 400px;
 }
 
-.step-progress-bar-box{
-    display: flex;
-    align-items: center;
-    column-gap: 20px;
-    border: 2px solid pink;
-    padding: 10px;
+.step-progress-bar-box {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  border: 2px solid pink;
+  padding: 10px;
 }
 
-.step-progress-bar-box-line{
-    border-right: 3px solid black;
-    height: 50px;
-    width: 50%;
+.step-progress-bar-box-line {
+  border-right: 3px solid black;
+  height: 50px;
+  width: 50%;
 }
 
-.container-for-step-progress-bar-box-line-and-message{
-    display: flex;
-    column-gap: 20px;
+.container-for-step-progress-bar-box-line-and-message {
+  display: flex;
+  column-gap: 20px;
 }
 
-.step-progress-bar-box-line-messsage{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.step-progress-bar-box-line-messsage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-
-
-
