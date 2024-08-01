@@ -18,28 +18,25 @@
 
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import './NavbarComponent.css';
 function NavbarComponent() {
-
-
-    return (
-      <Navbar bg="primary" variant="dark" className="nav-bar">
-        <Container>
-            <Navbar.Brand href="/">AI/ML Management Dashboard</Navbar.Brand>
-            <Nav>
-                <NavDropdown title="Training Jobs" className="nav-drop-down">
-                    <NavDropdown.Item href="/TrainingJob/CreateTrainingJob">Create Training Job</NavDropdown.Item>
-                    <NavDropdown.Item href="/TrainingJob/TrainingJobsStatus">Training Job Status</NavDropdown.Item>
-                    <NavDropdown.Item href="/TrainingJob/Pipeline">Training function</NavDropdown.Item>
-                    <NavDropdown.Item href="/TrainingJob/CreateFeatureGroup">Create Feature Group</NavDropdown.Item>
-                    <NavDropdown.Item href="/TrainingJob/ListFeatureGroups">List Feature Group</NavDropdown.Item>
-                </NavDropdown>
-            </Nav>
-        </Container>
-      </Navbar>
-    );
+  return (
+    <Navbar bg='primary' variant='dark' className='nav-bar'>
+      <Container>
+        <Navbar.Brand href='/'>AI/ML Management Dashboard</Navbar.Brand>
+        <Nav>
+          <NavDropdown title='Training Jobs' className='nav-drop-down'>
+            <NavDropdown.Item href='/TrainingJob/CreateTrainingJob'>Create Training Job</NavDropdown.Item>
+            <NavDropdown.Item href='/TrainingJob/TrainingJobsStatus'>Training Job Status</NavDropdown.Item>
+            <NavDropdown.Item href='/TrainingJob/Pipeline'>Training function</NavDropdown.Item>
+            <NavDropdown.Item href='/TrainingJob/CreateFeatureGroup'>Create Feature Group</NavDropdown.Item>
+            <NavDropdown.Item href='/TrainingJob/ListFeatureGroups'>List Feature Group</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Container>
+    </Navbar>
+  );
 }
 
 export default NavbarComponent;
-

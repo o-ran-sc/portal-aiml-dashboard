@@ -1,4 +1,4 @@
- /* ==================================================================================
+/* ==================================================================================
 
         Copyright (c) 2022 Samsung Electronics Co., Ltd. All Rights Reserved.
 
@@ -15,14 +15,14 @@
     limitations under the License.
 
  ================================================================================== */
-.nav-bar{
-    margin-bottom: 5px;
+.nav-bar {
+  margin-bottom: 5px;
 }
 
-.nav-drop-down{
-    font-size: large;
+.nav-drop-down {
+  font-size: large;
 }
 
-.logo{
-    width : 130px;
+.logo {
+  width: 130px;
 }

@@ -16,23 +16,22 @@
 
 // ==================================================================================
 
-import React from 'react'
-import Button from 'react-bootstrap/Button'
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import Popover from 'react-bootstrap/Popover'
-import CreateOrEditTrainingJobForm from '../form/CreateOrEditTrainingJobForm'
-
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
+import CreateOrEditTrainingJobForm from '../form/CreateOrEditTrainingJobForm';
 
 class CreateTrainingJob extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.logger=this.props.logger;
+    this.logger = this.props.logger;
   }
-   popover = () =>(
-    <Popover id="popover-basic">
-      <Popover.Title as="h3">Field descriptions</Popover.Title>
+  popover = () => (
+    <Popover id='popover-basic'>
+      <Popover.Title as='h3'>Field descriptions</Popover.Title>
       <Popover.Content>
-        <strong>Training Job Name</strong> 
+        <strong>Training Job Name</strong>
         <br></br>
         Name of the Training Job. <br></br>
         It must be between 3 and 63 characters long. <br></br>
@@ -48,19 +47,19 @@ class CreateTrainingJob extends React.Component {
         <br></br>
         <strong>Training Function Name</strong>
         <br></br>
-        Select an existing training function name corresponding to a ML model, when model management service is disabled.
+        Select an existing training function name corresponding to a ML model, when model management service is
+        disabled.
         <br></br>
         <strong>Feature Names</strong>
         <br></br>
-        Select from existing feature groups, when model management service is disabled. 
+        Select from existing feature groups, when model management service is disabled.
         <br></br>
         <strong>Feature Filter</strong>
         <br></br>
         Filtering Clause for the Selected KPI's<br></br>
-        Example --&gt;  enb &gt; 10
+        Example --&gt; enb &gt; 10
         <br></br>
-        Example --&gt; cellNum =&gt; 10 and enb == 7  
-        <br></br>
+        Example --&gt; cellNum =&gt; 10 and enb == 7<br></br>
         <strong>Hyper Parameters</strong>
         <br></br>
         Comma separated, key-value pair of model tuning<br></br>
@@ -78,8 +77,10 @@ class CreateTrainingJob extends React.Component {
   render() {
     return (
       <>
-        <OverlayTrigger trigger="click" placement="right" overlay={this.popover()}>
-          <Button className="from-tooltip" placement="right" variant="secondary">?</Button>
+        <OverlayTrigger trigger='click' placement='right' overlay={this.popover()}>
+          <Button className='from-tooltip' placement='right' variant='secondary'>
+            ?
+          </Button>
         </OverlayTrigger>
 
         <CreateOrEditTrainingJobForm isCreateTrainingJobForm={true} logger={this.logger}></CreateOrEditTrainingJobForm>
