@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdafa297_49cd4dfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-08-05T07:33:31Z",
+      "side": 1,
+      "message": "Can you add Issue-ID along with `AIMLFW-114` to the commit message?",
+      "revId": "82925606eca54dae70c5504eb6a73fe56b70f5b2",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
