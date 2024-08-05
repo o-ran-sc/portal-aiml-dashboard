@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de04f622_15d84a2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2024-08-05T06:45:20Z",
+      "side": 1,
+      "message": "Looks good to me, hope JunHyukLim you have tested the code also?",
+      "revId": "850fdfcbfb4cb33cce7ac994d5b203efa8422a23",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
