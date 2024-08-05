@@ -16,6 +16,23 @@
       "message": "Looks good to me, hope JunHyukLim you have tested the code also?",
       "revId": "850fdfcbfb4cb33cce7ac994d5b203efa8422a23",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e4ace9_5c095bc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-08-05T07:33:20Z",
+      "side": 1,
+      "message": "Can you add Issue-ID along with `AIMLFW-114` to the commit message?",
+      "revId": "850fdfcbfb4cb33cce7ac994d5b203efa8422a23",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
