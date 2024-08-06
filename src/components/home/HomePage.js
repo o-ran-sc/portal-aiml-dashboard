@@ -21,7 +21,7 @@ import CreateTrainingJob from './create/CreateTrainingJob';
 import StatusPageRows from './status/StatusPageRows';
 import UploadPipelineForm from './pipelines/UploadPipeline';
 import CreateFeatureGroup from './create/CreateFeatureGroup';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavbarComponent from './navbar/NavbarComponent';
 import * as CONSTANTS from './common/Constants';
 import ListFeatureGroup from './status/ListFeatureGroup';
@@ -39,14 +39,14 @@ class HomePage extends React.Component {
       <>
         <Router>
           <NavbarComponent />
-          <Switch>
+          <Routes>
             <Route path='/' exact component={Home} />
-            <Route path='/TrainingJob/CreateTrainingJob' render={() => <CreateTrainingJob logger={logger} />} />
-            <Route path='/TrainingJob/TrainingJobsStatus' render={() => <StatusPageRows logger={logger} />} />
-            <Route path='/TrainingJob/Pipeline' render={() => <UploadPipelineForm logger={logger} />} />
-            <Route path='/TrainingJob/CreateFeatureGroup' render={() => <CreateFeatureGroup logger={logger} />} />
-            <Route path='/TrainingJob/ListFeatureGroups' render={() => <ListFeatureGroup logger={logger} />} />
-          </Switch>
+            <Route path='/TrainingJob/CreateTrainingJob' element={<CreateTrainingJob logger={logger} />} />
+            <Route path='/TrainingJob/TrainingJobsStatus' element={<StatusPageRows logger={logger} />} />
+            <Route path='/TrainingJob/Pipeline' element={<UploadPipelineForm logger={logger} />} />
+            <Route path='/TrainingJob/CreateFeatureGroup' element={<CreateFeatureGroup logger={logger} />} />
+            <Route path='/TrainingJob/ListFeatureGroups' element={<ListFeatureGroup logger={logger} />} />
+          </Routes>
         </Router>
       </>
     );

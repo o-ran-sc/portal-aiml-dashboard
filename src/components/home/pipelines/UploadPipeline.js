@@ -35,18 +35,20 @@ class UploadPipelineForm extends React.Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
+
   popover = () => (
     <Popover id='popover-basic'>
-      <Popover.Title as='h3'>Field descriptions</Popover.Title>
-      <Popover.Content>
+      <Popover.Header as='h3'>Field descriptions</Popover.Header>
+      <Popover.Body>
         <strong> Training Function Name</strong>
         <br></br>
         Name of the Training Function. <br></br>
         should only contain lower or upper case alphanumerical characters and underscore <br></br>
         <br></br>
-      </Popover.Content>
+      </Popover.Body>
     </Popover>
   );
+
   handleInputChange(event) {
     console.log(event);
     this.setState({

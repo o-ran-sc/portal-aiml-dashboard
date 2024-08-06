@@ -29,8 +29,8 @@ class CreateTrainingJob extends React.Component {
   }
   popover = () => (
     <Popover id='popover-basic'>
-      <Popover.Title as='h3'>Field descriptions</Popover.Title>
-      <Popover.Content>
+      <Popover.Header as='h3'>Field descriptions</Popover.Header>
+      <Popover.Body>
         <strong>Training Job Name</strong>
         <br></br>
         Name of the Training Job. <br></br>
@@ -70,7 +70,7 @@ class CreateTrainingJob extends React.Component {
         <br></br>
         Description of Training-job
         <br></br>
-      </Popover.Content>
+      </Popover.Body>
     </Popover>
   );
 

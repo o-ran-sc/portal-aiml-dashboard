@@ -28,8 +28,8 @@ class CreateFeatureGroup extends React.Component {
   }
   popover = () => (
     <Popover id='popover-basic'>
-      <Popover.Title as='h3'>Field descriptions</Popover.Title>
-      <Popover.Content>
+      <Popover.Header as='h3'>Field descriptions</Popover.Header>
+      <Popover.Body>
         <strong>Feature Group Name</strong>
         <br></br>
         Name of the Feature Group<br></br>
@@ -51,7 +51,7 @@ class CreateFeatureGroup extends React.Component {
         <br></br>
         Select DME to add the dme job info like SourceName, Measured Obj Class and dmePort.
         <br></br>
-      </Popover.Content>
+      </Popover.Body>
     </Popover>
   );
   render() {
