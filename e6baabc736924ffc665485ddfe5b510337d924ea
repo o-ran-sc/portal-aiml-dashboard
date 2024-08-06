@@ -1,0 +1,8 @@
+Verified+1: ORAN Required GHA <releng+oran.required.gha@linuxfoundation.org>
+Code-Review+2: Taewan Kim <t25.kim@samsung.com>
+Verified+1: ORAN Jobbuilder <releng+oran-jobbuilder@linuxfoundation.org>
+Submitted-by: Taewan Kim <t25.kim@samsung.com>
+Submitted-at: Tue, 06 Aug 2024 06:11:36 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/portal/aiml-dashboard/+/13220
+Project: portal/aiml-dashboard
+Branch: refs/heads/master
