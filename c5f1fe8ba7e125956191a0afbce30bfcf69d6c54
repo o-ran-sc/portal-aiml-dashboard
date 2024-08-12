@@ -1,0 +1,10 @@
+Code-Review+2: subhash kumar singh <subh.singh@samsung.com>
+Verified+1: ORAN Required GHA <releng+oran.required.gha@linuxfoundation.org>
+Verified+1: ORAN Jobbuilder <releng+oran-jobbuilder@linuxfoundation.org>
+Verified+1: Taewan Kim <t25.kim@samsung.com>
+Code-Review+2: Taewan Kim <t25.kim@samsung.com>
+Submitted-by: Taewan Kim <t25.kim@samsung.com>
+Submitted-at: Mon, 12 Aug 2024 07:30:47 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/portal/aiml-dashboard/+/13257
+Project: portal/aiml-dashboard
+Branch: refs/heads/master
