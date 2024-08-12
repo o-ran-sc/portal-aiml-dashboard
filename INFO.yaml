@@ -34,10 +34,10 @@ repositories:
     - portal/aiml-dashboard
 committers:
     - <<: *oran_aiml_fw_ptl
-    - name: 'Varadarajan Seenivasan'
-      email: 'varada.s@samsung.com'
+    - name: 'Rajdeep Singh'
+      email: 'rajdeep.sin@samsung.com'
       company: 'Samsung Electronics'
-      id: 'srivarada'
+      id: 'rajdeep11'
       timezone: 'Asia/Seoul'
     - name: 'Ashish Jain'
       email: 'jain.ashish@samsung.com'
