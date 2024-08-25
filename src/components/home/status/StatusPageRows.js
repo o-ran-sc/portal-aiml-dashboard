@@ -28,14 +28,17 @@ import TrainingJobInfo from './TrainingJobInfo';
 import { invokeStartTraining, deleteTrainingjobs } from './API_STATUS';
 import StepsState from './StepsState';
 import CreateOrEditTrainingJobForm from '../form/CreateOrEditTrainingJobForm';
+import CreateTrainingJob from '../create/CreateTrainingJob';
 
 const StatusPageRows = props => {
   const logger = props.logger;
   const [trainingJobs, setTrainingJobs] = useState([]);
+  const [createPopup, setCreatePopup] = useState(false); // Create 팝업 상태 추가
   const [editPopup, setEditPopup] = useState(false);
   const [versionForEditPopup, setVersionForEditPopup] = useState(null);
   const [traingingjobNameForEditPopup, setTraingingjobNameForEditPopup] = useState(null);
   const closeEditPopup = () => setEditPopup(false);
+  const closeCreatePopup = () => setCreatePopup(false); // Create 팝업 닫기 함수
   const [stepsStatePopup, setStepsStatePopup] = useState(false);
   const [stepsStateTrainingJobAndVersion, setStepsStateTrainingJobNameAndVersion] = useState(null);
   const closeStepsStatePopup = () => setStepsStatePopup(false);
@@ -89,6 +92,11 @@ const StatusPageRows = props => {
     } else {
       alert('Please select atleast one trainingjob');
     }
+  };
+
+  // Create 팝업
+  const handleCreate = event => {
+    setCreatePopup(true);
   };
 
   const handleEdit = event => {
@@ -213,6 +221,9 @@ const StatusPageRows = props => {
 
   return (
     <>
+      <Button variant='success' size='sm' onClick={e => handleCreate(e)}>
+        Create
+      </Button>{' '}
       <Button variant='success' size='sm' onClick={e => handleEdit(e)}>
         Edit
       </Button>{' '}
@@ -246,6 +257,10 @@ const StatusPageRows = props => {
           })}
         </tbody>
       </BTable>
+      {/* Create 팝업 */}
+      <Popup show={createPopup} onHide={closeCreatePopup} title='Create Training Job'>
+        <CreateTrainingJob logger={logger} fetchTrainingJobs={fetchTrainingJobs} />
+      </Popup>
       <Popup show={editPopup} onHide={closeEditPopup} title='Edit usecase'>
         <CreateOrEditTrainingJobForm
           trainingjob_name={traingingjobNameForEditPopup}
