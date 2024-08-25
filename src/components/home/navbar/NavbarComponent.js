@@ -16,12 +16,15 @@
 
 // ==================================================================================
 
-import React from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Container, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
+import { ThemeContext } from '../../../ThemeContext';
 import './NavbarComponent.css';
+
 function NavbarComponent() {
+  const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
   return (
-    <Navbar bg='primary' variant='dark' className='nav-bar'>
+    <Navbar bg={isDarkMode ? 'dark' : 'primary'} variant='dark' className='nav-bar'>
       <Container>
         <Navbar.Brand href='/'>AI/ML Management Dashboard</Navbar.Brand>
         <Nav>
@@ -32,6 +35,9 @@ function NavbarComponent() {
             <NavDropdown.Item href='/TrainingJob/CreateFeatureGroup'>Create Feature Group</NavDropdown.Item>
             <NavDropdown.Item href='/TrainingJob/ListFeatureGroups'>List Feature Group</NavDropdown.Item>
           </NavDropdown>
+          <Button onClick={toggleDarkMode} variant={isDarkMode ? 'light' : 'dark'}>
+            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+          </Button>
         </Nav>
       </Container>
     </Navbar>

@@ -18,14 +18,18 @@
 
 import React from 'react';
 import './App.css';
+import { ThemeProvider } from './ThemeContext';
+
 import HomePage from './components/home/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className='App'>
-      <HomePage />
-    </div>
+    <ThemeProvider>
+      <div className='App'>
+        <HomePage />
+      </div>
+    </ThemeProvider>
   );
 }
 
