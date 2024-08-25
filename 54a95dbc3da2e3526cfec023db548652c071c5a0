@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fccb1f3a_2e501e56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-08-25T23:49:31Z",
+      "side": 1,
+      "message": "What about moving the `ThemeContext.js` file to`components/home/common`?",
+      "revId": "54a95dbc3da2e3526cfec023db548652c071c5a0",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
