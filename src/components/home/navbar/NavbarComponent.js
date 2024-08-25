@@ -16,12 +16,27 @@
 
 // ==================================================================================
 
-import React from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
 import './NavbarComponent.css';
+
 function NavbarComponent() {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('isDarkMode');
+    return savedTheme === 'true';
+  });
+
+  useEffect(() => {
+    document.body.setAttribute('data-bs-theme', isDarkMode ? 'dark' : 'light');
+    localStorage.setItem('isDarkMode', isDarkMode);
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <Navbar bg='primary' variant='dark' className='nav-bar'>
+    <Navbar className='nav-bar custom-navbar' variant='dark'>
       <Container>
         <Navbar.Brand href='/'>AI/ML Management Dashboard</Navbar.Brand>
         <Nav>
@@ -32,6 +47,9 @@ function NavbarComponent() {
             <NavDropdown.Item href='/TrainingJob/CreateFeatureGroup'>Create Feature Group</NavDropdown.Item>
             <NavDropdown.Item href='/TrainingJob/ListFeatureGroups'>List Feature Group</NavDropdown.Item>
           </NavDropdown>
+          <Button onClick={toggleDarkMode} variant={isDarkMode ? 'dark' : 'primary'}>
+            {isDarkMode ? '🌞' : '🌜'}
+          </Button>
         </Nav>
       </Container>
     </Navbar>
