@@ -25,6 +25,7 @@ import CreateOrEditTrainingJobForm from '../form/CreateOrEditTrainingJobForm';
 class CreateTrainingJob extends React.Component {
   constructor(props) {
     super(props);
+    this.fetchTrainingJobs = this.props.fetchTrainingJobs;
     this.logger = this.props.logger;
   }
   popover = () => (
@@ -83,7 +84,11 @@ class CreateTrainingJob extends React.Component {
           </Button>
         </OverlayTrigger>
 
-        <CreateOrEditTrainingJobForm isCreateTrainingJobForm={true} logger={this.logger}></CreateOrEditTrainingJobForm>
+        <CreateOrEditTrainingJobForm
+          isCreateTrainingJobForm={true}
+          logger={this.logger}
+          fetchTrainingJobs={this.fetchTrainingJobs}
+        ></CreateOrEditTrainingJobForm>
       </>
     );
   }
