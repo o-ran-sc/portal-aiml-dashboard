@@ -16,6 +16,24 @@
       "message": "Could you add the libraries when dashboard uses them in practice?\nIt\u0027s easy to add something, but hard to maintain and delete.\nIt would be nice to make a decision after seeing UI / UX with the libraries applied.",
       "revId": "33c093f54d2f3a81b76b84926dcbc8bc81887045",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2a28e0_5848fb23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002556
+      },
+      "writtenOn": "2024-08-26T10:08:35Z",
+      "side": 1,
+      "message": "Thank you for the feedback.\n\nI understand the concern about adding libraries prematurely. Based on the current needs, I plan to use most of these libraries right away. The exception is react-query, which I can hold off on until it’s confirmed necessary. I’m happy to focus on the UI/UX first and make final decisions afterward.\n\nPlease let me know if there’s anything else I should consider.",
+      "parentUuid": "2b32b72e_036c3d0d",
+      "revId": "33c093f54d2f3a81b76b84926dcbc8bc81887045",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
