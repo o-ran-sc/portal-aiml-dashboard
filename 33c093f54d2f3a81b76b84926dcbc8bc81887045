@@ -34,6 +34,24 @@
       "parentUuid": "2b32b72e_036c3d0d",
       "revId": "33c093f54d2f3a81b76b84926dcbc8bc81887045",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d0e7fc6_44d55daf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-08-27T04:40:27Z",
+      "side": 1,
+      "message": "Please keep in mind that the changeset is small and focuses on only one change.\nI look forward to your upcoming patchset!",
+      "parentUuid": "3e2a28e0_5848fb23",
+      "revId": "33c093f54d2f3a81b76b84926dcbc8bc81887045",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
