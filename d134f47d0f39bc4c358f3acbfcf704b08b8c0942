@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d948f63_28ad71d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-02T01:43:45Z",
+      "side": 1,
+      "message": "Thank you for your contribution. Please take a look at my review comments.\nThe width of modal for creation seems narrow. It would be nice to change it a little wider.\nPlease remove unnecessary comments in Korean.",
+      "revId": "d134f47d0f39bc4c358f3acbfcf704b08b8c0942",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae539f6_ee30dc3f",
+        "filename": "src/components/home/status/StatusPageRows.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-02T01:43:45Z",
+      "side": 1,
+      "message": "I think this is unnecessary.",
+      "revId": "d134f47d0f39bc4c358f3acbfcf704b08b8c0942",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b231dd_85e52011",
+        "filename": "src/components/home/status/StatusPageRows.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-02T01:43:45Z",
+      "side": 1,
+      "message": "I think this is unnecessary.",
+      "revId": "d134f47d0f39bc4c358f3acbfcf704b08b8c0942",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "989b30ce_43a98c8e",
+        "filename": "src/components/home/status/StatusPageRows.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-02T01:43:45Z",
+      "side": 1,
+      "message": "I think this is unnecessary.",
+      "revId": "d134f47d0f39bc4c358f3acbfcf704b08b8c0942",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "694a68c9_941a4a36",
+        "filename": "src/components/home/status/StatusPageRows.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-02T01:43:45Z",
+      "side": 1,
+      "message": "I think this is unnecessary.",
+      "revId": "d134f47d0f39bc4c358f3acbfcf704b08b8c0942",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
