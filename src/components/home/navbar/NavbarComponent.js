@@ -18,6 +18,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Container, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import './NavbarComponent.css';
 
 function NavbarComponent() {
@@ -48,7 +49,7 @@ function NavbarComponent() {
             <NavDropdown.Item href='/TrainingJob/ListFeatureGroups'>List Feature Group</NavDropdown.Item>
           </NavDropdown>
           <Button onClick={toggleDarkMode} variant={isDarkMode ? 'dark' : 'primary'}>
-            {isDarkMode ? '🌞' : '🌜'}
+            {isDarkMode ? <i className='bi bi-sun-fill'></i> : <i className='bi bi-moon-stars-fill'></i>}
           </Button>
         </Nav>
       </Container>
