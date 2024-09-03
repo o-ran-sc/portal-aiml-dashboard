@@ -95,3 +95,66 @@
     transform: rotate(360deg);
   }
 }
+
+body[data-bs-theme='dark'] {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+body[data-bs-theme='dark'] .App {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+body[data-bs-theme='dark'] .table > thead > tr > th {
+  background-color: var(--bs-table-bg);
+  color: var(--bs-table-color);
+}
+
+body[data-bs-theme='dark'] .table td {
+  background-color: var(--bs-table-bg);
+  border-color: var(--bs-border-color);
+  color: var(--bs-table-color);
+}
+
+body[data-bs-theme='dark'] .status-buttons {
+  color: var(--bs-btn-color);
+  background-color: var(--bs-btn-bg);
+}
+
+body[data-bs-theme='dark'] .App-header {
+  background-color: var(--bs-body-bg);
+}
+
+body[data-bs-theme='dark'] .App-link {
+  color: var(--bs-link-color);
+}
+
+body[data-bs-theme='dark'] .dynamic-button {
+  background-color: var(--bs-btn-bg);
+  color: var(--bs-btn-color);
+}
+
+body[data-bs-theme='dark'] .dynamic-text {
+  color: var(--bs-body-color);
+}
+
+body[data-bs-theme='dark'] .modal-content {
+  background-color: var(--bs-modal-content-bg);
+  color: var(--bs-modal-content-color);
+  border-color: var(--bs-border-color);
+}
+
+body[data-bs-theme='dark'] .modal-header,
+body[data-bs-theme='dark'] .modal-body {
+  background-color: #22272c;
+  border-color: #0e1114;
+}
+
+body[data-bs-theme='dark'] .modal-title {
+  color: var(--bs-modal-title-color);
+}
+
+body[data-bs-theme='dark'] .btn-close {
+  filter: invert(1);
+}

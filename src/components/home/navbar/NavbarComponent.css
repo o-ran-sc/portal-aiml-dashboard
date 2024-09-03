@@ -26,3 +26,18 @@
 .logo {
   width: 130px;
 }
+
+body[data-bs-theme='light'] .custom-navbar {
+  background-color: rgb(41, 107, 250);
+  color: white;
+}
+
+body[data-bs-theme='dark'] .custom-navbar {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-brand {
+  color: white;
+}
