@@ -16,6 +16,23 @@
       "message": "LGTM Thank you very much for your first contribution!",
       "revId": "7212aed55cf1e1a9e2f5e303db90d34a4f4f31fb",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80789fc2_43cb10e2",
+        "filename": "src/components/home/navbar/NavbarComponent.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-03T00:32:43Z",
+      "side": 1,
+      "message": "Why don\u0027t you use the icons from Bootstrap since it\u0027s free.\nhttps://icons.getbootstrap.com/#icons",
+      "revId": "7212aed55cf1e1a9e2f5e303db90d34a4f4f31fb",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
