@@ -25,14 +25,18 @@ import axios from 'axios';
 import { Checkbox } from './Checkbox';
 import Popup from './Popup';
 import FeatureGroupInfo from './FeatureGroupInfo';
+import CreateFeatureGroup from '../create/CreateFeatureGroup';
 import { deleteFeatureGroups } from './API_STATUS';
 
 const ListFeatureGroup = props => {
   const logger = props.logger;
   const [featureGroups, setFeatureGroups] = useState([]);
   const [infoPopup, setInfoPopup] = useState(false);
+  const [createPopup, setCreatePopup] = useState(false);
   const closeInfoPopup = () => setInfoPopup(false);
+  const closeCreatePopup = () => setCreatePopup(false);
   const [featureGroupName, setFeatureGroupName] = useState(null);
+
   useEffect(() => {
     logger('useEffect');
     fetchFeatureGroups();
@@ -53,6 +57,11 @@ const ListFeatureGroup = props => {
       console.error(e);
     }
   };
+
+  const handleCreateClick = () => {
+    setCreatePopup(true);
+  };
+
   const handleInfoClick = featuregroup_name => {
     console.log('feature group name is : ', featuregroup_name);
     setFeatureGroupName({
@@ -154,6 +163,9 @@ const ListFeatureGroup = props => {
   );
   return (
     <>
+      <Button variant='success' size='sm' onClick={handleCreateClick}>
+        Create
+      </Button>{' '}
       <Button variant='success' size='sm' onClick={e => handleDelete(e)}>
         Delete
       </Button>{' '}
@@ -180,6 +192,9 @@ const ListFeatureGroup = props => {
           })}
         </tbody>
       </BTable>
+      <Popup show={createPopup} onHide={closeCreatePopup} title='Create Feature Group' size='lg'>
+        <CreateFeatureGroup logger={logger} />
+      </Popup>
       <Popup show={infoPopup} onHide={closeInfoPopup} title='Feature Group Info'>
         <FeatureGroupInfo featureGroupName={featureGroupName} />
       </Popup>
