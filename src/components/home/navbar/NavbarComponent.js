@@ -41,12 +41,10 @@ function NavbarComponent() {
       <Container>
         <Navbar.Brand href='/'>AI/ML Management Dashboard</Navbar.Brand>
         <Nav>
-          <NavDropdown title='Training Jobs' className='nav-drop-down'>
-            <NavDropdown.Item href='/TrainingJob/CreateTrainingJob'>Create Training Job</NavDropdown.Item>
-            <NavDropdown.Item href='/TrainingJob/TrainingJobsStatus'>Training Job Status</NavDropdown.Item>
-            <NavDropdown.Item href='/TrainingJob/Pipeline'>Training function</NavDropdown.Item>
-            <NavDropdown.Item href='/TrainingJob/CreateFeatureGroup'>Create Feature Group</NavDropdown.Item>
-            <NavDropdown.Item href='/TrainingJob/ListFeatureGroups'>List Feature Group</NavDropdown.Item>
+          <NavDropdown title="Menu" className="nav-drop-down">
+            <NavDropdown.Item href="/TrainingJob/TrainingJobsStatus">Training Job</NavDropdown.Item>
+            <NavDropdown.Item href="/TrainingJob/Pipeline">Training Function</NavDropdown.Item>
+            <NavDropdown.Item href="/TrainingJob/ListFeatureGroups">Feature Group</NavDropdown.Item>
           </NavDropdown>
           <Button onClick={toggleDarkMode} variant={isDarkMode ? 'dark' : 'primary'}>
             {isDarkMode ? <i className='bi bi-sun-fill'></i> : <i className='bi bi-moon-stars-fill'></i>}
