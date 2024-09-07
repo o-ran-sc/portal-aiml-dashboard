@@ -19,14 +19,14 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
-import * as CONSTANTS from '../common/Constants';
 import './CreateOrEditTrainingJobForm.css';
 import {
   getDatalakeNameWithoutConversion,
   convertDatalakeDBName,
   convertToCommaSeparatedString,
 } from '../common/CommonMethods';
+import { instance, UCMgr_baseUrl } from '../../../states';
+import { pipelineAPI } from '../../../apis/pipeline';
 
 class CreateTrainingJob extends React.Component {
   constructor(props) {
@@ -46,7 +46,7 @@ class CreateTrainingJob extends React.Component {
       plList: [],
       expList: [],
       featureGroupList: [],
-      UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
+      UCMgr_baseUrl: UCMgr_baseUrl,
       plVerList: [],
       plVerName: '',
       plVerDescription: '',
@@ -91,8 +91,8 @@ class CreateTrainingJob extends React.Component {
       }
     };
     if (!this.props.isCreateTrainingJobForm) {
-      axios
-        .get(`${CONSTANTS.UCMgr_baseUrl}/trainingjobs/${this.props.trainingjob_name}/${this.props.version}`)
+      instance
+        .get(`/trainingjobs/${this.props.trainingjob_name}/${this.props.version}`)
         .then(result => {
           console.log('from result is: ', result.data.trainingjob);
           this.setState(
@@ -110,7 +110,7 @@ class CreateTrainingJob extends React.Component {
               plList: [],
               expList: [],
               featureGroupList: [],
-              UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
+              UCMgr_baseUrl: UCMgr_baseUrl,
               plVerList: [],
               plVerName: result.data.trainingjob.pipeline_version,
               plVerDescription: '',
@@ -131,11 +131,10 @@ class CreateTrainingJob extends React.Component {
   }
 
   fetchPipelines() {
-    axios
-      .get(this.state.UCMgr_baseUrl + '/pipelines')
+    pipelineAPI
+      .getPipelines()
       .then(res => {
         this.logger('Server reponded pl', res.data.pipeline_names);
-        //setState because this is async response from axios, so re-render
         this.setState(
           {
             plList: res.data.pipeline_names,
@@ -212,11 +211,10 @@ class CreateTrainingJob extends React.Component {
   }
 
   fetchPipelineVersions(pipeline_name, shouldGetLatestVersion) {
-    axios
-      .get(`${this.state.UCMgr_baseUrl}/pipelines/${pipeline_name}/versions`)
+    instance
+      .get(`/pipelines/${pipeline_name}/versions`)
       .then(res => {
         this.logger('Server reponded pipeline versions list', res.data.versions_list);
-        //setState because this is async response from axios, so re-render
         this.setState(
           {
             plVerList: res.data.versions_list,
@@ -242,11 +240,10 @@ class CreateTrainingJob extends React.Component {
   }
 
   fetchExperiments() {
-    axios
-      .get(this.state.UCMgr_baseUrl + '/experiments')
+    instance
+      .get('/experiments')
       .then(res => {
         this.logger('Server reponded exp', res.data.experiment_names);
-        //setState because this is async response from axios, so re-render
         this.setState(
           {
             expList: res.data.experiment_names,
@@ -277,11 +274,10 @@ class CreateTrainingJob extends React.Component {
   }
 
   fetchFeatureGroups() {
-    axios
-      .get(this.state.UCMgr_baseUrl + '/featureGroup')
+    instance
+      .get('/featureGroup')
       .then(res => {
         this.logger('Server reponded FG', res.data.featuregroups);
-        //setState because this is async response from axios, so re-render
         this.setState(
           {
             featureGroupList: res.data.featuregroups,
@@ -360,8 +356,8 @@ class CreateTrainingJob extends React.Component {
     let hyperParamsDict = this.buildHyperparamsDict(this.state.hyparams);
     let convertedDatalakeDBName = convertDatalakeDBName(this.state.datalakeSourceName);
     this.logger('Add New Request is posted at ' + this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName);
-    axios
-      .post(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName, {
+    instance
+      .post('/trainingjobs/' + this.state.ucName, {
         trainingjob_name: this.state.ucName,
         is_mme: this.state.isMme,
         model_name: this.state.modelName,
@@ -391,8 +387,8 @@ class CreateTrainingJob extends React.Component {
     let hyperParamsDict = this.buildHyperparamsDict(this.state.hyparams);
     let convertedDatalakeDBName = convertDatalakeDBName(this.state.datalakeSourceName);
     this.logger('Add New Request is posted at ' + this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName);
-    axios
-      .put(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName, {
+    instance
+      .put('/trainingjobs/' + this.state.ucName, {
         trainingjob_name: this.state.ucName,
         is_mme: this.state.isMme,
         model_name: this.state.modelName,
@@ -425,8 +421,8 @@ class CreateTrainingJob extends React.Component {
 
   invokeStartTrainingForCreate(event) {
     this.logger('Training called ');
-    axios
-      .post(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName + '/training', {
+    instance
+      .post('/trainingjobs/' + this.state.ucName + '/training', {
         trainingjobs: this.state.ucName,
       })
       .then(res => {
@@ -447,8 +443,8 @@ class CreateTrainingJob extends React.Component {
 
   invokeStartTrainingForEdit(event) {
     this.logger('Training called ');
-    axios
-      .post(this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName + '/training', {
+    instance
+      .post('/trainingjobs/' + this.state.ucName + '/training', {
         trainingjobs: this.state.ucName,
       })
       .then(res => {

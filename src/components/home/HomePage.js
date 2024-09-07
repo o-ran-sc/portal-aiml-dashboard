@@ -23,10 +23,10 @@ import UploadPipelineForm from './pipelines/UploadPipeline';
 import CreateFeatureGroup from './create/CreateFeatureGroup';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavbarComponent from './navbar/NavbarComponent';
-import * as CONSTANTS from './common/Constants';
 import ListFeatureGroup from './status/ListFeatureGroup';
+import { debug_var } from '../../states';
 
-var DEBUG = CONSTANTS.debug_var === 'true';
+var DEBUG = debug_var === 'true';
 var logger = function () {
   if (DEBUG) {
     console.log.apply(console, arguments);

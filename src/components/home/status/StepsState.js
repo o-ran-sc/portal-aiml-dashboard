@@ -17,9 +17,9 @@
 // ==================================================================================
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './StepsState.css';
-import { UCMgr_baseUrl } from '../common/Constants';
+import { UCMgr_baseUrl } from '../../../states';
+import { trainingJobAPI } from '../../../apis/training-job';
 
 const StepsState = props => {
   const [boxesState, setBoxesState] = useState([]);
@@ -29,9 +29,12 @@ const StepsState = props => {
     const periodicTask = async () => {
       let res = null;
       try {
-        res = await axios.get(
-          `${UCMgr_baseUrl}/trainingjobs/${props.trainingjob_name_and_version.trainingjob_name}/${props.trainingjob_name_and_version.version}/steps_state`,
-        );
+        res = await trainingJobAPI.getTrainingJobStepsState({
+          params: {
+            trainingJobName: props.trainingjob_name_and_version.trainingjob_name,
+            trainingJobVersion: props.trainingjob_name_and_version.version,
+          },
+        });
       } catch (error) {
         console.log(error);
       }
