@@ -20,13 +20,13 @@ import React, { useMemo, useState, useEffect } from 'react';
 import BTable from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useTable, useRowSelect } from 'react-table';
-import { UCMgr_baseUrl } from '../common/Constants';
-import axios from 'axios';
 import { Checkbox } from './Checkbox';
 import Popup from './Popup';
 import FeatureGroupInfo from './FeatureGroupInfo';
 import CreateFeatureGroup from '../create/CreateFeatureGroup';
 import { deleteFeatureGroups } from './API_STATUS';
+import { UCMgr_baseUrl } from '../../../states';
+import { featureGroupAPI } from '../../../apis/feature-group';
 
 const ListFeatureGroup = props => {
   const logger = props.logger;
@@ -49,7 +49,7 @@ const ListFeatureGroup = props => {
   const fetchFeatureGroups = async () => {
     logger('fetchFeatureGroup UCMgr_baseUrl', UCMgr_baseUrl);
     try {
-      const result = await axios.get(`${UCMgr_baseUrl}/featureGroup`);
+      const result = await featureGroupAPI.getAllFeatureGroup();
       logger('fetchFeatureGroup Result', result);
       logger('feature groups are --> ', result.data.featuregroups);
       setFeatureGroups(result.data.featuregroups);
