@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "091049b9_945eeec9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T14:26:17Z",
+      "side": 1,
+      "message": "I found that deleting the list from trainingjobs and featuregroup does not work correctly. Please take a look at my review comments.",
+      "revId": "9983aa849bdf39f66cc7455903baaff447fc1805",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d4277d_2ac725f9",
+        "filename": "src/apis/feature-group.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T14:26:17Z",
+      "side": 1,
+      "message": "I think this line should be implemented like below.\n\n`return await instance.delete(\u0027/featureGroup\u0027, { data: data });`",
+      "revId": "9983aa849bdf39f66cc7455903baaff447fc1805",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2368db63_629508a1",
+        "filename": "src/apis/training-job.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T14:26:17Z",
+      "side": 1,
+      "message": "I think this line should be modified like below.\n\n`return await instance.delete(\u0027/trainingjobs\u0027, { data: data });`",
+      "revId": "9983aa849bdf39f66cc7455903baaff447fc1805",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
