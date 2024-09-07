@@ -18,8 +18,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
-import axios from 'axios';
-import { UCMgr_baseUrl } from '../common/Constants';
+import { UCMgr_baseUrl } from '../../../states';
+import { featureGroupAPI } from '../../../apis/feature-group';
 
 const FeatureGroupInfo = props => {
   const [featureGroupName, setFeatureGroupName] = useState('');
@@ -38,8 +38,8 @@ const FeatureGroupInfo = props => {
 
   useEffect(() => {
     try {
-      axios
-        .get(`${UCMgr_baseUrl}/featureGroup/${props.featureGroupName.featureGroupName}`)
+      featureGroupAPI
+        .getFeatureGroup({ params: { featureGroupName: props.featureGroupName.featureGroupName } })
         .then(response => {
           console.log(
             `response for ${UCMgr_baseUrl}/trainingjobs/featureGroup/${props.featureGroupName.featureGroupName}`,

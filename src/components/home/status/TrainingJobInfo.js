@@ -18,9 +18,9 @@
 
 import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
-import axios from 'axios';
-import { UCMgr_baseUrl } from '../common/Constants';
 import { convertToCommaSeparatedString, getDatalakeNameWithoutConversion } from '../common/CommonMethods';
+import { UCMgr_baseUrl } from '../../../states';
+import { trainingJobAPI } from '../../../apis/training-job';
 
 const TrainingJobInfo = props => {
   const [trainingJobName, setTrainingJobName] = useState('');
@@ -42,10 +42,13 @@ const TrainingJobInfo = props => {
 
   useEffect(() => {
     try {
-      axios
-        .get(
-          `${UCMgr_baseUrl}/trainingjobs/${props.trainingjob_name_and_version.trainingjob_name}/${props.trainingjob_name_and_version.version}`,
-        )
+      trainingJobAPI
+        .getTrainingJobByNameAndVersion({
+          params: {
+            trainingJobName: props.trainingjob_name_and_version.trainingjob_name,
+            trainingJobVersion: props.trainingjob_name_and_version.version,
+          },
+        })
         .then(response => {
           console.log(
             `response for ${UCMgr_baseUrl}/trainingjobs/${props.trainingjob_name_and_version.trainingjob_name}/${props.trainingjob_name_and_version.version}`,
