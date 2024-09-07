@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "119e2198_7307acfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T11:48:22Z",
+      "side": 1,
+      "message": "It looks wonderful in terms of ease of maintenance! Please take a look at my review comments.",
+      "revId": "5cde26f333dddd3b0dd432c1c7cdec940b5c5175",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc20100_077b237b",
+        "filename": "src/apis/feature-group.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T11:48:22Z",
+      "side": 1,
+      "message": "What about naming it `getFeatureGroup`?",
+      "revId": "5cde26f333dddd3b0dd432c1c7cdec940b5c5175",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2a4755_e9d6619e",
+        "filename": "src/apis/feature-group.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T11:48:22Z",
+      "side": 1,
+      "message": "What about naming it `getFeatureGroupByName`?",
+      "revId": "5cde26f333dddd3b0dd432c1c7cdec940b5c5175",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "571ae225_b5d457d1",
+        "filename": "src/apis/training-job.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T11:48:22Z",
+      "side": 1,
+      "message": "What about naming it `invokeTrainingJobRetraining`?",
+      "revId": "5cde26f333dddd3b0dd432c1c7cdec940b5c5175",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5554efc_0df4a45d",
+        "filename": "src/states/server/axios.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T11:48:22Z",
+      "side": 1,
+      "message": "This line should be uncommented.",
+      "revId": "5cde26f333dddd3b0dd432c1c7cdec940b5c5175",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d818b80_f7cfeab0",
+        "filename": "src/states/server/axios.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T11:48:22Z",
+      "side": 1,
+      "message": "This line should be uncommented.",
+      "revId": "5cde26f333dddd3b0dd432c1c7cdec940b5c5175",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb0a159_73f073c1",
+        "filename": "src/states/server/axios.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T11:48:22Z",
+      "side": 1,
+      "message": "This line should be uncommented.",
+      "revId": "5cde26f333dddd3b0dd432c1c7cdec940b5c5175",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84a60d27_1ea48f22",
+        "filename": "src/states/server/axios.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T11:48:22Z",
+      "side": 1,
+      "message": "This line should be commented.",
+      "revId": "5cde26f333dddd3b0dd432c1c7cdec940b5c5175",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff6f57c_fdbbe9c2",
+        "filename": "src/states/server/axios.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T11:48:22Z",
+      "side": 1,
+      "message": "This line should be commented.",
+      "revId": "5cde26f333dddd3b0dd432c1c7cdec940b5c5175",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e000ba1_16dacca0",
+        "filename": "src/states/server/axios.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-07T11:48:22Z",
+      "side": 1,
+      "message": "This line should be commented.",
+      "revId": "5cde26f333dddd3b0dd432c1c7cdec940b5c5175",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
