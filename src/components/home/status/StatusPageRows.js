@@ -20,8 +20,6 @@ import React, { useMemo, useState, useEffect } from 'react';
 import BTable from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useTable, useRowSelect } from 'react-table';
-import { UCMgr_baseUrl } from '../common/Constants';
-import axios from 'axios';
 import { Checkbox } from './Checkbox';
 import Popup from './Popup';
 import TrainingJobInfo from './TrainingJobInfo';
@@ -29,6 +27,8 @@ import { invokeStartTraining, deleteTrainingjobs } from './API_STATUS';
 import StepsState from './StepsState';
 import CreateOrEditTrainingJobForm from '../form/CreateOrEditTrainingJobForm';
 import CreateTrainingJob from '../create/CreateTrainingJob';
+import { UCMgr_baseUrl } from '../../../states';
+import { trainingJobAPI } from '../../../apis/training-job';
 
 const StatusPageRows = props => {
   const logger = props.logger;
@@ -62,7 +62,7 @@ const StatusPageRows = props => {
   const fetchTrainingJobs = async () => {
     logger('fetchTrainingJobs UCMgr_baseUrl', UCMgr_baseUrl);
     try {
-      const result = await axios.get(`${UCMgr_baseUrl}/trainingjobs/latest`);
+      const result = await trainingJobAPI.getLatestTrainingJob();
       logger('fetchTrainingJobs Result', result);
       logger('Training Jobs  are --> ', result.data.trainingjobs);
       setTrainingJobs(result.data.trainingjobs);

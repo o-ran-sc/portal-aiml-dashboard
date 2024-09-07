@@ -19,10 +19,11 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
-import * as CONSTANTS from '../common/Constants';
+
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import { notebook_url, UCMgr_baseUrl } from '../../../states';
+import { pipelineAPI } from '../../../apis/pipeline';
 
 class UploadPipelineForm extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class UploadPipelineForm extends React.Component {
     this.state = {
       fileName: '',
       plName: '',
-      UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
+      UCMgr_baseUrl: UCMgr_baseUrl,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -76,11 +77,8 @@ class UploadPipelineForm extends React.Component {
     const data = new FormData();
     data.append('file', this.state.fileName);
 
-    let url = this.state.UCMgr_baseUrl + '/pipelines/' + this.state.plName + '/upload';
-
-    //Option-3
-    axios
-      .post(url, data)
+    pipelineAPI
+      .uploadPipeline({ params: { pipelineName: this.state.plName }, data })
       .then(res => {
         console.log('Pipeline  responsed ', res);
         console.log('Status  responsed ', res.status);
@@ -106,7 +104,30 @@ class UploadPipelineForm extends React.Component {
 
   handleCreatePipeline = event => {
     console.log('handleCreatePipeline clicked..', event);
-    window.open(CONSTANTS.notebook_url + '/tree', '_blank');
+    window.open(notebook_url + '/tree', '_blank');
+  };
+
+  componentDidMount() {
+    this.handleGetPipelines();
+    this.handleGetPipelinesVersion();
+  }
+
+  handleGetPipelines = async () => {
+    try {
+      const response = await pipelineAPI.getPipelines();
+      console.log('Pipelines response', response);
+    } catch (error) {
+      console.error('Error in getting pipelines', error);
+    }
+  };
+
+  handleGetPipelinesVersion = async () => {
+    try {
+      const response = await pipelineAPI.getPipelineVersions({ params: { pipelineName: this.state.plName } });
+      console.log('Pipelines version response', response);
+    } catch (err) {
+      console.error('Error in getting pipelines version', err);
+    }
   };
 
   render() {
@@ -121,7 +142,7 @@ class UploadPipelineForm extends React.Component {
           <div className='upload-pl-form'>
             <Button variant='success' size='sm' onClick={e => this.handleCreatePipeline(e)}>
               Create Training Function
-            </Button>{' '}
+            </Button>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId='plName'>
                 <Form.Label>Training Function Name*</Form.Label>

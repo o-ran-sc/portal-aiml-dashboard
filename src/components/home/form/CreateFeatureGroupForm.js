@@ -19,11 +19,11 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import * as CONSTANTS from '../common/Constants';
 import { convertDatalakeDBName } from '../common/CommonMethods';
-import axios from 'axios';
 import './CreateFeatureGroupForm.css';
 import { Row, Col } from 'react-bootstrap';
+import { instance, UCMgr_baseUrl } from '../../../states';
+import { featureGroupAPI } from '../../../apis';
 
 class CreateFeatureGroup extends React.Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class CreateFeatureGroup extends React.Component {
       dbOrg: '',
       measuredObjClass: '',
       _measurement: '',
-      UCMgr_baseUrl: CONSTANTS.UCMgr_baseUrl,
+      UCMgr_baseUrl: UCMgr_baseUrl,
     };
 
     this.regName = new RegExp('\\W+');
@@ -195,21 +195,24 @@ class CreateFeatureGroup extends React.Component {
   invokeAddFeatureGroup(event) {
     this.logger('Add New Request is posted at ' + this.state.UCMgr_baseUrl + '/featureGroup');
     let convertedDatalakeDBName = convertDatalakeDBName(this.state.dataLake);
-    axios
-      .post(this.state.UCMgr_baseUrl + '/featureGroup', {
-        featureGroupName: this.state.featureGroupName,
-        feature_list: this.state.featureNames,
-        datalake_source: convertedDatalakeDBName,
-        enable_Dme: this.state.dme,
-        Host: this.state.host,
-        Port: this.state.port,
-        dmePort: this.state.dmePort,
-        bucket: this.state.bucketName,
-        token: this.state.token,
-        source_name: this.state.sourceName,
-        measured_obj_class: this.state.measuredObjClass,
-        _measurement: this.state._measurement,
-        dbOrg: this.state.dbOrg,
+
+    featureGroupAPI
+      .createFeatureGroup({
+        data: {
+          featureGroupName: this.state.featureGroupName,
+          feature_list: this.state.featureNames,
+          datalake_source: convertedDatalakeDBName,
+          enable_Dme: this.state.dme,
+          Host: this.state.host,
+          Port: this.state.port,
+          dmePort: this.state.dmePort,
+          bucket: this.state.bucketName,
+          token: this.state.token,
+          source_name: this.state.sourceName,
+          measured_obj_class: this.state.measuredObjClass,
+          _measurement: this.state._measurement,
+          dbOrg: this.state.dbOrg,
+        },
       })
       .then(res => {
         this.logger('featureGroup Created', res.data);
