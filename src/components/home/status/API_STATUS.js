@@ -16,15 +16,13 @@
 
 // ==================================================================================
 
-import axios from 'axios';
-import * as CONSTANTS from '../common/Constants';
+import { featureGroupAPI } from '../../../apis/feature-group';
+import { trainingJobAPI } from '../../../apis/training-job';
 
 export const invokeStartTraining = async trainingjobNames => {
   console.log('Retraining called ', trainingjobNames);
   try {
-    let res = await axios.post(`${CONSTANTS.UCMgr_baseUrl}/trainingjobs/retraining`, {
-      trainingjobs_list: trainingjobNames,
-    });
+    let res = await trainingJobAPI.invokeTrainingJob({ data: { trainingjobs_list: trainingjobNames } });
     console.log('Retraining response', res);
     let result = 'Retraining initiated for selected trainingjob(s),Result' + '\n' + JSON.stringify(res.data);
     alert(result);
@@ -36,11 +34,7 @@ export const invokeStartTraining = async trainingjobNames => {
 export const deleteTrainingjobs = async deleteTJList => {
   console.log('Delete API called ', deleteTJList);
   try {
-    let res = await axios.delete(CONSTANTS.UCMgr_baseUrl + '/trainingjobs', {
-      data: {
-        list: deleteTJList,
-      },
-    });
+    const res = await trainingJobAPI.deleteTrainingJob({ data: { list: deleteTJList } });
     console.log('Delete API response', res);
     let result = 'trainingjob deletion initiated for selected trainingjob(s),Result' + '\n' + JSON.stringify(res.data);
     alert(result);
@@ -52,11 +46,7 @@ export const deleteTrainingjobs = async deleteTJList => {
 export const deleteFeatureGroups = async featureGroup_names => {
   console.log('deleting feature groups', featureGroup_names);
   try {
-    let res = await axios.delete(`${CONSTANTS.UCMgr_baseUrl}/featureGroup`, {
-      data: {
-        featuregroups_list: featureGroup_names,
-      },
-    });
+    let res = await featureGroupAPI.deleteFeatureGroup({ data: { featuregroups_list: featureGroup_names } });
     console.log('Deletion response', res);
     let result = 'FeatureGroup deletion initiated for selected featureGroups ,Result' + '\n' + JSON.stringify(res.data);
     alert(result);
