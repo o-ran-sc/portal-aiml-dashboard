@@ -22,8 +22,8 @@ import StatusPageRows from './status/StatusPageRows';
 import UploadPipelineForm from './pipelines/UploadPipeline';
 import CreateFeatureGroup from './create/CreateFeatureGroup';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NavbarComponent from './navbar/NavbarComponent';
 import ListFeatureGroup from './status/ListFeatureGroup';
+import { NavigationBar } from '../navigation';
 import { debug_var } from '../../states';
 
 var DEBUG = debug_var === 'true';
@@ -38,7 +38,7 @@ class HomePage extends React.Component {
     return (
       <>
         <Router>
-          <NavbarComponent />
+          <NavigationBar />
           <Routes>
             <Route path='/' exact component={Home} />
             <Route path='/TrainingJob/CreateTrainingJob' element={<CreateTrainingJob logger={logger} />} />
