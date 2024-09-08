@@ -22,9 +22,9 @@ import StatusPageRows from './status/StatusPageRows';
 import UploadPipelineForm from './pipelines/UploadPipeline';
 import CreateFeatureGroup from './create/CreateFeatureGroup';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NavbarComponent from './navbar/NavbarComponent';
 import * as CONSTANTS from './common/Constants';
 import ListFeatureGroup from './status/ListFeatureGroup';
+import { NavigationBar } from '../navigation';
 
 var DEBUG = CONSTANTS.debug_var === 'true';
 var logger = function () {
@@ -38,7 +38,7 @@ class HomePage extends React.Component {
     return (
       <>
         <Router>
-          <NavbarComponent />
+          <NavigationBar />
           <Routes>
             <Route path='/' exact component={Home} />
             <Route path='/TrainingJob/CreateTrainingJob' element={<CreateTrainingJob logger={logger} />} />
