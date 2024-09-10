@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7213ac64_6e8fccd7",
+        "filename": "src/components/navigation/navigation-bar.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-10T08:03:48Z",
+      "side": 1,
+      "message": "Please update the list based on the [latest change](https://github.com/o-ran-sc/portal-aiml-dashboard/commit/eda71b2641f24138a13a480b7a17789dcaa19a17).",
+      "revId": "8d62643ee0e59c3fcda6fef614524f13415712c4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
