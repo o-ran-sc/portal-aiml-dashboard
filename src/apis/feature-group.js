@@ -5,7 +5,7 @@ export const featureGroupAPI = {
     return await instance.get('/featureGroup');
   },
   getFeatureGroup: async ({ params }) => {
-    return await instance.get(`/featureGroups/${params.featureGroupName}`);
+    return await instance.get(`/featureGroup/${params.featureGroupName}`);
   },
   createFeatureGroup: async ({ data }) => {
     return await instance.post('/featureGroup', { ...data });
