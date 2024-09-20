@@ -40,6 +40,19 @@ const TrainingJobInfo = props => {
   const [modelUrl, setModelUrl] = useState('');
   const [modelInfo, setModelInfo] = useState('');
 
+  const copyToClipboard = async (event) => {
+    event.preventDefault();
+    const targetStr = modelUrl;
+    try {
+      await navigator.clipboard.writeText(targetStr);
+      console.log('Copied:', targetStr);
+      alert('Model Url Copied');
+    } catch (err) {
+      console.error('Copy Failed:', err);
+      alert('Copy Failed');
+    }
+  };
+
   useEffect(() => {
     try {
       trainingJobAPI
@@ -151,8 +164,23 @@ const TrainingJobInfo = props => {
           <Form.Control type='text' value={datalakeSource} readOnly />
         </Form.Group>
         <Form.Group controlId='modelUrl'>
-          <Form.Label>Model URL</Form.Label>
-          <Form.Control type='text' value={modelUrl} readOnly />
+          <Form.Label>
+            Model URL
+          </Form.Label>
+      	  <br/>
+      	  <Form.Label>
+      	    <span className='px-1'> {modelUrl} </span>
+      	    <span className='mx-2'>
+      	      <a href={modelUrl} download>
+      	        <i className='bi bi-arrow-down-square' style={{ color: 'blue'}}></i>
+      	      </a>
+      	    </span>
+      	    <span>
+              <button onClick={copyToClipboard} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+                <i className='bi bi-copy' style={{ color: 'blue'}}></i>
+              </button>
+      	    </span>
+      	  </Form.Label>
         </Form.Group>
       </Form>
     </>
