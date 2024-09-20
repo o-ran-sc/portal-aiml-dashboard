@@ -151,8 +151,18 @@ const TrainingJobInfo = props => {
           <Form.Control type='text' value={datalakeSource} readOnly />
         </Form.Group>
         <Form.Group controlId='modelUrl'>
-          <Form.Label>Model URL</Form.Label>
-          <Form.Control type='text' value={modelUrl} readOnly />
+          <Form.Label>
+            Model URL
+          </Form.Label>
+      	  <br/>
+      	  <Form.Label>
+      	    <span className='px-1'> {modelUrl} </span>
+      	    <span className='mx-2'>
+      	      <a href={modelUrl} download>
+      	        <i className='bi bi-arrow-down-square' style={{ color: 'blue'}}></i>
+      	      </a>
+      	    </span>
+      	  </Form.Label>
         </Form.Group>
       </Form>
     </>
