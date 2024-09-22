@@ -5,9 +5,9 @@ export const pipelineAPI = {
     return await instance.get('/pipelines');
   },
   getPipelineVersions: async ({ params }) => {
-    return await instance.get(`/pipelines/${params.pipelineName}/versions`);
+    return await instance.get(`/pipelines/${params.pipelineName ?? '/'}versions`);
   },
   uploadPipeline: async ({ params, data }) => {
-    return await instance.post(`/pipelines/${params.pipelineName}/upload`, { ...data });
+    return await instance.post(`/pipelines/${params.pipelineName ?? '/'}upload`, { ...data });
   },
 };

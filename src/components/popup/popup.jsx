@@ -19,7 +19,7 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 
-function Popup(props) {
+export function Popup(props) {
   return (
     <>
       <Modal
