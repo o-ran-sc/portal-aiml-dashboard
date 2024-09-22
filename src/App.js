@@ -18,14 +18,41 @@
 
 import React from 'react';
 import './App.css';
-import HomePage from './components/home/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { debug_var } from './states';
+import {
+  CreateFeatureGroupPage,
+  CreateTrainingJobPage,
+  FeatureGroupListPage,
+  HomePage,
+  NotFoundPage,
+  TrainingJobStatusPage,
+  UploadPipelinePage,
+} from './pages';
+import NavbarComponent from './components/home/navbar/NavbarComponent';
+
+const DEBUG = debug_var === 'true';
+const logger = () => {
+  if (DEBUG) {
+    console.log.apply(console, arguments);
+  }
+};
 
 function App() {
   return (
-    <div className='App'>
-      <HomePage />
-    </div>
+    <BrowserRouter>
+      <NavbarComponent />
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/TrainingJob/CreateTrainingJob' element={<CreateTrainingJobPage logger={logger} />} />
+        <Route path='/TrainingJob/TrainingJobsStatus' element={<TrainingJobStatusPage logger={logger} />} />
+        <Route path='/TrainingJob/Pipeline' element={<UploadPipelinePage logger={logger} />} />
+        <Route path='/TrainingJob/CreateFeatureGroup' element={<CreateFeatureGroupPage logger={logger} />} />
+        <Route path='/TrainingJob/ListFeatureGroups' element={<FeatureGroupListPage logger={logger} />} />
+        <Route path='*' element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
