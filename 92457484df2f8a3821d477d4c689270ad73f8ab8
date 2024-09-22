@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f96eb8_6eb156fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2024-09-22T15:07:02Z",
+      "side": 1,
+      "message": "Thank you for the contribution. \nThe download button works good. \nHowever, the function to copy modelURL to clipboard does not work properly due to the error below.\n```\nCopy Failed: TypeError: navigator.clipboard is undefined\n    onClick TrainingJobInfo.js:46\n```",
+      "revId": "92457484df2f8a3821d477d4c689270ad73f8ab8",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
