@@ -20,13 +20,14 @@ import React, { useMemo, useState, useEffect } from 'react';
 import BTable from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useTable, useRowSelect } from 'react-table';
-import { Checkbox } from './Checkbox';
-import Popup from './Popup';
+
+import { Checkbox, Popup } from '../../../components';
+import { UCMgr_baseUrl } from '../../../states';
+import { featureGroupAPI } from '../../../apis';
+
 import FeatureGroupInfo from './FeatureGroupInfo';
 import CreateFeatureGroup from '../create/CreateFeatureGroup';
 import { deleteFeatureGroups } from './API_STATUS';
-import { UCMgr_baseUrl } from '../../../states';
-import { featureGroupAPI } from '../../../apis/feature-group';
 
 const ListFeatureGroup = props => {
   const logger = props.logger;

@@ -20,15 +20,14 @@ import React, { useMemo, useState, useEffect } from 'react';
 import BTable from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useTable, useRowSelect } from 'react-table';
-import { Checkbox } from './Checkbox';
-import Popup from './Popup';
-import TrainingJobInfo from './TrainingJobInfo';
+
+import { Checkbox, Popup, StepsState, TrainingJobInfo } from '../../../components';
+import { UCMgr_baseUrl } from '../../../states';
+import { trainingJobAPI } from '../../../apis';
+
 import { invokeStartTraining, deleteTrainingjobs } from './API_STATUS';
-import StepsState from './StepsState';
 import CreateOrEditTrainingJobForm from '../form/CreateOrEditTrainingJobForm';
 import CreateTrainingJob from '../create/CreateTrainingJob';
-import { UCMgr_baseUrl } from '../../../states';
-import { trainingJobAPI } from '../../../apis/training-job';
 
 const StatusPageRows = props => {
   const logger = props.logger;
