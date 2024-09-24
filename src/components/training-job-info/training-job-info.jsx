@@ -18,11 +18,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
-import { convertToCommaSeparatedString, getDatalakeNameWithoutConversion } from '../common/CommonMethods';
-import { UCMgr_baseUrl } from '../../../states';
-import { trainingJobAPI } from '../../../apis/training-job';
 
-const TrainingJobInfo = props => {
+import { UCMgr_baseUrl } from '../../states';
+import { trainingJobAPI } from '../../apis';
+
+import { convertToCommaSeparatedString, getDatalakeNameWithoutConversion } from '../home/common/CommonMethods';
+
+export const TrainingJobInfo = props => {
   const [trainingJobName, setTrainingJobName] = useState('');
   const [isMme, setIsMme] = useState(false);
   const [modelName, setModelName] = useState('');

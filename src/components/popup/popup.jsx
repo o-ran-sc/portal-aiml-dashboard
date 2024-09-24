@@ -17,18 +17,15 @@
 // ==================================================================================
 
 import React from 'react';
+import { Modal } from 'react-bootstrap';
 
-export const Checkbox = React.forwardRef(({ indeterminate, ...rest }, ref) => {
-  const defaultRef = React.useRef();
-  const resolvedRef = ref || defaultRef;
-
-  React.useEffect(() => {
-    resolvedRef.current.indeterminate = indeterminate;
-  }, [resolvedRef, indeterminate]);
-
+export const Popup = props => {
   return (
-    <>
-      <input type='checkbox' ref={resolvedRef} {...rest} />
-    </>
+    <Modal show={props.show} onHide={props.onHide} size={props.hasOwnProperty('size') ? props.size : 'medium'} centered>
+      <Modal.Header closeButton>
+        <Modal.Title>{props.title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{props.children}</Modal.Body>
+    </Modal>
   );
-});
+};
