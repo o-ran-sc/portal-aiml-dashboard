@@ -33,6 +33,23 @@
       "message": "looks good to me",
       "revId": "f4ea99c548e5cbc7606fc3597e3b76a6c7fe74bb",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "649aa754_be2fe85e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2024-09-24T06:48:33Z",
+      "side": 1,
+      "message": "One thing, Sangwi Kang, the download button appears even when the training fails in this case no model URL is there. Please add an if case to resolve that.",
+      "revId": "f4ea99c548e5cbc7606fc3597e3b76a6c7fe74bb",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ],
   "submitRequirementResults": [
