@@ -17,11 +17,12 @@
 // ==================================================================================
 
 import React, { useEffect, useState } from 'react';
-import './StepsState.css';
-import { UCMgr_baseUrl } from '../../../states';
-import { trainingJobAPI } from '../../../apis/training-job';
+import './steps-state.css';
 
-const StepsState = props => {
+import { UCMgr_baseUrl } from '../../states';
+import { trainingJobAPI } from '../../apis';
+
+export const StepsState = props => {
   const [boxesState, setBoxesState] = useState([]);
   const [connectionsState, setConnectionsState] = useState([]);
   const [boxes, setBoxes] = useState([]);
