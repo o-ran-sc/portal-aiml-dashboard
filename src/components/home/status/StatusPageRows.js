@@ -257,7 +257,7 @@ const StatusPageRows = props => {
         </tbody>
       </BTable>
       <Popup show={createPopup} onHide={closeCreatePopup} title='Create Training Job' size='lg'>
-        <CreateTrainingJob logger={logger} fetchTrainingJobs={fetchTrainingJobs} />
+        <CreateTrainingJob logger={logger} onHideCreatePopup={closeCreatePopup} fetchTrainingJobs={fetchTrainingJobs} />
       </Popup>
       <Popup show={editPopup} onHide={closeEditPopup} title='Edit usecase'>
         <CreateOrEditTrainingJobForm
