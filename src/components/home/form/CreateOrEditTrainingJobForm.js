@@ -134,10 +134,10 @@ class CreateTrainingJob extends React.Component {
     pipelineAPI
       .getPipelines()
       .then(res => {
-        this.logger('Server reponded pl', res.data.pipeline_names);
+        this.logger('Server reponded pl', res.data);
         this.setState(
           {
-            plList: res.data.pipeline_names,
+            plList: res.data.pipelines,
           },
           () => {
             let shouldChangePlName = true;
@@ -746,8 +746,8 @@ class CreateTrainingJob extends React.Component {
                         --- Select Training Function ---{' '}
                       </option>
                       {this.state.plList.map(data => (
-                        <option key={data} value={data}>
-                          {data}
+                        <option key={data.display_name} value={data.display_name}>
+                          {data.display_name}
                         </option>
                       ))}
                     </Form.Control>
