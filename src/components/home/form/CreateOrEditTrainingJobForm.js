@@ -430,6 +430,8 @@ class CreateTrainingJob extends React.Component {
         if (res.status === 200) {
           alert('Training Job created and training initiated');
           this.resetFrom();
+          this.props.onHideCreatePopup();
+          this.props.fetchTrainingJobs();
         }
       })
       .catch(error => {

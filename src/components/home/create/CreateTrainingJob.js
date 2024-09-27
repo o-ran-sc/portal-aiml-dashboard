@@ -87,6 +87,7 @@ class CreateTrainingJob extends React.Component {
         <CreateOrEditTrainingJobForm
           isCreateTrainingJobForm={true}
           logger={this.logger}
+          onHideCreatePopup={this.props.onHideCreatePopup}
           fetchTrainingJobs={this.fetchTrainingJobs}
         ></CreateOrEditTrainingJobForm>
       </>
