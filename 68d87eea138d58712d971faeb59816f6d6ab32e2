@@ -16,6 +16,23 @@
       "message": "Please exclude `src/states/server/axios.js` file. Thank you!",
       "revId": "68d87eea138d58712d971faeb59816f6d6ab32e2",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6e41d1e_fd38b6c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2024-09-27T05:50:03Z",
+      "side": 1,
+      "message": "Please resolve the merge conflict.",
+      "revId": "68d87eea138d58712d971faeb59816f6d6ab32e2",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
