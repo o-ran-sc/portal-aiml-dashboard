@@ -16,24 +16,27 @@
 
 // ==================================================================================
 
-import { NavDropdown } from 'react-bootstrap';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import React from 'react';
+import { Row, Col } from 'react-bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './navigation-bar.css';
-import { useTheme } from '../../hooks';
-import { ThemeToggleButton } from '../button';
+import './sidebar.css';
 
-export const NavigationBar = () => {
-  const [theme, toggleTheme] = useTheme();
+export const Sidebar = () => {
+  const isActive = (path) => location.pathname === path ? 'active' : '';
 
   return (
-    <Navbar className='nav-bar custom-navbar' variant='dark'>
-      <Container>
-        <Navbar.Brand href='/'>AI/ML Management Dashboard</Navbar.Brand>
-        <Nav>
-          <ThemeToggleButton theme={theme} toggleTheme={toggleTheme} />
-        </Nav>
-      </Container>
-    </Navbar>
+    <Row className="sidebar-row">
+      <Col xs={12} style={{ padding: '0px 30px' }}>
+        <a href="/TrainingJob/TrainingJobsStatus" className={`sidebar-link ${isActive('/TrainingJob/TrainingJobsStatus')}`}>
+          <i className="bi bi-gear-fill"></i> Training Jobs
+        </a>
+        <a href="/TrainingJob/Pipeline" className={`sidebar-link ${isActive('/TrainingJob/Pipeline')}`}>
+          <i className="bi bi-bar-chart-fill"></i> Training Function
+        </a>
+        <a href="/TrainingJob/ListFeatureGroups" className={`sidebar-link ${isActive('/TrainingJob/ListFeatureGroups')}`}>
+          <i className="bi bi-folder-fill"></i> Feature Group
+        </a>
+      </Col>
+    </Row>
   );
 };
