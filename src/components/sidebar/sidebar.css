@@ -15,32 +15,36 @@
     limitations under the License.
 
  ================================================================================== */
-.nav-bar {
-  padding: 30px 0px !important;
-}
 
-.nav-bar .container {
-  max-width: calc(100vw - 120px);
+.sidebar-link {
+  display: block;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: black;
+  text-decoration: none;
   font-weight: bold;
 }
 
-.nav-bar .container a{
-  color: black;
+.sidebar-link:hover {
+  background-color: #ddd;
+  border-radius: 5px;
 }
 
-.nav-drop-down {
-  font-size: large;
+.active {
+  background-color: #6282f6 !important;
+  color: white;
+  border-radius: 5px;
 }
 
-.logo {
-  width: 130px;
-}
-
-body[data-bs-theme='dark'] .nav-bar .container a {
+body[data-bs-theme='dark'] .sidebar-link {
   color: white;
 }
 
-.navbar-dark .navbar-nav .nav-link,
-.navbar-dark .navbar-brand {
+body[data-bs-theme='dark'] .sidebar-link:hover {
+  background-color: #1a1a1a;
   color: white;
+}
+
+body[data-bs-theme='dark'] .active {
+  background-color: #42434e !important;
 }

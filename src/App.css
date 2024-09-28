@@ -20,23 +20,55 @@
   text-align: initial;
 }
 
+.content {
+  background-color: #edf2f5;
+  flex-grow: 1;
+  height: calc(100vh - 100px);
+  padding-left: calc(var(--bs-gutter-x)* 1.5) !important;
+  padding-right: calc(var(--bs-gutter-x)* 1.5) !important;
+}
+
+.table-responsive {
+  background-color: white;
+  padding: 30px;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+.table {
+  margin: 0 !important;
+}
+
+.table > thead > tr th:first-child {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.table > thead > tr th:last-child {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
 .table > thead > tr > th {
-  background-color: rgb(41, 107, 250);
+  background-color: #f3f7fd;
   text-align: center;
-  outline-style: initial;
-  border-bottom-width: thick;
-  color: white;
-  /*font-family: "Times New Roman", Times, serif;*/
+  border: none;
+  color: #333;
+  font-weight: bold;
+  padding: 12px;
 }
 
 .table td {
   text-align: center;
-  vertical-align: baseline;
+  vertical-align: middle;
+  padding: 1em 1em !important;
+  color: #333;
+  font-size: 14px;
 }
 
 .status-buttons {
   color: rgb(94, 83, 83);
-  background-color: #4caf50;
+  background-color: #6282F6;
 }
 
 .create-tab {
@@ -106,8 +138,16 @@ body[data-bs-theme='dark'] .App {
   color: var(--bs-body-color);
 }
 
+body[data-bs-theme='dark'] .content {
+  background-color: #1a1a1a;
+}
+
+body[data-bs-theme='dark'] .table-responsive {
+  background-color: var(--bs-body-bg);
+}
+
 body[data-bs-theme='dark'] .table > thead > tr > th {
-  background-color: var(--bs-table-bg);
+  background-color: #1a1a1a;
   color: var(--bs-table-color);
 }
 

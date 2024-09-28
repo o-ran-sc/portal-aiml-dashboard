@@ -133,6 +133,8 @@ class UploadPipelineForm extends React.Component {
   render() {
     return (
       <>
+        <h1 style={{ fontWeight: 'bold', margin: '40px 0px' }}>Training Function</h1>
+
         <div className='upload-pipeline'>
           <OverlayTrigger trigger='click' placement='right' overlay={this.popover()}>
             <Button className='from-tooltip' placement='right' variant='secondary'>
@@ -140,7 +142,7 @@ class UploadPipelineForm extends React.Component {
             </Button>
           </OverlayTrigger>
           <div className='upload-pl-form'>
-            <Button variant='success' size='sm' onClick={e => this.handleCreatePipeline(e)}>
+            <Button variant='primary' size='sm' onClick={e => this.handleCreatePipeline(e)}>
               Create Training Function
             </Button>
             <Form onSubmit={this.handleSubmit}>
@@ -157,7 +159,7 @@ class UploadPipelineForm extends React.Component {
 
               <input type='file' className='form-control' name='upload_file' onChange={this.handleInputChange} />
 
-              <Button type='submit'> Upload </Button>
+              <Button style={{ backgroundColor: '#6282f6' }} type='submit'> Upload </Button>
             </Form>
           </div>
         </div>
