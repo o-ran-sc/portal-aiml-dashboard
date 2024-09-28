@@ -13,11 +13,6 @@ export const NavigationBar = () => {
       <Container>
         <Navbar.Brand href='/'>AI/ML Management Dashboard</Navbar.Brand>
         <Nav>
-          <NavDropdown title='Training Jobs' className='nav-drop-down'>
-            <NavDropdown.Item href='/TrainingJob/TrainingJobsStatus'>Training Job</NavDropdown.Item>
-            <NavDropdown.Item href='/TrainingJob/Pipeline'>Training Function</NavDropdown.Item>
-            <NavDropdown.Item href='/TrainingJob/ListFeatureGroups'>Feature Group</NavDropdown.Item>
-          </NavDropdown>
           <ThemeToggleButton theme={theme} toggleTheme={toggleTheme} />
         </Nav>
       </Container>
