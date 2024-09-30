@@ -1,0 +1,32 @@
+.sidebar-link {
+  display: block;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sidebar-link:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+.active {
+  background-color: #6282f6 !important;
+  color: white;
+  border-radius: 5px;
+}
+
+body[data-bs-theme='dark'] .sidebar-link {
+  color: white;
+}
+
+body[data-bs-theme='dark'] .sidebar-link:hover {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+body[data-bs-theme='dark'] .active {
+  background-color: #42434e !important;
+}

@@ -164,13 +164,15 @@ const ListFeatureGroup = props => {
   );
   return (
     <>
-      <Button variant='success' size='sm' onClick={handleCreateClick}>
+      <h1 style={{ fontWeight: 'bold', margin: '40px 0px' }}>Feature Groups</h1>
+
+      <Button variant='primary' size='sm' onClick={handleCreateClick}>
         Create
       </Button>{' '}
-      <Button variant='success' size='sm' onClick={e => handleDelete(e)}>
+      <Button variant='primary' size='sm' onClick={e => handleDelete(e)}>
         Delete
       </Button>{' '}
-      <BTable className='Status_table' responsive striped bordered hover size='sm' {...getTableProps()}>
+      <BTable className='Status_table' responsive hover size='sm' {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>

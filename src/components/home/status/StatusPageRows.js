@@ -184,7 +184,8 @@ const StatusPageRows = props => {
         Cell: ({ row }) => {
           return (
             <Button
-              variant='info'
+              variant='primary'
+              style={{ backgroundColor: '#6282f6', border: '#6282f6' }}
               onClick={() => handleStepStateClick(row.original.trainingjob_name, row.original.version)}
             >
               Detailed Status
@@ -219,19 +220,21 @@ const StatusPageRows = props => {
 
   return (
     <>
-      <Button variant='success' size='sm' onClick={e => handleCreate(e)}>
+      <h1 style={{ fontWeight: 'bold', margin: '40px 0px' }}>Training Jobs</h1>
+
+      <Button variant='primary' size='sm' onClick={e => handleCreate(e)}>
         Create
       </Button>{' '}
-      <Button variant='success' size='sm' onClick={e => handleEdit(e)}>
+      <Button variant='primary' size='sm' onClick={e => handleEdit(e)}>
         Edit
       </Button>{' '}
-      <Button variant='success' size='sm' onClick={e => handleRetrain(e)}>
+      <Button variant='primary' size='sm' onClick={e => handleRetrain(e)}>
         Train
       </Button>{' '}
-      <Button variant='success' size='sm' onClick={e => handleDelete(e)}>
+      <Button variant='primary' size='sm' onClick={e => handleDelete(e)}>
         Delete
       </Button>{' '}
-      <BTable className='Status_table' responsive striped bordered hover size='sm' {...getTableProps()}>
+      <BTable className='Status_table' responsive hover size='sm' {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
