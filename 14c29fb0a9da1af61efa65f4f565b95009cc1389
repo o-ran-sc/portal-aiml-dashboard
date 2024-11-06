@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c41f16ba_f19584ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002600
+      },
+      "writtenOn": "2024-11-06T12:26:30Z",
+      "side": 1,
+      "message": "Please review the aiml retraining pipeline.",
+      "revId": "14c29fb0a9da1af61efa65f4f565b95009cc1389",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
