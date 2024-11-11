@@ -199,19 +199,19 @@ class CreateFeatureGroup extends React.Component {
     featureGroupAPI
       .createFeatureGroup({
         data: {
-          featureGroupName: this.state.featureGroupName,
+          featuregroup_name: this.state.featureGroupName,
           feature_list: this.state.featureNames,
           datalake_source: convertedDatalakeDBName,
-          enable_Dme: this.state.dme,
-          Host: this.state.host,
-          Port: this.state.port,
-          dmePort: this.state.dmePort,
+          enable_dme: this.state.dme,
+          host: this.state.host,
+          port: this.state.port,
+          dme_port: this.state.dmePort,
           bucket: this.state.bucketName,
           token: this.state.token,
           source_name: this.state.sourceName,
           measured_obj_class: this.state.measuredObjClass,
-          _measurement: this.state._measurement,
-          dbOrg: this.state.dbOrg,
+          measurement: this.state._measurement,
+          db_org: this.state.dbOrg,
         },
       })
       .then(res => {

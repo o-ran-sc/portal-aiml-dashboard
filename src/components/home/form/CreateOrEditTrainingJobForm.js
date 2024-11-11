@@ -364,7 +364,7 @@ class CreateTrainingJob extends React.Component {
         pipeline_name: this.state.plName,
         // "experiment_name" : this.state.expName,
         experiment_name: 'Default',
-        featureGroup_name: this.state.featureGroupName,
+        feature_group_name: this.state.featureGroupName,
         query_filter: this.state.featureFilters,
         arguments: hyperParamsDict,
         enable_versioning: this.state.versioning,
