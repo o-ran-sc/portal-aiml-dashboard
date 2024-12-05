@@ -16,6 +16,29 @@
       "message": "The retraining pipeline for the retraining api",
       "revId": "a6a7feaa7e4b75ee56e7c5c776ce09559225e20a",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ef55dc_b2f1250c",
+        "filename": "kf-pipelines/qoe-pipeline-retrain-pipeline.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000475
+      },
+      "writtenOn": "2024-12-05T14:15:00Z",
+      "side": 1,
+      "message": "we should updated the artifact version form x.0.y to x.0.y+1\n\nso the entire model looks like : model_name/{versino}/artifact_version/model.zip\nmodel_name and version will not change while retrain, only we need to update the artifact version.\n\nAlso we need to update the MME with new artifact version. May be this functionality you could add in MSSDK. so whenever we store the model we also update the model in MME.",
+      "range": {
+        "startLine": 124,
+        "startChar": 9,
+        "endLine": 124,
+        "endChar": 46
+      },
+      "revId": "a6a7feaa7e4b75ee56e7c5c776ce09559225e20a",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
