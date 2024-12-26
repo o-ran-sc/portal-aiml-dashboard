@@ -46,6 +46,30 @@
       },
       "revId": "6cec8313ae0b922d2665ed5c9660204675356d52",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "793da7d0_b5aa6f89",
+        "filename": "kf-pipelines/qoe-pipeline-retrain-2.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000475
+      },
+      "writtenOn": "2024-12-26T11:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8ba4c3c_4ae4994a",
+      "range": {
+        "startLine": 89,
+        "startChar": 60,
+        "endLine": 89,
+        "endChar": 152
+      },
+      "revId": "6cec8313ae0b922d2665ed5c9660204675356d52",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
