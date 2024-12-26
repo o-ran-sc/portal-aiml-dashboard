@@ -1,0 +1,9 @@
+Verified+1: ORAN Required GHA <releng+oran.required.gha@linuxfoundation.org>
+Verified+1: subhash kumar singh <subh.singh@samsung.com>
+Code-Review+2: subhash kumar singh <subh.singh@samsung.com>
+Submitted-by: subhash kumar singh <subh.singh@samsung.com>
+Submitted-at: Thu, 26 Dec 2024 11:59:44 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/portal/aiml-dashboard/+/13978
+Comments-Total: 3
+Project: portal/aiml-dashboard
+Branch: refs/heads/master
