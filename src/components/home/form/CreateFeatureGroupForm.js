@@ -216,7 +216,7 @@ class CreateFeatureGroup extends React.Component {
       })
       .then(res => {
         this.logger('featureGroup Created', res.data);
-        if (res.status === 200) {
+        if (res.status === 201) {
           alert('FeatureGroup Created');
           this.resetForm();
         }
