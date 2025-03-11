@@ -45,19 +45,19 @@ const FeatureGroupInfo = props => {
             `response for ${UCMgr_baseUrl}/trainingjobs/featureGroup/${props.featureGroupName.featureGroupName}`,
             response,
           );
-          setFeatureGroupName(response.data.featuregroup[0].featuregroup_name);
-          setfeatures(response.data.featuregroup[0].features);
-          setDme(response.data.featuregroup[0].dme);
-          setdatalake(response.data.featuregroup[0].datalake);
-          setHost(response.data.featuregroup[0].host);
-          setPort(response.data.featuregroup[0].port);
-          setDbToken(response.data.featuregroup[0].token);
-          setDbOrg(response.data.featuregroup[0].db_org);
-          setSourceName(response.data.featuregroup[0].source_name);
-          setBucketName(response.data.featuregroup[0].bucket);
-          setDmePort(response.data.featuregroup[0].dme_port);
-          setMeasurement(response.data.featuregroup[0].measurement);
-          setMeasureObjectClass(response.data.featuregroup[0].measured_obj_class);
+          setFeatureGroupName(response.data.featuregroup_name);
+          setfeatures(response.data.feature_list);
+          setDme(response.data.enable_dme);
+          setdatalake(response.data.datalake_source);
+          setHost(response.data.host);
+          setPort(response.data.port);
+          setDbToken(response.data.token);
+          setDbOrg(response.data.db_org);
+          setSourceName(response.data.source_name);
+          setBucketName(response.data.bucket);
+          setDmePort(response.data.dme_port);
+          setMeasurement(response.data.measurement);
+          setMeasureObjectClass(response.data.measured_obj_class);
         })
         .catch(error => {
           console.log(error);

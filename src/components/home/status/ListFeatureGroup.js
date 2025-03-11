@@ -52,8 +52,8 @@ const ListFeatureGroup = props => {
     try {
       const result = await featureGroupAPI.getAllFeatureGroup();
       logger('fetchFeatureGroup Result', result);
-      logger('feature groups are --> ', result.data.featuregroups);
-      setFeatureGroups(result.data.featuregroups);
+      logger('feature groups are --> ', result.data.FeatureGroups);
+      setFeatureGroups(result.data.FeatureGroups);
     } catch (e) {
       console.error(e);
     }
@@ -122,12 +122,12 @@ const ListFeatureGroup = props => {
       {
         id: 'features',
         Header: 'Features',
-        accessor: 'features',
+        accessor: 'feature_list',
       },
       {
         id: 'datalake',
         Header: 'DataLake',
-        accessor: 'datalake',
+        accessor: 'datalake_source',
       },
       {
         id: 'dme',
