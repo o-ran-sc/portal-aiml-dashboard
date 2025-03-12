@@ -26,7 +26,7 @@ import {
   convertToCommaSeparatedString,
 } from '../common/CommonMethods';
 import { instance, UCMgr_baseUrl } from '../../../states';
-import { pipelineAPI } from '../../../apis/pipeline';
+import { featureGroupAPI, pipelineAPI } from '../../../apis';
 
 class CreateTrainingJob extends React.Component {
   constructor(props) {
@@ -211,13 +211,12 @@ class CreateTrainingJob extends React.Component {
   }
 
   fetchPipelineVersions(pipeline_name, shouldGetLatestVersion) {
-    instance
-      .get(`/pipelines/${pipeline_name}/versions`)
+    pipelineAPI.getPipelineVersions({ params: { pipelineName: pipeline_name } })
       .then(res => {
-        this.logger('Server reponded pipeline versions list', res.data.versions_list);
+        this.logger('Server reponded pipeline versions list', res.data);
         this.setState(
           {
-            plVerList: res.data.versions_list,
+            plVerList: res.data,
           },
           () => {
             if (shouldGetLatestVersion) {
@@ -274,13 +273,12 @@ class CreateTrainingJob extends React.Component {
   }
 
   fetchFeatureGroups() {
-    instance
-      .get('/featureGroup')
+    featureGroupAPI.getAllFeatureGroup()
       .then(res => {
-        this.logger('Server reponded FG', res.data.featuregroups);
+        this.logger('Server reponded FG', res.data.FeatureGroups);
         this.setState(
           {
-            featureGroupList: res.data.featuregroups,
+            featureGroupList: res.data.FeatureGroups,
           },
           () => {
             let shouldChangeFGname = true;

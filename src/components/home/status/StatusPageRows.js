@@ -63,8 +63,8 @@ const StatusPageRows = props => {
     try {
       const result = await trainingJobAPI.getLatestTrainingJob();
       logger('fetchTrainingJobs Result', result);
-      logger('Training Jobs  are --> ', result.data.trainingjobs);
-      setTrainingJobs(result.data.trainingjobs);
+      logger('Training Jobs  are --> ', result.data);
+      setTrainingJobs(result.data);
     } catch (e) {
       console.error(e);
     }
@@ -164,19 +164,19 @@ const StatusPageRows = props => {
         ),
       },
       {
-        id: 'trainingjob_name',
-        Header: 'Training Job Name',
-        accessor: 'trainingjob_name',
+        id: 'id',
+        Header: 'ID',
+        accessor: 'id',
       },
       {
-        id: 'version',
-        Header: 'Version',
-        accessor: 'version',
+        id: 'trainingPipelineName',
+        Header: 'Pipeline Name',
+        accessor: 'training_config.trainingPipeline.training_pipeline_name',
       },
       {
-        id: 'overall_status',
-        Header: 'Overall Status',
-        accessor: row => (row.overall_status === 'IN_PROGRESS' ? 'IN PROGRESS' : row.overall_status),
+        id: 'featureGroupName',
+        Header: 'Feature Group Name',
+        accessor: 'training_config.dataPipeline.feature_group_name',
       },
       {
         id: 'stepsState',
