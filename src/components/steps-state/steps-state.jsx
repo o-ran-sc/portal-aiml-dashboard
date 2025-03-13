@@ -19,7 +19,6 @@
 import React, { useEffect, useState } from 'react';
 import './steps-state.css';
 
-import { UCMgr_baseUrl } from '../../states';
 import { trainingJobAPI } from '../../apis';
 
 export const StepsState = props => {
@@ -30,20 +29,11 @@ export const StepsState = props => {
     const periodicTask = async () => {
       let res = null;
       try {
-        res = await trainingJobAPI.getTrainingJobStepsState({
-          params: {
-            trainingJobName: props.trainingjob_name_and_version.trainingjob_name,
-            trainingJobVersion: props.trainingjob_name_and_version.version,
-          },
-        });
+        res = await trainingJobAPI.getTrainingJobStatus({ params: { pipelineId: props.pipelineId } });
       } catch (error) {
         console.log(error);
       }
       const json_from_backend = res.data;
-      console.log(
-        `response for ${UCMgr_baseUrl}/trainingjobs/${props.trainingjob_name_and_version.trainingjob_name}/${props.trainingjob_name_and_version.version}/steps_state`,
-        res,
-      );
       const newBoxesState = [];
       const newConnectionsState = [];
       const newBoxes = ['Data extraction', 'Training', 'Trained Model'];

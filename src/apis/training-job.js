@@ -4,8 +4,8 @@ export const trainingJobAPI = {
   getTrainingJobByNameAndVersion: async ({ params }) => {
     return await instance.get(`/trainingjobs/${params.trainingJobName}/${params.trainingJobVersion}`);
   },
-  getTrainingJobStepsState: async ({ params }) => {
-    return await instance.get(`/trainingjobs/${params.trainingJobName}/${params.trainingJobVersion}/steps_state`);
+  getTrainingJobStatus: async ({ params }) => {
+    return await instance.get(`/ai-ml-model-training/v1/training-jobs/${params.pipelineId}/status`);
   },
   getLatestTrainingJob: async () => {
     return await instance.get('/ai-ml-model-training/v1/training-jobs');

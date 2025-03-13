@@ -39,7 +39,7 @@ const StatusPageRows = props => {
   const closeEditPopup = () => setEditPopup(false);
   const closeCreatePopup = () => setCreatePopup(false);
   const [stepsStatePopup, setStepsStatePopup] = useState(false);
-  const [stepsStateTrainingJobAndVersion, setStepsStateTrainingJobNameAndVersion] = useState(null);
+  const [statusPipelineId, setStatusPipelineId] = useState(null);
   const closeStepsStatePopup = () => setStepsStatePopup(false);
   const [infoPopup, setInfoPopup] = useState(false);
   const [infoTrainingJobAndVersion, setInfoTrainingJobNameAndVersion] = useState(null);
@@ -132,11 +132,8 @@ const StatusPageRows = props => {
     }
   };
 
-  const handleStepStateClick = (trainingjob_name, version) => {
-    setStepsStateTrainingJobNameAndVersion({
-      trainingjob_name: trainingjob_name,
-      version: version,
-    });
+  const handleStepStateClick = (id) => {
+    setStatusPipelineId(id);
     setStepsStatePopup(true);
   };
 
@@ -186,7 +183,7 @@ const StatusPageRows = props => {
             <Button
               variant='primary'
               style={{ backgroundColor: '#6282f6', border: '#6282f6' }}
-              onClick={() => handleStepStateClick(row.original.trainingjob_name, row.original.version)}
+              onClick={() => handleStepStateClick(row.values.id)}
             >
               Detailed Status
             </Button>
@@ -272,7 +269,7 @@ const StatusPageRows = props => {
         ></CreateOrEditTrainingJobForm>
       </Popup>
       <Popup size='sm' show={stepsStatePopup} onHide={closeStepsStatePopup} title='Detailed Status'>
-        <StepsState trainingjob_name_and_version={stepsStateTrainingJobAndVersion}></StepsState>
+        <StepsState pipelineId={statusPipelineId}></StepsState>
       </Popup>
       <Popup show={infoPopup} onHide={closeInfoPopup} title='Training Job Info'>
         <TrainingJobInfo trainingjob_name_and_version={infoTrainingJobAndVersion} />
