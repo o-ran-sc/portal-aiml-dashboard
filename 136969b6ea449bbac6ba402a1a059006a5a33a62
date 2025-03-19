@@ -1,0 +1,10 @@
+Code-Review+2: Rajdeep Singh <rajdeep.sin@samsung.com>
+Verified+1: ORAN Required GHA <releng+oran.required.gha@linuxfoundation.org>
+Verified+1: ORAN Jobbuilder <releng+oran-jobbuilder@linuxfoundation.org>
+Verified+1: Rajdeep Singh <rajdeep.sin@samsung.com>
+Submitted-by: Taewan Kim <t25.kim@samsung.com>
+Submitted-at: Wed, 19 Mar 2025 10:28:16 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/portal/aiml-dashboard/+/14272
+Comments-Total: 1
+Project: portal/aiml-dashboard
+Branch: refs/heads/master
