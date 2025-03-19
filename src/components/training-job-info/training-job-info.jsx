@@ -19,64 +19,32 @@
 import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 
-import { UCMgr_baseUrl } from '../../states';
 import { trainingJobAPI } from '../../apis';
 
-import { convertToCommaSeparatedString, getDatalakeNameWithoutConversion } from '../home/common/CommonMethods';
-
 export const TrainingJobInfo = props => {
-  const [trainingJobName, setTrainingJobName] = useState('');
-  const [isMme, setIsMme] = useState(false);
+  const [trainingJobId, setTrainingJobId] = useState('');
   const [modelName, setModelName] = useState('');
-  const [version, setVersion] = useState('');
+  const [modelVersion, setModelVersion] = useState('');
   const [description, setDescription] = useState('');
-  const [featureNames, setFeatureNames] = useState('');
-  const [pipeLineName, setPipelineName] = useState('');
-  const [experimentName, setExperimentName] = useState('');
-  const [featureFilter, setFeatureFilter] = useState('');
-  const [hyperParameters, setHyperParameters] = useState('');
-  const [metrics, setMetrics] = useState('');
-  const [enableVersioning, setEnableVersioning] = useState(false);
+  const [pipelineName, setPipelineName] = useState('');
   const [pipelineVersion, setPipelineVersion] = useState('');
-  const [datalakeSource, setDatalakeSource] = useState('');
   const [modelUrl, setModelUrl] = useState('');
-  const [modelInfo, setModelInfo] = useState('');
+  const [modelLocation, setModelLocation] = useState('');
 
   useEffect(() => {
     try {
       trainingJobAPI
-        .getTrainingJobByNameAndVersion({
-          params: {
-            trainingJobName: props.trainingjob_name_and_version.trainingjob_name,
-            trainingJobVersion: props.trainingjob_name_and_version.version,
-          },
-        })
+        .getTrainingJob({ params: { trainingJobId: props.trainingJobId } })
         .then(response => {
-          console.log(
-            `response for ${UCMgr_baseUrl}/trainingjobs/${props.trainingjob_name_and_version.trainingjob_name}/${props.trainingjob_name_and_version.version}`,
-            response,
-          );
           console.log(response.data);
-          setTrainingJobName(response.data.trainingjob.trainingjob_name);
-          setIsMme(response.data.trainingjob.is_mme);
-          setModelName(response.data.trainingjob.model_name);
-          setVersion(response.data.trainingjob.version);
-          setDescription(response.data.trainingjob.description);
-          setFeatureNames(response.data.trainingjob.feature_list);
-          setPipelineName(response.data.trainingjob.pipeline_name);
-          setExperimentName(response.data.trainingjob.experiment_name);
-          setFeatureFilter(response.data.trainingjob.query_filter);
-          setHyperParameters(convertToCommaSeparatedString(response.data.trainingjob.arguments));
-          setMetrics(response.data.trainingjob.accuracy);
-          setEnableVersioning(response.data.trainingjob.enable_versioning);
-          setPipelineVersion(
-            response.data.trainingjob.pipeline_version === response.data.trainingjob.pipeline_name
-              ? '1'
-              : response.data.trainingjob.pipeline_version,
-          );
-          setDatalakeSource(getDatalakeNameWithoutConversion(response.data.trainingjob.datalake_source));
-          setModelUrl(response.data.trainingjob.model_url);
-          setModelInfo(response.data.trainingjob.model_info);
+          setTrainingJobId(response.data.id);
+          setModelName(response.data.modelId.modelname);
+          setModelVersion(response.data.modelId.modelversion);
+          setDescription(response.data.training_config.description);
+          setPipelineName(response.data.training_config.trainingPipeline.training_pipeline_name);
+          setPipelineVersion(response.data.training_config.trainingPipeline.training_pipeline_version);
+          setModelUrl(response.data.model_url);
+          setModelLocation(response.data.model_location);
         })
         .catch(error => {
           console.log(error);
@@ -89,83 +57,50 @@ export const TrainingJobInfo = props => {
   return (
     <>
       <Form>
-        <Form.Group controlId='ucName'>
-          <Form.Label>Training Job Name</Form.Label>
-          <Form.Control type='text' value={trainingJobName} readOnly />
-        </Form.Group>
-        <Form.Group controlId='isMme'>
-          <Form.Check type='checkbox' label='Enable MME' checked={isMme} readOnly />
-        </Form.Group>
-        {isMme == true && (
-          <div>
-            <Form.Group controlId='modelName'>
-              <Form.Label>Model Name</Form.Label>
-              <Form.Control type='text' value={modelName} readOnly />
-            </Form.Group>
-
-            <Form.Group controlId='modelInfo'>
-              <Form.Label>Model Info</Form.Label>
-              <Form.Control type='text' value={modelInfo} readOnly />
-            </Form.Group>
-          </div>
-        )}
-        <Form.Group controlId='version'>
-          <Form.Label>Version</Form.Label>
-          <Form.Control type='text' value={version} readOnly />
+        <Form.Group controlId='trainingJobId'>
+          <Form.Label>Training Job ID</Form.Label>
+          <Form.Control type='text' value={trainingJobId} readOnly />
         </Form.Group>
         <Form.Group controlId='description'>
           <Form.Label>Description</Form.Label>
           <Form.Control type='text' value={description} readOnly />
         </Form.Group>
-        <Form.Group controlId='featureNames'>
-          <Form.Label>Feature Names</Form.Label>
-          <Form.Control type='text' value={featureNames} readOnly />
-        </Form.Group>
         <Form.Group controlId='pipelineName'>
-          <Form.Label>Training Function Name</Form.Label>
-          <Form.Control type='text' value={pipeLineName} readOnly />
-        </Form.Group>
-        <Form.Group controlId='experimentName'>
-          <Form.Label>Experiment Name</Form.Label>
-          <Form.Control type='text' value={experimentName} readOnly />
-        </Form.Group>
-        <Form.Group controlId='featureFilter'>
-          <Form.Label>Feature Filter</Form.Label>
-          <Form.Control type='text' value={featureFilter} readOnly />
-        </Form.Group>
-        <Form.Group controlId='hyperParameters'>
-          <Form.Label>Hyper Parameters</Form.Label>
-          <Form.Control type='text' value={hyperParameters} readOnly />
-        </Form.Group>
-        <Form.Group controlId='metrics'>
-          <Form.Label>Metrics</Form.Label>
-          <Form.Control type='text' value={metrics} readOnly />
-        </Form.Group>
-        <Form.Group id='enableVersioning'>
-          <Form.Check type='checkbox' label='Enable versioning' checked={enableVersioning} readOnly />
+          <Form.Label>Training Pipeline Name</Form.Label>
+          <Form.Control type='text' value={pipelineName} readOnly />
         </Form.Group>
         <Form.Group controlId='pipelineVersion'>
-          <Form.Label>Training Function Version</Form.Label>
+          <Form.Label>Training Pipeline Version</Form.Label>
           <Form.Control type='text' value={pipelineVersion} readOnly />
         </Form.Group>
-        <Form.Group controlId='datalakeSource'>
-          <Form.Label>Datalake Source</Form.Label>
-          <Form.Control type='text' value={datalakeSource} readOnly />
+        <Form.Group controlId='modelName'>
+          <Form.Label>Model Name</Form.Label>
+          <Form.Control type='text' value={modelName} readOnly />
         </Form.Group>
-        <Form.Group controlId='modelUrl'>
-          <Form.Label>
-            Model URL
-          </Form.Label>
-      	  <br/>
-      	  <Form.Label>
-      	    <span className='px-1'> {modelUrl} </span>
-      	    <span className='mx-2'>
-      	      <a href={modelUrl} download>
-      	        <i className='bi bi-arrow-down-square' style={{ color: 'blue'}}></i>
-      	      </a>
-      	    </span>
-      	  </Form.Label>
+        <Form.Group controlId='modelVersion'>
+          <Form.Label>Model Version</Form.Label>
+          <Form.Control type='text' value={modelVersion} readOnly />
         </Form.Group>
+        <Form.Group controlId='modelLocation'>
+          <Form.Label>Model Location</Form.Label>
+          <Form.Control type='text' value={modelLocation} readOnly />
+        </Form.Group>
+        { modelUrl !== "" &&
+          <Form.Group controlId='modelUrl'>
+            <Form.Label>
+              Model URL
+            </Form.Label>
+            <br/>
+            <Form.Label>
+              <span className='px-1'> {modelUrl} </span>
+              <span className='mx-2'>
+                <a href={modelUrl} download>
+                  <i className='bi bi-arrow-down-square' style={{ color: 'blue'}}></i>
+                </a>
+              </span>
+            </Form.Label>
+          </Form.Group>
+        }
       </Form>
     </>
   );

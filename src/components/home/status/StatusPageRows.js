@@ -42,7 +42,7 @@ const StatusPageRows = props => {
   const [statusTrainingJobId, setStatusTrainingJobId] = useState(null);
   const closeStepsStatePopup = () => setStepsStatePopup(false);
   const [infoPopup, setInfoPopup] = useState(false);
-  const [infoTrainingJobAndVersion, setInfoTrainingJobNameAndVersion] = useState(null);
+  const [infoTrainingJobId, setInfoTrainingJobId] = useState(null);
   const closeInfoPopup = () => setInfoPopup(false);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const StatusPageRows = props => {
   const fetchTrainingJobs = async () => {
     logger('fetchTrainingJobs UCMgr_baseUrl', UCMgr_baseUrl);
     try {
-      const result = await trainingJobAPI.getLatestTrainingJob();
+      const result = await trainingJobAPI.getTrainingJobs();
       logger('fetchTrainingJobs Result', result);
       logger('Training Jobs  are --> ', result.data);
       setTrainingJobs(result.data);
@@ -137,11 +137,8 @@ const StatusPageRows = props => {
     setStepsStatePopup(true);
   };
 
-  const handleInfoClick = (trainingjob_name, version) => {
-    setInfoTrainingJobNameAndVersion({
-      trainingjob_name: trainingjob_name,
-      version: version,
-    });
+  const handleInfoClick = (id) => {
+    setInfoTrainingJobId(id);
     setInfoPopup(true);
   };
 
@@ -195,7 +192,7 @@ const StatusPageRows = props => {
         Header: 'Info',
         Cell: ({ row }) => {
           return (
-            <Button variant='info' onClick={() => handleInfoClick(row.original.trainingjob_name, row.original.version)}>
+            <Button variant='info' onClick={() => handleInfoClick(row.values.id)}>
               Info
             </Button>
           );
@@ -272,7 +269,7 @@ const StatusPageRows = props => {
         <StepsState trainingJobId={statusTrainingJobId}></StepsState>
       </Popup>
       <Popup show={infoPopup} onHide={closeInfoPopup} title='Training Job Info'>
-        <TrainingJobInfo trainingjob_name_and_version={infoTrainingJobAndVersion} />
+        <TrainingJobInfo trainingJobId={infoTrainingJobId} />
       </Popup>
     </>
   );
