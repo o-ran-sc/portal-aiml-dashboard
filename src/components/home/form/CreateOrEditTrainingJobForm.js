@@ -26,7 +26,7 @@ import {
   convertToCommaSeparatedString,
 } from '../common/CommonMethods';
 import { instance, UCMgr_baseUrl } from '../../../states';
-import { featureGroupAPI, pipelineAPI } from '../../../apis';
+import { featureGroupAPI, pipelineAPI, trainingJobAPI } from '../../../apis';
 
 class CreateTrainingJob extends React.Component {
   constructor(props) {
@@ -37,6 +37,20 @@ class CreateTrainingJob extends React.Component {
       plName: '',
       isMme: false,
       modelName: '',
+      modelVersion: '',
+      modelLocation: '',
+      trainingConfigDescription: '',
+      queryFilter: '',
+      arguments: '',
+      trainingPipelineName: '',
+      trainingPipelineVersion: '',
+      retrainingPipelineName: '',
+      retrainingPipelineVersion: '',
+      trainingDataset: '',
+      validationDataset: '',
+      notificationUrl: '',
+      consumerRappId: '',
+      producerRappId: '',
       expName: '',
       featureGroupName: '',
       featureFilters: '',
@@ -310,18 +324,22 @@ class CreateTrainingJob extends React.Component {
   handleCreateSubmit = event => {
     this.logger(
       'Create TrainingJob clicked: ',
-      this.state.ucName,
-      this.state.plName,
-      this.state.isMme,
       this.state.modelName,
-      this.state.expName,
+      this.state.modelVersion,
+      this.state.modelLocation,
+      this.state.trainingConfigDescription,
       this.state.featureGroupName,
-      this.state.featureFilters,
-      this.state.hyparams,
-      this.state.targetName,
-      this.state.ucDescription,
-      this.state.plVerName,
-      this.state.datalakeSourceName,
+      this.state.queryFilter,
+      this.state.arguments,
+      this.state.trainingPipelineName,
+      this.state.trainingPipelineVersion,
+      this.state.retrainingPipelineName,
+      this.state.retrainingPipelineVersion,
+      this.state.trainingDataset,
+      this.state.validationDataset,
+      this.state.notificationUrl,
+      this.state.consumerRappId,
+      this.state.producerRappId,
     );
 
     this.invokeAddTrainingJob(event);
@@ -351,34 +369,49 @@ class CreateTrainingJob extends React.Component {
   };
 
   invokeAddTrainingJob(event) {
-    let hyperParamsDict = this.buildHyperparamsDict(this.state.hyparams);
-    let convertedDatalakeDBName = convertDatalakeDBName(this.state.datalakeSourceName);
-    this.logger('Add New Request is posted at ' + this.state.UCMgr_baseUrl + '/trainingjobs/' + this.state.ucName);
-    instance
-      .post('/trainingjobs/' + this.state.ucName, {
-        trainingjob_name: this.state.ucName,
-        is_mme: this.state.isMme,
-        model_name: this.state.modelName,
-        pipeline_name: this.state.plName,
-        // "experiment_name" : this.state.expName,
-        experiment_name: 'Default',
-        feature_group_name: this.state.featureGroupName,
-        query_filter: this.state.featureFilters,
-        arguments: hyperParamsDict,
-        enable_versioning: this.state.versioning,
-        description: this.state.ucDescription,
-        pipeline_version: this.state.plVerName,
-        datalake_source: convertedDatalakeDBName,
-      })
-      .then(res => {
-        this.logger('UC created ', res.data);
-        this.invokeStartTrainingForCreate();
-      })
-      .catch(error => {
-        this.logger('Error creating Training Job', error);
-        alert('Failed: ' + error.response.data.Exception);
-        event.preventDefault();
-      });
+    let argumentsDict = this.buildHyperparamsDict(this.state.arguments);
+    trainingJobAPI.invokeTrainingJob({
+      data: {
+        modelId: {
+          modelname: this.state.modelName,
+          modelversion: this.state.modelVersion,
+        },
+        model_location: this.state.modelLocation,
+        training_config: {
+          description: this.state.trainingConfigDescription,
+          dataPipeline: {
+            feature_group_name: this.state.featureGroupName,
+            query_filter: this.state.queryFilter,
+            arguments: argumentsDict,
+          },
+          trainingPipeline: {
+            training_pipeline_name: this.state.trainingPipelineName,
+            training_pipeline_version: this.state.trainingPipelineVersion,
+            retraining_pipeline_name: this.state.retrainingPipelineName,
+            retraining_pipeline_version: this.state.retrainingPipelineVersion,
+          },
+        },
+        training_dataset: this.state.trainingDataset,
+        validation_dataset: this.state.validationDataset,
+        notification_url: this.state.notificationUrl,
+        consumer_rapp_id: this.state.consumerRappId,
+        producer_rapp_id: this.state.producerRappId,
+      }
+    })
+    .then(res => {
+      this.logger('Training  responsed ', res);
+      if (res.status === 201) {
+        alert('Training Job created and training initiated');
+        this.resetFrom();
+        this.props.onHideCreatePopup();
+        this.props.fetchTrainingJobs();
+      }
+    })
+    .catch(error => {
+      this.logger('Error creating Training Job', error);
+      alert('Failed: ' + error.response.data.Exception);
+      event.preventDefault();
+    });
   }
 
   invokePutTrainingJob = event => {
@@ -417,31 +450,7 @@ class CreateTrainingJob extends React.Component {
       });
   };
 
-  invokeStartTrainingForCreate(event) {
-    this.logger('Training called ');
-    instance
-      .post('/trainingjobs/' + this.state.ucName + '/training', {
-        trainingjobs: this.state.ucName,
-      })
-      .then(res => {
-        this.logger('Training  responsed ', res);
-        if (res.status === 200) {
-          alert('Training Job created and training initiated');
-          this.resetFrom();
-          this.props.onHideCreatePopup();
-          this.props.fetchTrainingJobs();
-        }
-      })
-      .catch(error => {
-        this.logger('Error in training api,response', error.response.data);
-        alert('Training failed: ' + error.response.data.Exception);
-      })
-      .then(function () {
-        // always executed
-      });
-  }
-
-  invokeStartTrainingForEdit(event) {
+    invokeStartTrainingForEdit(event) {
     this.logger('Training called ');
     instance
       .post('/trainingjobs/' + this.state.ucName + '/training', {
@@ -499,9 +508,7 @@ class CreateTrainingJob extends React.Component {
     this.logger('before changing in buildHyperparamsDict: ', hyperArgs);
 
     if (hyperArgs === '') {
-      return {
-        trainingjob_name: this.state.ucName,
-      };
+      return {};
     }
 
     let paramList = String(hyperArgs).split(',');
@@ -513,7 +520,6 @@ class CreateTrainingJob extends React.Component {
 
       paramDict[key] = value;
     }
-    paramDict['trainingjob_name'] = this.state.ucName;
 
     this.logger('after changing in buildHyperparamsDict: ', paramDict);
     return paramDict;
@@ -531,41 +537,35 @@ class CreateTrainingJob extends React.Component {
     return value;
   }
 
-  handleUCNameChange = event => {
-    if (this.regName.test(event.target.value)) {
-      event.preventDefault();
-      alert('Please use alphabet, number, and underscore to Training Job Name.');
-    } else {
-      this.setState(
-        {
-          ucName: event.target.value,
-        },
-        () => {
-          this.logger('after set state, ucName: ', this.state.ucName);
-        },
-      );
-    }
-  };
-
-  handlePLNameChange = event => {
+  handleModelNameChange = event => {
     this.setState(
       {
-        plName: event.target.value,
+        modelName: event.target.value,
       },
       () => {
-        this.logger('after set state, plName: ', this.state.plName);
-        this.fetchPipelineVersions(this.state.plName, true);
+        this.logger('after set state, modelName: ', this.state.modelName);
       },
     );
   };
 
-  handleExpNameChange = event => {
+  handleModelVersionChange = event => {
     this.setState(
       {
-        expName: event.target.value,
+        modelVersion: event.target.value,
       },
       () => {
-        this.logger('after set state, expName: ', this.state.expName);
+        this.logger('after set state, modelVersion: ', this.state.modelVersion);
+      },
+    );
+  };
+
+  handleTrainingConfigDescriptionChange = event => {
+    this.setState(
+      {
+        trainingConfigDescription: event.target.value,
+      },
+      () => {
+        this.logger('after set state, trainingConfigDescription: ', this.state.trainingConfigDescription);
       },
     );
   };
@@ -581,122 +581,148 @@ class CreateTrainingJob extends React.Component {
     );
   };
 
-  handleFeatFiltersChange = event => {
+  handleQueryFilterChange = event => {
     this.setState(
       {
-        featureFilters: event.target.value,
+        queryFilter: event.target.value,
       },
       () => {
-        this.logger('after set state, featureFilters: ', this.state.featureFilters);
+        this.logger('after set state, queryFilter: ', this.state.queryFilter);
       },
     );
   };
 
-  handleHyparamsChange = event => {
+  handleArgumentsChange = event => {
     this.setState(
       {
-        hyparams: event.target.value,
+        arguments: event.target.value,
       },
       () => {
-        this.logger('after set state, hyparams: ', this.state.hyparams);
+        this.logger('after set state, arguments: ', this.state.arguments);
       },
     );
   };
 
-  handleVersioningChange = event => {
+  handleTrainingPipelineNameChange = event => {
     this.setState(
       {
-        versioning: event.target.checked,
+        trainingPipelineName: event.target.value,
       },
       () => {
-        this.logger('after set state, versioning: ', this.state.versioning);
+        this.logger('after set state, trainingPipelineName: ', this.state.trainingPipelineName);
       },
     );
   };
 
-  handleTargetChange = event => {
+  handleTrainingPipelineVersionChange = event => {
     this.setState(
       {
-        targetName: event.target.value,
+        trainingPipelineVersion: event.target.value,
       },
       () => {
-        this.logger('after set state, targetName: ', this.state.targetName);
+        this.logger('after set state, trainingPipelineVersion: ', this.state.trainingPipelineVersion);
       },
     );
   };
 
-  handleDatalakeSourceChange = event => {
+  handleRetrainingPipelineNameChange = event => {
     this.setState(
       {
-        datalakeSourceName: event.target.value,
+        retrainingPipelineName: event.target.value,
       },
       () => {
-        this.logger('after set state, datalakeSourceName: ', this.state.datalakeSourceName);
+        this.logger('after set state, retrainingPipelineName: ', this.state.retrainingPipelineName);
       },
     );
   };
 
-  handleUCDescriptionChange = event => {
+  handleRetrainingPipelineVersionChange = event => {
     this.setState(
       {
-        ucDescription: event.target.value,
+        retrainingPipelineVersion: event.target.value,
       },
       () => {
-        this.logger('after set state, ucDescription: ', this.state.ucDescription);
+        this.logger('after set state, retrainingPipelineVersion: ', this.state.retrainingPipelineVersion);
       },
     );
   };
 
-  handlePipelineVersionChange = event => {
+  handleTrainingDatasetChange = event => {
     this.setState(
       {
-        plVerName: event.target.value,
+        trainingDataset: event.target.value,
       },
       () => {
-        this.logger('after set state, plVerName: ', this.state.plVerName);
+        this.logger('after set state, trainingDataset: ', this.state.trainingDataset);
       },
     );
   };
 
-  handleIsMme = event => {
+  handleValidationDatasetChange = event => {
     this.setState(
       {
-        isMme: event.target.checked,
+        validationDataset: event.target.value,
       },
       () => {
-        this.logger('after set state, isMme: ', this.state.isMme);
+        this.logger('after set state, validationDataset: ', this.state.validationDataset);
       },
     );
   };
 
-  handleModelNameChange = event => {
+  handleNotificationUrlChange = event => {
     this.setState(
       {
-        modelName: event.target.value,
+        notificationUrl: event.target.value,
       },
       () => {
-        this.logger('after set state, modelName: ', this.state.modelName);
+        this.logger('after set state, notificationUrl: ', this.state.notificationUrl);
       },
     );
   };
+
+  handleConsumerRappIdChange = event => {
+    this.setState(
+      {
+        consumerRappId: event.target.value,
+      },
+      () => {
+        this.logger('after set state, consumerRappId: ', this.state.consumerRappId);
+      },
+    );
+  };
+
+  handleProducerRappIdChange = event => {
+    this.setState(
+      {
+        producerRappId: event.target.value,
+      },
+      () => {
+        this.logger('after set state, producerRappId: ', this.state.producerRappId);
+      },
+    );
+  };
+
+
 
   resetFrom = () => {
     this.setState({
-      ucName: '',
-      plName: '',
-      expName: '',
-      isMme: false,
       modelName: '',
+      modelVersion: '',
+      modelLocation: '',
+      trainingConfigDescription: '',
+      queryFilter: '',
+      arguments: '',
+      trainingPipelineName: '',
+      trainingPipelineVersion: '',
+      retrainingPipelineName: '',
+      retrainingPipelineVersion: '',
+      trainingDataset: '',
+      validationDataset: '',
+      notificationUrl: '',
+      consumerRappId: '',
+      producerRappId: '',
       featureGroupName: '',
       featureFilters: '',
-      hyparams: '',
-      versioning: false,
-      ucDescription: '',
-      targetName: '',
-      plVerName: '',
-      plVerList: [],
-      plVerDescription: '',
-      datalakeSourceName: '',
       superModel: '',
       superModelVersion: '',
       superModelVersionsList: [],
@@ -710,196 +736,148 @@ class CreateTrainingJob extends React.Component {
           className={this.props.isCreateTrainingJobForm ? 'create-form' : 'edit-form'}
           onSubmit={this.props.isCreateTrainingJobForm ? this.handleCreateSubmit : this.handleEditSubmit}
         >
-          <Form.Group controlId='ucName'>
-            <Form.Label>Training Job Name*</Form.Label>
-            {this.props.isCreateTrainingJobForm ? (
-              <Form.Control
-                type='input'
-                value={this.state.ucName}
-                onChange={this.handleUCNameChange}
-                placeholder=''
-                required
-              />
-            ) : (
-              <Form.Control type='text' placeholder={this.state.ucName} readOnly />
-            )}
+          <Form.Group controlId='modelName'>
+            <Form.Label>Model Name*</Form.Label>
+            <Form.Control
+              type='text'
+              value={this.state.modelName}
+              onChange={this.handleModelNameChange}
+              placeholder=''
+              required
+            />
           </Form.Group>
-
-          <Form.Group controlId='isMme'>
-            <Form.Check
-              type='checkbox'
-              label='Model Management Service'
-              checked={this.state.isMme}
-              onChange={this.handleIsMme}
+          <Form.Group controlId='modelVersion'>
+            <Form.Label>Model Version*</Form.Label>
+            <Form.Control
+              type='text'
+              value={this.state.modelVersion}
+              onChange={this.handleModelVersionChange}
+              placeholder=''
+              required
             />
           </Form.Group>
 
-          {(() => {
-            if (this.state.isMme == false) {
-              return (
-                <div>
-                  <Form.Group controlId='plName'>
-                    <Form.Label>Training Function*</Form.Label>
-                    <Form.Control as='select' required value={this.state.plName} onChange={this.handlePLNameChange}>
-                      <option key='' value='' disabled>
-                        {' '}
-                        --- Select Training Function ---{' '}
-                      </option>
-                      {this.state.plList.map(data => (
-                        <option key={data.display_name} value={data.display_name}>
-                          {data.display_name}
-                        </option>
-                      ))}
-                    </Form.Control>
-                  </Form.Group>
-
-                  <Form.Group controlId='fGName'>
-                    <Form.Label>FeatureGroup Name*</Form.Label>
-                    <Form.Control
-                      as='select'
-                      required
-                      value={this.state.featureGroupName}
-                      onChange={this.handleFeatureGroupNamesChange}
-                    >
-                      <option key='' value='' disabled>
-                        {' '}
-                        --- Select FeatureGroup Name ---{' '}
-                      </option>
-                      {this.state.featureGroupList.map(data => (
-                        <option key={data.featuregroup_name} value={data.featuregroup_name}>
-                          {data.featuregroup_name}
-                        </option>
-                      ))}
-                    </Form.Control>
-                  </Form.Group>
-                </div>
-              );
-            } else if (this.state.isMme == true) {
-              if (this.props.isCreateTrainingJobForm) {
-                return (
-                  <Form.Group controlId='modelName'>
-                    <Form.Label>Model Name</Form.Label>
-                    <Form.Control
-                      type='text'
-                      value={this.state.modelName}
-                      onChange={this.handleModelNameChange}
-                      placeholder=''
-                      required
-                    />
-                  </Form.Group>
-                );
-              } else {
-                return <Form.Control type='text' placeholder={this.state.modelName} readOnly />;
-              }
-            }
-
-            return null;
-          })()}
-
-          {this.state.plName !== '' && (
-            <div>
-              <Form.Group controlId='plVesName'>
-                <Form.Label>Training Function Version Name*</Form.Label>
-                <Form.Control
-                  as='select'
-                  required
-                  value={this.state.plVerName}
-                  onChange={this.handlePipelineVersionChange}
-                >
-                  <option key='' value='' disabled>
-                    {' '}
-                    --- Select Training Function Version---{' '}
-                  </option>
-                  {this.state.plVerList.map(data => {
-                    if (data === this.state.plName) {
-                      return (
-                        <option key={data} value={data}>
-                          1
-                        </option>
-                      );
-                    } else {
-                      return (
-                        <option key={data} value={data}>
-                          {data}
-                        </option>
-                      );
-                    }
-                  })}
-                </Form.Control>
-              </Form.Group>
-              {/*<Form.Group controlId="plVerDescription">
-              <Form.Label>Pipeline Version Description</Form.Label>
-              <Form.Control as="textarea" name="plVerDescription" rows={3} value={this.state.plVerDescription} readOnly/>
-            </Form.Group>*/}
-            </div>
-          )}
-
-          {/* <Form.Group controlId="expName">
-          <Form.Label>Experiment Name*</Form.Label>
-          <Form.Control as="select"
-            required
-            value={this.state.expName}
-            onChange={this.handleExpNameChange}>
-
-            <option key="" value="" disabled> --- Select Experiment --- </option>
-            {
-              this.state.expList.map(data => <option key={data} value={data}>{data}</option>)
-            }
-          </Form.Control>
-        </Form.Group> */}
-
-          <Form.Group controlId='datalakeSource'>
-            <Form.Label>Datalake Source*</Form.Label>
-
+          <Form.Group controlId='trainingConfigDescription'>
+            <Form.Label>Training Description</Form.Label>
+            <Form.Control
+              type='text'
+              value={this.state.trainingConfigDescription}
+              onChange={this.handleTrainingConfigDescriptionChange}
+              placeholder=''
+            />
+          </Form.Group>
+          <Form.Group controlId='featureGroupName'>
+            <Form.Label>Data Pipeline FeatureGroup Name*</Form.Label>
             <Form.Control
               as='select'
               required
-              value={this.state.datalakeSourceName}
-              onChange={this.handleDatalakeSourceChange}
+              value={this.state.featureGroupName}
+              onChange={this.handleFeatureGroupNamesChange}
             >
               <option key='' value='' disabled>
                 {' '}
-                --- Select Datalake Source ---{' '}
+                --- Select FeatureGroup Name ---{' '}
               </option>
-              {this.state.datalakeSourceList.map(data => (
-                <option key={data} value={data}>
-                  {data}
+              {this.state.featureGroupList.map(data => (
+                <option key={data.featuregroup_name} value={data.featuregroup_name}>
+                  {data.featuregroup_name}
                 </option>
               ))}
             </Form.Control>
           </Form.Group>
-
-          <Form.Group controlId='ftFilter'>
-            <Form.Label>Feature Filter</Form.Label>
+          <Form.Group controlId='queryFilter'>
+            <Form.Label>Data Pipeline Query Filter</Form.Label>
             <Form.Control
               type='text'
-              value={this.state.featureFilters}
-              onChange={this.handleFeatFiltersChange}
+              value={this.state.queryFilter}
+              onChange={this.handleQueryFilterChange}
+              placeholder=''
+            />
+          </Form.Group>
+          <Form.Group controlId='arguments'>
+            <Form.Label>Data Pipeline Arguments</Form.Label>
+            <Form.Control type='text' value={this.state.arguments} onChange={this.handleArgumentsChange} placeholder='' />
+          </Form.Group>
+
+          <Form.Group controlId='trainingPipelineName'>
+            <Form.Label>Training Pipeline Name</Form.Label>
+            <Form.Control
+              type='text'
+              value={this.state.trainingPipelineName}
+              onChange={this.handleTrainingPipelineNameChange}
+              placeholder=''
+            />
+          </Form.Group>
+          <Form.Group controlId='trainingPipelineVersion'>
+            <Form.Label>Training Pipeline Version</Form.Label>
+            <Form.Control
+              type='text'
+              value={this.state.trainingPipelineVersion}
+              onChange={this.handleTrainingPipelineVersionChange}
+              placeholder=''
+            />
+          </Form.Group>
+          <Form.Group controlId='retrainingPipelineName'>
+            <Form.Label>Retraining Pipeline Name</Form.Label>
+            <Form.Control
+              type='text'
+              value={this.state.retrainingPipelineName}
+              onChange={this.handleRetrainingPipelineNameChange}
+              placeholder=''
+            />
+          </Form.Group>
+          <Form.Group controlId='retrainingPipelineVersion'>
+            <Form.Label>Retraining Pipeline Version</Form.Label>
+            <Form.Control
+              type='text'
+              value={this.state.retrainingPipelineVersion}
+              onChange={this.handleRetrainingPipelineVersionChange}
               placeholder=''
             />
           </Form.Group>
 
-          <Form.Group controlId='hyparams'>
-            <Form.Label>Hyper Parameters</Form.Label>
-            <Form.Control type='text' value={this.state.hyparams} onChange={this.handleHyparamsChange} placeholder='' />
-          </Form.Group>
-
-          {/* currently don't know difference between id and controlId in Form.group*/}
-          <Form.Group id='EnableVersioning'>
-            <Form.Check
-              type='checkbox'
-              label='Enable versioning'
-              checked={this.state.versioning}
-              onChange={this.handleVersioningChange}
-            />
-          </Form.Group>
-
-          <Form.Group controlId='ucDescription'>
-            <Form.Label>Description</Form.Label>
+          <Form.Group controlId='trainingDataset'>
+            <Form.Label>Training Dataset</Form.Label>
             <Form.Control
               type='text'
-              value={this.state.ucDescription}
-              onChange={this.handleUCDescriptionChange}
+              value={this.state.trainingDataset}
+              onChange={this.handleTrainingDatasetChange}
+              placeholder=''
+            />
+          </Form.Group>
+          <Form.Group controlId='validationDataset'>
+            <Form.Label>Validation Dataset</Form.Label>
+            <Form.Control
+              type='text'
+              value={this.state.validationDataset}
+              onChange={this.handleValidationDatasetChange}
+              placeholder=''
+            />
+          </Form.Group>
+          <Form.Group controlId='notificationUrl'>
+            <Form.Label>Notification URL</Form.Label>
+            <Form.Control
+              type='text'
+              value={this.state.notificationUrl}
+              onChange={this.handleNotificationUrlChange}
+              placeholder=''
+            />
+          </Form.Group>
+          <Form.Group controlId='consumerRappId'>
+            <Form.Label>Consumer rApp ID</Form.Label>
+            <Form.Control
+              type='text'
+              value={this.state.consumerRappId}
+              onChange={this.handleConsumerRappIdChange}
+              placeholder=''
+            />
+          </Form.Group>
+          <Form.Group controlId='producerRappId'>
+            <Form.Label>Producer rApp ID</Form.Label>
+            <Form.Control
+              type='text'
+              value={this.state.producerRappId}
+              onChange={this.handleProducerRappIdChange}
               placeholder=''
             />
           </Form.Group>
