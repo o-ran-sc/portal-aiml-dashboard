@@ -13,7 +13,7 @@ export const trainingJobAPI = {
   invokeTrainingJob: async ({ data }) => {
     return await instance.post('/ai-ml-model-training/v1/training-jobs', { ...data });
   },
-  deleteTrainingJob: async ({ data }) => {
-    return await instance.delete('/trainingjobs', { ...data });
+  deleteTrainingJob: async ({ params }) => {
+    return await instance.delete(`/ai-ml-model-training/v1/training-jobs/${params.trainingJobId}`);
   },
 };
