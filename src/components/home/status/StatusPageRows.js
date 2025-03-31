@@ -115,8 +115,7 @@ const StatusPageRows = props => {
       let deleteTJList = [];
       for (const row of selectedFlatRows) {
         let trainingjobDict = {};
-        trainingjobDict['trainingjob_name'] = row.original.trainingjob_name;
-        trainingjobDict['version'] = row.original.version;
+        trainingjobDict['id'] = row.original.id;
         deleteTJList.push(trainingjobDict);
       }
       console.log('Selected trainingjobs for deletion : ', deleteTJList);
