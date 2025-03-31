@@ -34,10 +34,12 @@ export const invokeStartTraining = async trainingjobNames => {
 export const deleteTrainingjobs = async deleteTJList => {
   console.log('Delete API called ', deleteTJList);
   try {
-    const res = await trainingJobAPI.deleteTrainingJob({ data: { data: { list: deleteTJList } } });
-    console.log('Delete API response', res);
-    let result = 'trainingjob deletion initiated for selected trainingjob(s),Result' + '\n' + JSON.stringify(res.data);
-    alert(result);
+    for (const job of deleteTJList) {
+      let res = await trainingJobAPI.deleteTrainingJob({ params: {trainingJobId: job.id} });
+      console.log('Delete API response', res);
+      let result = `trainingjob deletion initiated for selected trainingjob ${job.id}, Result` + '\n' + JSON.stringify(res.status);
+      alert(result);
+    }
   } catch (error) {
     console.log(error);
   }
