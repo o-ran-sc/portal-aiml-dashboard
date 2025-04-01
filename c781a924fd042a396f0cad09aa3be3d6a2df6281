@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c95bdb9_1e99a1f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001948
+      },
+      "writtenOn": "2025-04-01T06:30:10Z",
+      "side": 1,
+      "message": "Can you mention the Issue-Id in the commit-message?",
+      "revId": "c781a924fd042a396f0cad09aa3be3d6a2df6281",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "708acac2_2bf9ec0d",
