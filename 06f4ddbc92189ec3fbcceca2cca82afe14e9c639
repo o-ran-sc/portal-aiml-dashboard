@@ -36,6 +36,24 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "686f378a_494c1ba8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2025-04-01T11:30:11Z",
+      "side": 1,
+      "message": "We have been told by Subhash to follow this! He can comment on this further.",
+      "parentUuid": "3747d25e_94d1781d",
+      "revId": "06f4ddbc92189ec3fbcceca2cca82afe14e9c639",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "88355f65_e8f94e93",
