@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8163821_1c9d3114",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002075
+      },
+      "writtenOn": "2025-04-01T07:46:38Z",
+      "side": 1,
+      "message": "Hey Taewan, we have set a format of commit message. \nhere is an example: \n\nIssue-Id: AIMLFW-183: Add API to get trainingJobs from modelId\n\nFollowing Items are implemented:\n1. Added an API-endpoint (\u0027/training-jobs/\u003cmodel_name\u003e/\u003cmodel_version\u003e\u0027) which will take ModelId (modelName + modelVersion) as input and returns all the TrainingJobs associated with the ModelId.\n\nPlease follow this format only. Adding description has been made compulsory.",
+      "revId": "06f4ddbc92189ec3fbcceca2cca82afe14e9c639",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
