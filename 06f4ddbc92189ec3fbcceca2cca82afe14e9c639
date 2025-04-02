@@ -54,6 +54,24 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "49cd4ba5_e48ab4da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000475
+      },
+      "writtenOn": "2025-04-02T07:46:21Z",
+      "side": 1,
+      "message": "Hello Mr. @Taewan this is general best practices, not documented. But I agree it is good idea to document in wiki pages.",
+      "parentUuid": "686f378a_494c1ba8",
+      "revId": "06f4ddbc92189ec3fbcceca2cca82afe14e9c639",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "88355f65_e8f94e93",
