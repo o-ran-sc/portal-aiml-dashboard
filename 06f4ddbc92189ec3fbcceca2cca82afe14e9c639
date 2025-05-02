@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fa3c1069_67b45fcc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2025-05-02T02:08:31Z",
+      "side": 1,
+      "message": "@subh.singh@samsung.com , @rajdeep.sin@samsung.com Please take a look at my updated commit message.",
+      "parentUuid": "49cd4ba5_e48ab4da",
+      "revId": "06f4ddbc92189ec3fbcceca2cca82afe14e9c639",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "88355f65_e8f94e93",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
