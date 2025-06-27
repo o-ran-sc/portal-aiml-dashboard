@@ -95,8 +95,8 @@ const ListFeatureGroup = props => {
   };
 
   const handleDme = dme => {
-    if (dme === true) return <p>Enabled</p>;
-    else return <p>Disabled</p>;
+    if (dme === true) return <div>Enabled</div>;
+    else return <div>Disabled</div>;
   };
 
   const columns = useMemo(
