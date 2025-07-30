@@ -20,9 +20,13 @@ FROM node:22
 
 # location in the container
 WORKDIR /home/gui/
-COPY . .
+COPY package*.json ./
 
 RUN npm install
+COPY . .
+RUN npm run build
 RUN npm install -g serve
 
 EXPOSE 32005
+
+CMD ["serve", "-s", "build", "-l", "32005"]
