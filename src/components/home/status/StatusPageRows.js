@@ -35,7 +35,7 @@ const StatusPageRows = props => {
   const [createPopup, setCreatePopup] = useState(false);
   const [editPopup, setEditPopup] = useState(false);
   const [versionForEditPopup, setVersionForEditPopup] = useState(null);
-  const [traingingjobNameForEditPopup, setTraingingjobNameForEditPopup] = useState(null);
+  const [trainingjobNameForEditPopup, setTrainingjobNameForEditPopup] = useState(null);
   const closeEditPopup = () => setEditPopup(false);
   const closeCreatePopup = () => setCreatePopup(false);
   const [stepsStatePopup, setStepsStatePopup] = useState(false);
@@ -56,7 +56,7 @@ const StatusPageRows = props => {
 
   useEffect(() => {
     toggleAllRowsSelected(false);
-  }, [traingingjobNameForEditPopup]);
+  }, [trainingjobNameForEditPopup]);
 
   const fetchTrainingJobs = async () => {
     logger('fetchTrainingJobs UCMgr_baseUrl', UCMgr_baseUrl);
@@ -74,12 +74,10 @@ const StatusPageRows = props => {
     console.log('handleRetrain starts..');
 
     if (selectedFlatRows.length > 0) {
-      let trainingjobNames = [];
-      for (const row of selectedFlatRows) {
-        trainingjobNames.push({
-          trainingjob_name: row.original.trainingjob_name,
-        });
-      }
+      const trainingjobNames = selectedFlatRows.map(row => ({
+        trainingjob_name: row.original.trainingjob_name,
+      }));
+
       console.log('selected trainingjobs: ', trainingjobNames);
       try {
         await invokeStartTraining(trainingjobNames);
@@ -100,24 +98,22 @@ const StatusPageRows = props => {
   const handleEdit = event => {
     if (selectedFlatRows.length === 1) {
       logger('selected training job: ', selectedFlatRows[0].original.trainingjob_name);
-      setTraingingjobNameForEditPopup(selectedFlatRows[0].original.trainingjob_name);
+      setTrainingjobNameForEditPopup(selectedFlatRows[0].original.trainingjob_name);
       setVersionForEditPopup(selectedFlatRows[0].original.version);
       setEditPopup(true);
       toggleAllRowsSelected(false);
     } else {
-      alert('please select exactly one trainingjob');
+      alert('Please select exactly one trainingjob');
     }
   };
 
   const handleDelete = async event => {
     console.log('handleDelete starts..');
     if (selectedFlatRows.length > 0) {
-      let deleteTJList = [];
-      for (const row of selectedFlatRows) {
-        let trainingjobDict = {};
-        trainingjobDict['id'] = row.original.id;
-        deleteTJList.push(trainingjobDict);
-      }
+      const deleteTJList = selectedFlatRows.map(row => ({
+        id: row.original.id,
+      }));
+
       console.log('Selected trainingjobs for deletion : ', deleteTJList);
       try {
         await deleteTrainingjobs(deleteTJList);
@@ -256,7 +252,7 @@ const StatusPageRows = props => {
       </Popup>
       <Popup show={editPopup} onHide={closeEditPopup} title='Edit usecase'>
         <CreateOrEditTrainingJobForm
-          trainingjob_name={traingingjobNameForEditPopup}
+          trainingjob_name={trainingjobNameForEditPopup}
           version={versionForEditPopup}
           isCreateTrainingJobForm={false}
           onHideEditPopup={closeEditPopup}

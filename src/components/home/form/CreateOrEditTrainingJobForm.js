@@ -526,7 +526,7 @@ class CreateTrainingJob extends React.Component {
   }
 
   getIntOrStringValue(inputValue) {
-    //BUG: value 12.5 coverted to 12
+    //BUG: value 12.5 converted to 12
 
     this.logger('Before changing in getIntOrStringValue: ', inputValue);
     var value = parseInt(inputValue);
@@ -537,172 +537,11 @@ class CreateTrainingJob extends React.Component {
     return value;
   }
 
-  handleModelNameChange = event => {
-    this.setState(
-      {
-        modelName: event.target.value,
-      },
-      () => {
-        this.logger('after set state, modelName: ', this.state.modelName);
-      },
-    );
+  handleInputChange = (fieldName) => (event) => {
+    this.setState({ [fieldName]: event.target.value }, () => {
+      this.logger(`after set state, ${fieldName}: `, this.state[fieldName]);
+    });
   };
-
-  handleModelVersionChange = event => {
-    this.setState(
-      {
-        modelVersion: event.target.value,
-      },
-      () => {
-        this.logger('after set state, modelVersion: ', this.state.modelVersion);
-      },
-    );
-  };
-
-  handleTrainingConfigDescriptionChange = event => {
-    this.setState(
-      {
-        trainingConfigDescription: event.target.value,
-      },
-      () => {
-        this.logger('after set state, trainingConfigDescription: ', this.state.trainingConfigDescription);
-      },
-    );
-  };
-
-  handleFeatureGroupNamesChange = event => {
-    this.setState(
-      {
-        featureGroupName: event.target.value,
-      },
-      () => {
-        this.logger('after set state, FeatureGroup Name: ', this.state.featureGroupName);
-      },
-    );
-  };
-
-  handleQueryFilterChange = event => {
-    this.setState(
-      {
-        queryFilter: event.target.value,
-      },
-      () => {
-        this.logger('after set state, queryFilter: ', this.state.queryFilter);
-      },
-    );
-  };
-
-  handleArgumentsChange = event => {
-    this.setState(
-      {
-        arguments: event.target.value,
-      },
-      () => {
-        this.logger('after set state, arguments: ', this.state.arguments);
-      },
-    );
-  };
-
-  handleTrainingPipelineNameChange = event => {
-    this.setState(
-      {
-        trainingPipelineName: event.target.value,
-      },
-      () => {
-        this.logger('after set state, trainingPipelineName: ', this.state.trainingPipelineName);
-      },
-    );
-  };
-
-  handleTrainingPipelineVersionChange = event => {
-    this.setState(
-      {
-        trainingPipelineVersion: event.target.value,
-      },
-      () => {
-        this.logger('after set state, trainingPipelineVersion: ', this.state.trainingPipelineVersion);
-      },
-    );
-  };
-
-  handleRetrainingPipelineNameChange = event => {
-    this.setState(
-      {
-        retrainingPipelineName: event.target.value,
-      },
-      () => {
-        this.logger('after set state, retrainingPipelineName: ', this.state.retrainingPipelineName);
-      },
-    );
-  };
-
-  handleRetrainingPipelineVersionChange = event => {
-    this.setState(
-      {
-        retrainingPipelineVersion: event.target.value,
-      },
-      () => {
-        this.logger('after set state, retrainingPipelineVersion: ', this.state.retrainingPipelineVersion);
-      },
-    );
-  };
-
-  handleTrainingDatasetChange = event => {
-    this.setState(
-      {
-        trainingDataset: event.target.value,
-      },
-      () => {
-        this.logger('after set state, trainingDataset: ', this.state.trainingDataset);
-      },
-    );
-  };
-
-  handleValidationDatasetChange = event => {
-    this.setState(
-      {
-        validationDataset: event.target.value,
-      },
-      () => {
-        this.logger('after set state, validationDataset: ', this.state.validationDataset);
-      },
-    );
-  };
-
-  handleNotificationUrlChange = event => {
-    this.setState(
-      {
-        notificationUrl: event.target.value,
-      },
-      () => {
-        this.logger('after set state, notificationUrl: ', this.state.notificationUrl);
-      },
-    );
-  };
-
-  handleConsumerRappIdChange = event => {
-    this.setState(
-      {
-        consumerRappId: event.target.value,
-      },
-      () => {
-        this.logger('after set state, consumerRappId: ', this.state.consumerRappId);
-      },
-    );
-  };
-
-  handleProducerRappIdChange = event => {
-    this.setState(
-      {
-        producerRappId: event.target.value,
-      },
-      () => {
-        this.logger('after set state, producerRappId: ', this.state.producerRappId);
-      },
-    );
-  };
-
-
 
   resetFrom = () => {
     this.setState({
@@ -741,7 +580,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.modelName}
-              onChange={this.handleModelNameChange}
+              onChange={this.handleInputChange('modelName')}
               placeholder=''
               required
             />
@@ -751,7 +590,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.modelVersion}
-              onChange={this.handleModelVersionChange}
+              onChange={this.handleInputChange('modelVersion')}
               placeholder=''
               required
             />
@@ -762,7 +601,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.trainingConfigDescription}
-              onChange={this.handleTrainingConfigDescriptionChange}
+              onChange={this.handleInputChange('trainingConfigDescription')}
               placeholder=''
             />
           </Form.Group>
@@ -772,7 +611,7 @@ class CreateTrainingJob extends React.Component {
               as='select'
               required
               value={this.state.featureGroupName}
-              onChange={this.handleFeatureGroupNamesChange}
+              onChange={this.handleInputChange('featureGroupName')}
             >
               <option key='' value='' disabled>
                 {' '}
@@ -790,13 +629,13 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.queryFilter}
-              onChange={this.handleQueryFilterChange}
+              onChange={this.handleInputChange('queryFilter')}
               placeholder=''
             />
           </Form.Group>
           <Form.Group controlId='arguments'>
             <Form.Label>Data Pipeline Arguments</Form.Label>
-            <Form.Control type='text' value={this.state.arguments} onChange={this.handleArgumentsChange} placeholder='' />
+            <Form.Control type='text' value={this.state.arguments} onChange={this.handleInputChange('arguments')} placeholder='' />
           </Form.Group>
 
           <Form.Group controlId='trainingPipelineName'>
@@ -804,7 +643,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.trainingPipelineName}
-              onChange={this.handleTrainingPipelineNameChange}
+              onChange={this.handleInputChange('trainingPipelineName')}
               placeholder=''
             />
           </Form.Group>
@@ -813,7 +652,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.trainingPipelineVersion}
-              onChange={this.handleTrainingPipelineVersionChange}
+              onChange={this.handleInputChange('trainingPipelineVersion')}
               placeholder=''
             />
           </Form.Group>
@@ -822,7 +661,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.retrainingPipelineName}
-              onChange={this.handleRetrainingPipelineNameChange}
+              onChange={this.handleInputChange('retrainingPipelineName')}
               placeholder=''
             />
           </Form.Group>
@@ -831,7 +670,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.retrainingPipelineVersion}
-              onChange={this.handleRetrainingPipelineVersionChange}
+              onChange={this.handleInputChange('retrainingPipelineVersion')}
               placeholder=''
             />
           </Form.Group>
@@ -841,7 +680,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.trainingDataset}
-              onChange={this.handleTrainingDatasetChange}
+              onChange={this.handleInputChange('trainingDataset')}
               placeholder=''
             />
           </Form.Group>
@@ -850,7 +689,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.validationDataset}
-              onChange={this.handleValidationDatasetChange}
+              onChange={this.handleInputChange('validationDataset')}
               placeholder=''
             />
           </Form.Group>
@@ -859,7 +698,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.notificationUrl}
-              onChange={this.handleNotificationUrlChange}
+              onChange={this.handleInputChange('notificationUrl')}
               placeholder=''
             />
           </Form.Group>
@@ -868,7 +707,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.consumerRappId}
-              onChange={this.handleConsumerRappIdChange}
+              onChange={this.handleInputChange('consumerRappId')}
               placeholder=''
             />
           </Form.Group>
@@ -877,7 +716,7 @@ class CreateTrainingJob extends React.Component {
             <Form.Control
               type='text'
               value={this.state.producerRappId}
-              onChange={this.handleProducerRappIdChange}
+              onChange={this.handleInputChange('producerRappId')}
               placeholder=''
             />
           </Form.Group>
