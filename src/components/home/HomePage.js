@@ -24,6 +24,7 @@ import UploadPipelineForm from './pipelines/UploadPipeline';
 import CreateFeatureGroup from './create/CreateFeatureGroup';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ListFeatureGroup from './status/ListFeatureGroup';
+import ListModels from './status/ListModels';
 import { NavigationBar } from '../navigation';
 import { Sidebar } from '../sidebar';
 import { debug_var } from '../../states';
@@ -54,6 +55,7 @@ class HomePage extends React.Component {
             <Route path='/TrainingJob/Pipeline' element={<UploadPipelineForm logger={logger} />} />
             <Route path='/TrainingJob/CreateFeatureGroup' element={<CreateFeatureGroup logger={logger} />} />
             <Route path='/TrainingJob/ListFeatureGroups' element={<ListFeatureGroup logger={logger} />} />
+            <Route path='/ModelManagement/ListModels' element={<ListModels logger={logger} />} />
           </Routes>
               </Col>
             </Row>

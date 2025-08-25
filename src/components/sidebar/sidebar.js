@@ -18,6 +18,9 @@ export const Sidebar = () => {
         <a href="/TrainingJob/ListFeatureGroups" className={`sidebar-link ${isActive('/TrainingJob/ListFeatureGroups')}`}>
           <i className="bi bi-folder-fill"></i> Feature Group
         </a>
+        <a href="/ModelManagement/ListModels" className={`sidebar-link ${isActive('/ModelManagement/ListModels')}`}>
+          <i className="bi bi-box-seam"></i> Model Management
+        </a>
       </Col>
     </Row>
   );
