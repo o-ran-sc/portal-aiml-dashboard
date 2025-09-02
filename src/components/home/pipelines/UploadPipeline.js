@@ -16,7 +16,7 @@
 
 // ==================================================================================
 
-import React from 'react';
+import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -25,16 +25,16 @@ import Popover from 'react-bootstrap/Popover';
 import { notebook_url, UCMgr_baseUrl } from '../../../states';
 import { pipelineAPI } from '../../../apis/pipeline';
 
-class UploadPipelineForm extends React.Component {
+class UploadPipelineForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      fileName: '',
+      fileName: null,
       plName: '',
       UCMgr_baseUrl: UCMgr_baseUrl,
     };
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this);
   }
 
   popover = () => (
@@ -50,13 +50,14 @@ class UploadPipelineForm extends React.Component {
     </Popover>
   );
 
-  handleInputChange(event) {
+  handleFileChange = (event) => {
     console.log(event);
     this.setState({
       fileName: event.target.files[0],
+    }, () => {
+      console.log('handleFileChange', this.state.fileName);
     });
-    console.log('handleInputChange', this.fileName);
-  }
+  };
 
   handlePlNameChange = event => {
     this.setState({
@@ -66,7 +67,7 @@ class UploadPipelineForm extends React.Component {
 
   resetFrom = event => {
     this.setState({
-      fileName: '',
+      fileName: null,
       plName: '',
     });
     console.log(this.state);
@@ -78,7 +79,7 @@ class UploadPipelineForm extends React.Component {
     data.append('file', this.state.fileName);
 
     pipelineAPI
-      .uploadPipeline({ params: { pipelineName: this.state.plName }, data })
+      .uploadPipeline({ params: { pipelineName: this.state.plName, data: data } })
       .then(res => {
         console.log('Pipeline  responsed ', res);
         console.log('Status  responsed ', res.status);
@@ -97,8 +98,6 @@ class UploadPipelineForm extends React.Component {
       .then(function () {
         // always executed
       });
-
-    console.log('something');
     event.preventDefault();
   };
 
@@ -157,7 +156,7 @@ class UploadPipelineForm extends React.Component {
                 />
               </Form.Group>
 
-              <input type='file' className='form-control' name='upload_file' onChange={this.handleInputChange} />
+              <input type='file' className='form-control' name='upload_file' onChange={this.handleFileChange} />
 
               <Button style={{ backgroundColor: '#6282f6' }} type='submit'> Upload </Button>
             </Form>
