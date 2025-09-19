@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1cecb194_e4b050d8",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002600
+      },
+      "writtenOn": "2025-09-19T08:14:49Z",
+      "side": 1,
+      "message": "This execution count is coming from the running of cells in the jupyter-notebook. I will try to find a way to reset the execution of cells before commiting the code.",
+      "parentUuid": "8f196792_6ba8da13",
+      "revId": "36aee7fda2164890923387302567f76dce36b84f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b25e23fe_367be24b",
         "filename": "kf-pipelines/qoe-pipeline.ipynb",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Yes this name should not be changed.",
       "parentUuid": "b25e23fe_367be24b",
+      "revId": "36aee7fda2164890923387302567f76dce36b84f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96df0158_7935a986",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002600
+      },
+      "writtenOn": "2025-09-19T08:14:49Z",
+      "side": 1,
+      "message": "I have reverted the file names in patchset 4",
+      "parentUuid": "7ff8546c_8e7c6be4",
       "revId": "36aee7fda2164890923387302567f76dce36b84f",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
