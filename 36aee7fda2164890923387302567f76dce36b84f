@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "369b3b03_38b1815f",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000475
+      },
+      "writtenOn": "2025-09-19T13:07:16Z",
+      "side": 1,
+      "message": "Addressed",
+      "parentUuid": "28a4fc71_6f668668",
+      "revId": "36aee7fda2164890923387302567f76dce36b84f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b25e23fe_367be24b",
         "filename": "kf-pipelines/qoe-pipeline.ipynb",
         "patchSetId": 2
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "I have reverted the file names in patchset 4",
       "parentUuid": "7ff8546c_8e7c6be4",
+      "revId": "36aee7fda2164890923387302567f76dce36b84f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "747d20b2_e0634562",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000475
+      },
+      "writtenOn": "2025-09-19T13:07:16Z",
+      "side": 1,
+      "message": "Addressed.",
+      "parentUuid": "96df0158_7935a986",
       "revId": "36aee7fda2164890923387302567f76dce36b84f",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
