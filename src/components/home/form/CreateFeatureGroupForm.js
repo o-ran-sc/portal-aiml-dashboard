@@ -24,6 +24,7 @@ import './CreateFeatureGroupForm.css';
 import { Row, Col } from 'react-bootstrap';
 import { instance, UCMgr_baseUrl } from '../../../states';
 import { featureGroupAPI } from '../../../apis';
+import { toast } from '../../../utils/toast-bus';
 
 class CreateFeatureGroup extends React.Component {
   constructor(props) {
@@ -72,7 +73,7 @@ class CreateFeatureGroup extends React.Component {
   handleFGNameChange = event => {
     if (this.regName.test(event.target.value)) {
       event.preventDefault();
-      alert('Please use alphabet, number, and underscore to Feature Group Name.');
+      toast.info('Please use alphabet, number, and underscore to Feature Group Name.');
     } else {
       this.setState(
         {
@@ -217,13 +218,13 @@ class CreateFeatureGroup extends React.Component {
       .then(res => {
         this.logger('featureGroup Created', res.data);
         if (res.status === 201) {
-          alert('FeatureGroup Created');
+          toast.success('FeatureGroup Created', 'Feature Group');
           this.resetForm();
         }
       })
       .catch(error => {
         this.logger('Error creating featureGroup', error);
-        alert('Failed: ' + error.response.data.Exception);
+        toast.error('Failed: ' + error.response.data.Exception, 'Feature Group');
         event.preventDefault();
       })
       .then(function () {

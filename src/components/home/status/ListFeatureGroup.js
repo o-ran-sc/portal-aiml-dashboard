@@ -28,6 +28,7 @@ import { featureGroupAPI } from '../../../apis';
 import FeatureGroupInfo from './FeatureGroupInfo';
 import CreateFeatureGroup from '../create/CreateFeatureGroup';
 import { deleteFeatureGroups } from './API_STATUS';
+import { toast } from '../../../utils/toast-bus';
 
 const ListFeatureGroup = props => {
   const logger = props.logger;
@@ -90,7 +91,7 @@ const ListFeatureGroup = props => {
       }
       toggleAllRowsSelected(false);
     } else {
-      alert('Please select more than one row');
+      toast.info('Please select more than one row');
     }
   };
 

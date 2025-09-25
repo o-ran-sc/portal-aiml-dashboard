@@ -20,11 +20,13 @@ import React from 'react';
 import './App.css';
 import HomePage from './components/home/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Toaster from './components/toast/Toaster';
 
 function App() {
   return (
     <div className='App'>
       <HomePage />
+      <Toaster />
     </div>
   );
 }

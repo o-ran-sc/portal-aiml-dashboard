@@ -27,6 +27,7 @@ import {
 } from '../common/CommonMethods';
 import { instance, UCMgr_baseUrl } from '../../../states';
 import { featureGroupAPI, pipelineAPI, trainingJobAPI } from '../../../apis';
+import { toast } from '../../../utils/toast-bus';
 
 class CreateTrainingJob extends React.Component {
   constructor(props) {
@@ -401,7 +402,7 @@ class CreateTrainingJob extends React.Component {
     .then(res => {
       this.logger('Training  responsed ', res);
       if (res.status === 201) {
-        alert('Training Job created and training initiated');
+        toast.success('Training Job created and training initiated', 'Training Job');
         this.resetFrom();
         this.props.onHideCreatePopup();
         this.props.fetchTrainingJobs();
@@ -409,7 +410,7 @@ class CreateTrainingJob extends React.Component {
     })
     .catch(error => {
       this.logger('Error creating Training Job', error);
-      alert('Failed: ' + error.response.data.Exception);
+      toast.error('Failed: ' + error.response.data.Exception, 'Training Job');
       event.preventDefault();
     });
   }
@@ -442,7 +443,7 @@ class CreateTrainingJob extends React.Component {
       .catch(error => {
         // handle error
         this.logger('Error creating Use case', error);
-        alert('Failed: ' + error.response.data.Exception);
+        toast.error('Failed: ' + error.response.data.Exception, 'Training Job');
         event.preventDefault();
       })
       .then(function () {
@@ -459,7 +460,7 @@ class CreateTrainingJob extends React.Component {
       .then(res => {
         this.logger('Training  responsed ', res);
         if (res.status === 200) {
-          alert('Training Job edited and training initiated');
+          toast.success('Training Job edited and training initiated', 'Training Job');
           this.props.onHideEditPopup();
           this.props.fetchTrainingJobs();
         } else {
@@ -468,7 +469,7 @@ class CreateTrainingJob extends React.Component {
       })
       .catch(error => {
         this.logger('Error in training api,response', error.response.data);
-        alert('Training failed: ' + error.response.data.Exception);
+        toast.error('Training failed: ' + error.response.data.Exception, 'Training Job');
       })
       .then(function () {
         // always executed

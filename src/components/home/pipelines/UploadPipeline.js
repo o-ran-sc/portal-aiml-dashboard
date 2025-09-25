@@ -24,6 +24,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { notebook_url, UCMgr_baseUrl } from '../../../states';
 import { pipelineAPI } from '../../../apis/pipeline';
+import { toast } from '../../../utils/toast-bus';
 
 class UploadPipelineForm extends Component {
   constructor(props) {
@@ -85,7 +86,7 @@ class UploadPipelineForm extends Component {
         console.log('Status  responsed ', res.status);
         if (res.status === 200) {
           console.log('Pipeline uploaded ', res.status);
-          alert(res.data.result);
+          toast.success(res.data.result, 'Pipeline');
           this.resetFrom(event);
         } else {
           console.log('Upload pipeline error:', res);
@@ -93,7 +94,7 @@ class UploadPipelineForm extends Component {
       })
       .catch(error => {
         console.log('Error in uploading pipeline', error.response);
-        alert('Pipeline upload failed: ' + error.response.data.result);
+        toast.error('Pipeline upload failed: ' + error.response.data.result, 'Pipeline');
       })
       .then(function () {
         // always executed

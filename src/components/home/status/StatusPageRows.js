@@ -24,7 +24,7 @@ import { useTable, useRowSelect } from 'react-table';
 import { Checkbox, Popup, StepsState, TrainingJobInfo } from '../../../components';
 import { UCMgr_baseUrl } from '../../../states';
 import { trainingJobAPI } from '../../../apis';
-
+import { toast } from '../../../utils/toast-bus';
 import { invokeStartTraining, deleteTrainingjobs } from './API_STATUS';
 import CreateOrEditTrainingJobForm from '../form/CreateOrEditTrainingJobForm';
 import CreateTrainingJob from '../create/CreateTrainingJob';
@@ -87,7 +87,7 @@ const StatusPageRows = props => {
       }
       toggleAllRowsSelected(false);
     } else {
-      alert('Please select atleast one trainingjob');
+      toast.info('Please select atleast one trainingjob');
     }
   };
 
@@ -103,7 +103,7 @@ const StatusPageRows = props => {
       setEditPopup(true);
       toggleAllRowsSelected(false);
     } else {
-      alert('Please select exactly one trainingjob');
+      toast.info('Please select exactly one trainingjob');
     }
   };
 
@@ -123,7 +123,7 @@ const StatusPageRows = props => {
       }
       toggleAllRowsSelected(false);
     } else {
-      alert('Please select atleast one trainingjob');
+      toast.info('Please select atleast one trainingjob');
     }
   };
 
