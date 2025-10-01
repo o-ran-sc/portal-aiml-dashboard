@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae87834d_65b5c180",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2025-10-01T01:47:07Z",
+      "side": 1,
+      "message": "What is the difference from `mm_sdk.upload_model`?",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66a32526_f223a245",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2025-10-01T01:47:07Z",
+      "side": 1,
+      "message": "It looks like a POST request, but is there no data?",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
