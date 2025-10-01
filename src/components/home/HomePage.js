@@ -27,6 +27,7 @@ import ListFeatureGroup from './status/ListFeatureGroup';
 import ListModels from './status/ListModels';
 import { NavigationBar } from '../navigation';
 import { Sidebar } from '../sidebar';
+import { ChatbotToggle } from '../../components';
 import { debug_var } from '../../states';
 
 var DEBUG = debug_var === 'true';
@@ -61,6 +62,7 @@ class HomePage extends React.Component {
             </Row>
           </Container>
         </Router>
+        <ChatbotToggle />
       </>
     );
   }
