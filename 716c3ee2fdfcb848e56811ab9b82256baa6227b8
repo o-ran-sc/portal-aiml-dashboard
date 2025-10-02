@@ -39,6 +39,30 @@
       },
       "revId": "716c3ee2fdfcb848e56811ab9b82256baa6227b8",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "426f300b_e05279ab",
+        "filename": "src/components/chatbot/Chatbot.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002764
+      },
+      "writtenOn": "2025-10-02T05:10:18Z",
+      "side": 1,
+      "message": "Thank you for your comment! I moved the part you mentioned in Chatbot.js to chatbot.css",
+      "parentUuid": "5693e7f9_88e60afa",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 3
+      },
+      "revId": "716c3ee2fdfcb848e56811ab9b82256baa6227b8",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
