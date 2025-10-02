@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a122072c_ca766d5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2025-10-02T02:15:51Z",
+      "side": 1,
+      "message": "The UI looks great! 👍",
+      "revId": "716c3ee2fdfcb848e56811ab9b82256baa6227b8",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5693e7f9_88e60afa",
+        "filename": "src/components/chatbot/Chatbot.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2025-10-02T02:15:51Z",
+      "side": 1,
+      "message": "This seems to overlap with the `css` file. For clarity and consistency, please handle this in just one css file whenever possible.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 3
+      },
+      "revId": "716c3ee2fdfcb848e56811ab9b82256baa6227b8",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
