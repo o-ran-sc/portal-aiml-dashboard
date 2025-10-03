@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6860c7f_f6737748",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002600
+      },
+      "writtenOn": "2025-10-03T05:56:58Z",
+      "side": 1,
+      "message": "@Taewan the upload model function does update the model information. It only saves the model using the model info passed as arguments (https://github.com/o-ran-sc/aiml-fw-athp-sdk-model-storage/blob/f14981522e754f674df93172c34f3ad98ff9340d/modelmetricsdk/model_metrics_sdk.py#L123). \n\nThe updateArtifact function updates the model info, the new artifact version after training/retraining needs to be updated. This can only be done via updateArtifact function (https://github.com/o-ran-sc/aiml-fw-awmf-modelmgmtservice/blob/2d98f62336021a820b19e7f5920ac10d99adf58c/apis/mmes_apis.go#L390)",
+      "parentUuid": "ae87834d_65b5c180",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66a32526_f223a245",
         "filename": "kf-pipelines/qoe-pipeline.ipynb",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-01T01:47:07Z",
       "side": 1,
       "message": "It looks like a POST request, but is there no data?",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bed8f39_8088ba72",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002600
+      },
+      "writtenOn": "2025-10-03T05:56:58Z",
+      "side": 1,
+      "message": "The UpdateArtifact API takes all required parameters (modelname, modelversion, artifactversion) from the URL path, not from the request body.\n\nThe backend updates the DB with these params and returns the updated modelinfo. That’s why your requests.post(...) works without data or json.\nThis is equivalent to the following curl command:\n\ncurl -X POST \"http://modelmgmtservice.traininghost:8082/ai-ml-model-registration/v1/model-registrations/updateArtifact/\u003cmodelname\u003e/\u003cmodelversion\u003e/\u003cartifactversion\u003e\"",
+      "parentUuid": "66a32526_f223a245",
       "revId": "f355999960500dd4bb0871c9f303743feb098164",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
