@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09ffe7de_60075711",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2025-10-06T14:06:40Z",
+      "side": 1,
+      "message": "PTAL. Updated the code as per [CL 15101](https://gerrit.o-ran-sc.org/r/c/aiml-fw/awmf/tm/+/15101).",
+      "revId": "cc9d379653fba9e39011389892130b04fbc9e6ba",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
