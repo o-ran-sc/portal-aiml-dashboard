@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ce3c5e6_98b66bf9",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2025-10-06T11:29:22Z",
+      "side": 1,
+      "message": "Thanks for the detailed explanation. If this is for updating artifact info, shouldn’t we use the `/model-registrations/{modelRegistrationId}` of PUT method from the specification?",
+      "parentUuid": "f6860c7f_f6737748",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66a32526_f223a245",
         "filename": "kf-pipelines/qoe-pipeline.ipynb",
         "patchSetId": 1
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "The UpdateArtifact API takes all required parameters (modelname, modelversion, artifactversion) from the URL path, not from the request body.\n\nThe backend updates the DB with these params and returns the updated modelinfo. That’s why your requests.post(...) works without data or json.\nThis is equivalent to the following curl command:\n\ncurl -X POST \"http://modelmgmtservice.traininghost:8082/ai-ml-model-registration/v1/model-registrations/updateArtifact/\u003cmodelname\u003e/\u003cmodelversion\u003e/\u003cartifactversion\u003e\"",
       "parentUuid": "66a32526_f223a245",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6873400a_6f44f887",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2025-10-06T11:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bed8f39_8088ba72",
       "revId": "f355999960500dd4bb0871c9f303743feb098164",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
