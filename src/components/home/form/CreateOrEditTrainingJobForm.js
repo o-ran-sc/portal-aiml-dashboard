@@ -374,11 +374,11 @@ class CreateTrainingJob extends React.Component {
     trainingJobAPI.invokeTrainingJob({
       data: {
         modelId: {
-          modelname: this.state.modelName,
-          modelversion: this.state.modelVersion,
+          modelName: this.state.modelName,
+          modelVersion: this.state.modelVersion,
         },
-        model_location: this.state.modelLocation,
-        training_config: {
+        modelLocation: this.state.modelLocation,
+        trainingConfig: {
           description: this.state.trainingConfigDescription,
           dataPipeline: {
             feature_group_name: this.state.featureGroupName,
@@ -392,11 +392,11 @@ class CreateTrainingJob extends React.Component {
             retraining_pipeline_version: this.state.retrainingPipelineVersion,
           },
         },
-        training_dataset: this.state.trainingDataset,
-        validation_dataset: this.state.validationDataset,
-        notification_url: this.state.notificationUrl,
-        consumer_rapp_id: this.state.consumerRappId,
-        producer_rapp_id: this.state.producerRappId,
+        trainingDataset: this.state.trainingDataset,
+        validationDataset: this.state.validationDataset,
+        notificationDestination: this.state.notificationUrl,
+        consumerRAppId: this.state.consumerRappId,
+        producerRAppId: this.state.producerRappId,
       }
     })
     .then(res => {
