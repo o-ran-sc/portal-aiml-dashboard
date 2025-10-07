@@ -36,6 +36,24 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc3d81d_ec417f64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002600
+      },
+      "writtenOn": "2025-10-07T06:52:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0951caae_1b196357",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae87834d_65b5c180",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Thanks for the detailed explanation. If this is for updating artifact info, shouldn’t we use the `/model-registrations/{modelRegistrationId}` of PUT method from the specification?",
       "parentUuid": "f6860c7f_f6737748",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7a721b_23734e52",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002600
+      },
+      "writtenOn": "2025-10-07T06:52:53Z",
+      "side": 1,
+      "message": "Sure, i will remove the update artifact fucntion from the mme and migrate to PUT method.",
+      "parentUuid": "2ce3c5e6_98b66bf9",
       "revId": "f355999960500dd4bb0871c9f303743feb098164",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
