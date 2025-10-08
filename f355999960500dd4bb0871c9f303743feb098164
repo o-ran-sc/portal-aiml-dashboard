@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b2f8a67_c2cfee10",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000475
+      },
+      "writtenOn": "2025-10-08T08:47:16Z",
+      "side": 1,
+      "message": "We are planning to take this patch and changes related to API would be handled by the next ticket: AIMLFW-283",
+      "parentUuid": "41e279ba_65338e96",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66a32526_f223a245",
         "filename": "kf-pipelines/qoe-pipeline.ipynb",
         "patchSetId": 1
