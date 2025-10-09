@@ -54,6 +54,23 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ad5ad42_57b2022d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2025-10-09T10:19:16Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae87834d_65b5c180",
@@ -157,6 +174,24 @@
       "side": 1,
       "message": "We are planning to take this patch and changes related to API would be handled by the next ticket: AIMLFW-283",
       "parentUuid": "41e279ba_65338e96",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acee0ec7_fb6f4d93",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002137
+      },
+      "writtenOn": "2025-10-09T10:19:16Z",
+      "side": 1,
+      "message": "Make sense.",
+      "parentUuid": "6b2f8a67_c2cfee10",
       "revId": "f355999960500dd4bb0871c9f303743feb098164",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
