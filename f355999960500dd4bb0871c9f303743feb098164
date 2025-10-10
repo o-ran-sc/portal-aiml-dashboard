@@ -196,6 +196,24 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cef29918_27742860",
+        "filename": "kf-pipelines/qoe-pipeline.ipynb",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000475
+      },
+      "writtenOn": "2025-10-10T07:06:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "acee0ec7_fb6f4d93",
+      "revId": "f355999960500dd4bb0871c9f303743feb098164",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66a32526_f223a245",
