@@ -19,6 +19,7 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
 
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
@@ -34,6 +35,8 @@ class UploadPipelineForm extends Component {
       fileName: null,
       plName: '',
       UCMgr_baseUrl: UCMgr_baseUrl,
+      pipelines: [],
+      loading: false,
     };
     this.handleFileChange = this.handleFileChange.bind(this);
   }
@@ -88,6 +91,7 @@ class UploadPipelineForm extends Component {
           console.log('Pipeline uploaded ', res.status);
           toast.success(res.data.result, 'Pipeline');
           this.resetFrom(event);
+          this.handleGetPipelines();
         } else {
           console.log('Upload pipeline error:', res);
         }
@@ -114,10 +118,17 @@ class UploadPipelineForm extends Component {
 
   handleGetPipelines = async () => {
     try {
+      this.setState({ loading: true });
       const response = await pipelineAPI.getPipelines();
       console.log('Pipelines response', response);
+      this.setState({ 
+        pipelines: response.data.pipelines || [],
+        loading: false 
+      });
     } catch (error) {
       console.error('Error in getting pipelines', error);
+      this.setState({ loading: false });
+      toast.error('Failed to load pipelines', 'Pipeline List');
     }
   };
 
@@ -131,6 +142,8 @@ class UploadPipelineForm extends Component {
   };
 
   render() {
+    const { pipelines, loading } = this.state;
+
     return (
       <>
         <h1 style={{ fontWeight: 'bold', margin: '40px 0px' }}>Training Function</h1>
@@ -162,6 +175,42 @@ class UploadPipelineForm extends Component {
               <Button style={{ backgroundColor: '#6282f6' }} type='submit'> Upload </Button>
             </Form>
           </div>
+        </div>
+
+        <div style={{ margin: '40px 0px' }}>
+          <h3>Pipeline List</h3>
+          {loading ? (
+            <div>Loading pipelines...</div>
+          ) : (
+            <Table hover responsive size='sm'>
+              <thead>
+                <tr>
+                  <th>Pipeline ID</th>
+                  <th>Display Name</th>
+                  <th>Description</th>
+                  <th>Created At</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pipelines.length === 0 ? (
+                  <tr>
+                    <td colSpan={5} style={{ textAlign: 'center', color: '#666' }}>
+                      No pipelines found
+                    </td>
+                  </tr>
+                ) : (
+                  pipelines.map(pipeline => (
+                    <tr key={pipeline.pipeline_id}>
+                      <td>{pipeline.pipeline_id}</td>
+                      <td>{pipeline.display_name}</td>
+                      <td>{pipeline.description || '-'}</td>
+                      <td>{new Date(pipeline.created_at).toLocaleString()}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </Table>
+          )}
         </div>
       </>
     );
